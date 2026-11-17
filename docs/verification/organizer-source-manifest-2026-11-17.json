@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-17",
+  "scope": "independent public pilot sources and docs before transfer",
+  "files": [
+    {
+      "path": "config/examples/organizer.example.json",
+      "bytes": 175,
+      "sha256": "abdb67276d49a1623c98c11dbcf3fc223f75ab08430cdffcb66158b8a42fb30d"
+    },
+    {
+      "path": "docs/explain/organizer.md",
+      "bytes": 2798,
+      "sha256": "5fc4fd2559db72da9a40e5bc13c0d4c0eeee4f5377049f123a708b74ae95f67a"
+    },
+    {
+      "path": "docs/howto/organizer.md",
+      "bytes": 2788,
+      "sha256": "abbee7464491f24bed86c488adb66f77aefe0343ac64243862fe15a0cf736258"
+    },
+    {
+      "path": "docs/operators/organizer.md",
+      "bytes": 5588,
+      "sha256": "0f09037dc9ba4565870b39adb8dded637051db01d036a90b1e3dd885369d93e7"
+    },
+    {
+      "path": "docs/plans/organizer-p1.md",
+      "bytes": 5052,
+      "sha256": "8fb85f6121e283503529e7667f0b2336896d89900f88b29134540d9f8a591ce5"
+    },
+    {
+      "path": "docs/verification/organizer-local-2026-11-17.md",
+      "bytes": 3024,
+      "sha256": "19dc66c363126b3f6a69d0802e3274d4f5bf95bedc5d3a3ee2f128fd2c8bac14"
+    },
+    {
+      "path": "examples/organizer/root/.retention_records.json",
+      "bytes": 142,
+      "sha256": "c15d16da10a91b602b6245dfb41f42c10ea9b7bd652b2b016cb4d1d5bdbc81df"
+    },
+    {
+      "path": "examples/organizer/root/fixed.txt",
+      "bytes": 65,
+      "sha256": "b539a6a0fa9244ce9513000156479725b1bf69c4d7952855a6a865551c45d749"
+    },
+    {
+      "path": "examples/organizer/root/sub/sample.txt",
+      "bytes": 56,
+      "sha256": "3a529a4d125bb844369b3461908bc151074ae320e985edfc956f3b5aa53424f2"
+    },
+    {
+      "path": "scripts/organizer.py",
+      "bytes": 12111,
+      "sha256": "19afb790c00230a7e5e347788c3b73139896d6c28350b97ff575ba5418e4c6f9"
+    },
+    {
+      "path": "tests/test_organizer.py",
+      "bytes": 17632,
+      "sha256": "b66696e218746e05a25824b19513ff083d5bd35a12a80a196877d396db920d55"
+    }
+  ],
+  "notes": [
+    "No user content, local paths or operational logs included",
+    "Manifest does not include itself",
+    "SHA-256 proves identity, not behavior or permission safety"
+  ]
+}

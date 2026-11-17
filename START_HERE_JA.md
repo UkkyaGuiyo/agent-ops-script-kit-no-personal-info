@@ -31,3 +31,6 @@ AIに手伝ってもらう場合は [AI_SETUP_GUIDE.md](AI_SETUP_GUIDE.md) と [
 AIに毎回読み込ませる常駐資料の**ファイル容量をバイト単位**で測る。大きさ・増加率が設定値を超えたときだけ、**キット外の私的フォルダ**へバックアップ・分類候補・下書き・比較レポート・機械的な自己テストを保存する。原本は自動変更しない。**意味や要点の保存は未審査**。トークン数の推定もしない。[HowTo](docs/howto/injection-size-watch.md) / [平易な説明](docs/explain/injection-size-watch.md)。
 
 独立環境で全168/168件の試験PASSが報告済み。ただし週次増加率ちょうど10%のCLI実測は未完、非root・他OSの動作も未検証。[独立検証概要](docs/verification/injection-size-watch-independent-2026-11-17.md)。
+
+## 整理係（PILOT、提案だけ）
+フォルダ間の振り分けではなく、登録時の `disposable` / `permanent` の所属情報とファイル更新時刻だけを見て、期限が来た**候補を表示**する。14日は変更可能なサンプル基準。ファイルの中身は読まない。未タグファイルも勝手に触らない。**ゴミ箱への移動・物理削除・自動タグ付けはできない**。[初心者向け説明](docs/explain/organizer.md) / [導入手順](docs/howto/organizer.md)。現在は独立環境検証待ち。

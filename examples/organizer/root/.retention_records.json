@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "entries": [
+    {"path": "sub/sample.txt", "class": "disposable"},
+    {"path": "fixed.txt", "class": "permanent"}
+  ]
+}

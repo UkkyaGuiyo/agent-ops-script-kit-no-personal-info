@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "age_days": 14,
+  "roots": [
+    {
+      "name": "synthetic-root",
+      "path": "../../examples/organizer/root",
+      "exclude_subtrees": []
+    }
+  ]
+}

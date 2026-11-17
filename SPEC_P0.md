@@ -1,6 +1,6 @@
 # P0 確定仕様書 | Agent Ops Script Kit
 Version: 2026-11-17 / EVP 20261117-012, SUP1, 013.
-Status: **design approved; capacity, ledger, untagged watcher, shared intake and injection-size watcher VERIFIED (revision-scoped); full release NOT approved**.
+Status: **design approved; five operators VERIFIED (revision-scoped); organizer PILOT; full release NOT approved**.
 
 ## Mission
 Publish an independently implemented, free GPL-3.0-only kit whose beginner users and initially uninformed AI assistants can (1) understand operators, (2) reproduce them where tools and permission allow, and (3) explain benefits, limitations, and risks in plain language.
@@ -21,7 +21,7 @@ Publish an independently implemented, free GPL-3.0-only kit whose beginner users
 |---|---|---|
 | Ledger checker | Check one Markdown ledger's syntax without changing content | VERIFIED (35f4d96; non-root permissions untested) |
 | History cleaner | Show cleanup candidates with dry-run | PLANNED |
-| Organizer | Propose safe file categorization | PLANNED |
+| Organizer | Preview tag-based file lifetime: disposable + mtime >= configured days, no move or purge | PILOT |
 | Untagged watcher | First-observed unregistered regular files with durable local pending/ack | VERIFIED (dfb077b; non-root permissions untested) |
 | Capacity watcher | Read-only local size scan with threshold | VERIFIED (e573312) |
 | Gmail collector | Authorized minimal-scope collector | PLANNED |
@@ -57,8 +57,8 @@ The generalized P1 is accepted and independent public implementation is document
 ## Injection-size watcher / EVP 20261117-021
 The internal source was **an agreed design plus one manually completed procedure, not an implemented private automatic watcher**. [P1 inventory and decisions](docs/plans/injection-size-watch-p1.md) were accepted with conditions: configurable bytes/weekly thresholds; measurement + private backup/classification/draft/comparison/self-test; original files never auto-applied. Public A–F classification is a new generalization and **not the UNKNOWN private A–F mapping**. The [independent implementation](scripts/injection_size_watch.py) has [52 synthetic local PASS tests](docs/verification/injection-size-watch-local-2026-11-17.md); reported [independent fresh-clone validation](docs/verification/injection-size-watch-independent-2026-11-17.md) and C-7 explanation passed for a60df96 (168/168 whole-kit tests, including 52 watcher tests). The independently executed CLI weekly-growth equality boundary is UNVERIFIED; source uses Decimal and the local unit test covers exactly 10%. Linux/root tested; non-root and other OSs UNVERIFIED. Model tokens are UNKNOWN and semantic reconstruction is NOT_ASSESSABLE. Full kit remains PREVIEW and formal release unapproved.
 
-## Next P1 / Organizer
-The next generalized P1 inventory concerns the **Organizer (整理係)**, [P1 work order](docs/plans/organizer-p1.md). First determine the genuine private design/behavior. A public pilot, if separately accepted, must initially produce **classification/move proposals only** with no file moves, renames, deletion, account access or schedule.
+## Organizer P1 / EVP 20261117-023
+P1 established that the internal "Organizer" is a **retention lifetime manager**, not general file sorting. The internal design can move eligible disposable files into trash and separately purge old trash; this **public implementation deliberately omits both operations**. See [P1 decisions](docs/plans/organizer-p1.md), [proposal-only technical contract](docs/operators/organizer.md), [HowTo](docs/howto/organizer.md), [explanation](docs/explain/organizer.md), [local synthetic test evidence](docs/verification/organizer-local-2026-11-17.md). The public CLI only inspects preexisting records and mtimes for configured roots; an unregistered file is not inspected or tagged. Threshold example 14 days is configurable, while the private "1 month purge" and the shared-intake 90-day retention manager are **NOT public organizer functions**. The new operator has 55 local synthetic PASS tests. Independent fresh-clone validation and C-7 explanation are PENDING. Full release is NOT approved.
 
 ## Open
 Future operator dependencies; specific AI runtime and scheduling availability; exact release manifest and final approval.
