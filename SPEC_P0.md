@@ -1,6 +1,6 @@
 # P0 確定仕様書 | Agent Ops Script Kit
 Version: 2026-11-17 / EVP 20261117-012, SUP1, 013.
-Status: **design approved; capacity, ledger, untagged watcher and shared intake VERIFIED (revision-scoped); injection-size watcher PILOT; full release NOT approved**.
+Status: **design approved; capacity, ledger, untagged watcher, shared intake and injection-size watcher VERIFIED (revision-scoped); full release NOT approved**.
 
 ## Mission
 Publish an independently implemented, free GPL-3.0-only kit whose beginner users and initially uninformed AI assistants can (1) understand operators, (2) reproduce them where tools and permission allow, and (3) explain benefits, limitations, and risks in plain language.
@@ -27,7 +27,7 @@ Publish an independently implemented, free GPL-3.0-only kit whose beginner users
 | Gmail collector | Authorized minimal-scope collector | PLANNED |
 | Notion jobs collector | Synthetic job intake examples | PLANNED |
 | Retention manager | Recoverable staged cleanup | PLANNED |
-| Injection-size watcher | Measure persistent AI context files in B and create private, conservative draft packages on warning; never apply | PILOT |
+| Injection-size watcher | Measure persistent AI context files in B and create private, conservative draft packages on warning; never apply | VERIFIED (a60df96; Linux/root, weekly CLI equality boundary untested) |
 | Deadline reminder | Deadline notification and retry state | PLANNED |
 | Shared intake | Append-only local collector, transitions, derived flag, retry-safe IDs | VERIFIED (d9b24aa; Linux/root scope) |
 
@@ -55,7 +55,10 @@ P1 documented; independent public implementation in [docs/operators/untagged-wat
 The generalized P1 is accepted and independent public implementation is documented in [docs/operators/shared-intake.md](docs/operators/shared-intake.md). U1 daily append-only JSONL + derived flag/summary retained; U2 four fixed states; U3 90-day terminal-only **retention preview with no deletion**; U4 flag.json and status CLI, both derived from the journal. The manual [watcher adapter](scripts/untagged_to_intake.py) never auto-acks the producer. Local synthetic tests and [reported independent testing](docs/verification/shared-intake-independent-2026-11-17.md) covered the ingestion, duplicate, transition, derived-flag, corruption, source-failure and manual-adapter scenarios for commit d9b24aa. Linux/root environment only; non-root, Windows, long-running/performance, NFS and other filesystems are UNVERIFIED. Public code is revision-scoped VERIFIED; formal release is not approved.
 
 ## Injection-size watcher / EVP 20261117-021
-The internal source was **an agreed design plus one manually completed procedure, not an implemented private automatic watcher**. [P1 inventory and decisions](docs/plans/injection-size-watch-p1.md) were accepted with conditions: configurable bytes/weekly thresholds; measurement + private backup/classification/draft/comparison/self-test; original files never auto-applied. Public A–F classification is a new generalization and **not the UNKNOWN private A–F mapping**. The [independent implementation](scripts/injection_size_watch.py) has [52 synthetic local PASS tests](docs/verification/injection-size-watch-local-2026-11-17.md); independent fresh-clone validation and C-7 explanation are PENDING. Model tokens are UNKNOWN and semantic reconstruction is NOT_ASSESSABLE. Full kit remains PREVIEW and formal release unapproved.
+The internal source was **an agreed design plus one manually completed procedure, not an implemented private automatic watcher**. [P1 inventory and decisions](docs/plans/injection-size-watch-p1.md) were accepted with conditions: configurable bytes/weekly thresholds; measurement + private backup/classification/draft/comparison/self-test; original files never auto-applied. Public A–F classification is a new generalization and **not the UNKNOWN private A–F mapping**. The [independent implementation](scripts/injection_size_watch.py) has [52 synthetic local PASS tests](docs/verification/injection-size-watch-local-2026-11-17.md); reported [independent fresh-clone validation](docs/verification/injection-size-watch-independent-2026-11-17.md) and C-7 explanation passed for a60df96 (168/168 whole-kit tests, including 52 watcher tests). The independently executed CLI weekly-growth equality boundary is UNVERIFIED; source uses Decimal and the local unit test covers exactly 10%. Linux/root tested; non-root and other OSs UNVERIFIED. Model tokens are UNKNOWN and semantic reconstruction is NOT_ASSESSABLE. Full kit remains PREVIEW and formal release unapproved.
+
+## Next P1 / Organizer
+The next generalized P1 inventory concerns the **Organizer (整理係)**, [P1 work order](docs/plans/organizer-p1.md). First determine the genuine private design/behavior. A public pilot, if separately accepted, must initially produce **classification/move proposals only** with no file moves, renames, deletion, account access or schedule.
 
 ## Open
 Future operator dependencies; specific AI runtime and scheduling availability; exact release manifest and final approval.

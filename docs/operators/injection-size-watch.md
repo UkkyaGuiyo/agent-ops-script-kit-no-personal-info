@@ -1,6 +1,6 @@
 # 投入量見張り係：技術仕様
 
-**Status: PILOT.** ローカル合成試験済み。新規cloneによる独立検証・初期状態Museの説明再現はPENDING。GPL-3.0-only。Python 3.10+、標準ライブラリのみ。
+**Status: VERIFIED（対象コミット a60df96b17875e0c49f07b5beafa9fd04469b9ee、Linux/root実測範囲）.** 新規cloneで全168/168件のテストPASSとC-7説明再現PASSがヴェスから報告された。週次増加率10%ちょうどのCLI独立実測はUNVERIFIED（制作側単体試験PASS／Decimal実装確認）。非root・他OS・大量ファイル・実運用はUNVERIFIED。正式RELEASEDではない。GPL-3.0-only。Python 3.10+、標準ライブラリのみ。
 
 ## 役割
 AIの会話で繰り返し読み込まれる、**明示的に指定された常駐コンテキスト用ファイル**の容量（ファイルサイズ）を計測する。日次ログなど必要な時だけ検索する資料は、設定対象に入れない。計測は **bytes (B)** が正本。補助的にUTF-8デコード後のPython文字数（Unicodeコードポイント単位）と`splitlines()`に基づく行数を報告。**モデルtoken数は測らず、バイトから推定もしない。** ディスク使用容量ではなくファイルの論理長。
@@ -54,4 +54,4 @@ AIの会話で繰り返し読み込まれる、**明示的に指定された常�
 
 未完の`.injection-temp-*`、history破損、状態の片方欠落、設定変更は自動再作成しない。本人がバックアップと履歴を精査して復旧を決める。原本は書き込まない。通常のMarkdown意味の圧縮・復元、他OS、非root権限拒否、大量/巨大ファイル、実環境性能、トークン単位コストは独立検証外。
 
-[HowTo](../howto/injection-size-watch.md) / [初心者向け説明](../explain/injection-size-watch.md) / [P1判断](../plans/injection-size-watch-p1.md).
+[HowTo](../howto/injection-size-watch.md) / [初心者向け説明](../explain/injection-size-watch.md) / [P1判断](../plans/injection-size-watch-p1.md) / [独立検証概要](../verification/injection-size-watch-independent-2026-11-17.md).

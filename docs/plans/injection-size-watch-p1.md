@@ -1,7 +1,7 @@
 # 投入量見張り係 P1確定・公開版判断
 
 **EVP/1:** 20261117-021 / 2026-11-17  
-**Status:** P1 ACCEPT_WITH_CONDITIONS; independent public PILOT produced; independent environment review PENDING.
+**Status:** P1 ACCEPT_WITH_CONDITIONS; public implementation VERIFIED for a60df96 (Linux/root test scope only). Weekly 10%-equality CLI independent check UNVERIFIED.
 
 ## Evidence boundary
 V.E.S.T.A.R.D. explicitly confirmed **NO completed private automated implementation** existed at the time of the report. Input was the owner's established design and a single manually completed procedure. Neither private files nor their contents, local paths, prompts or raw measurement logs were transferred or copied. The public code was independently authored and is not a port from private source.
@@ -24,3 +24,6 @@ No automatic editing/backup outside the user-designated private state directory,
 Synthetic exact byte/Unicode totals, strict threshold boundaries, seven-day growth and daily cadence, unreadable/invalid/oversized inputs, per-file and whole-scan errors, hash and history corruption, marker missing, lock conflict, draft backup integrity and true byte comparison, JSON parsed-value equivalence, verbatim Markdown/text drafts, source SHA-256 unchanged, no path/content echoed, and clean-room Muse explanation. Only after an independent fresh clone may this operator become VERIFIED (scope-limited).
 
 [Operator spec](../operators/injection-size-watch.md) · [HowTo](../howto/injection-size-watch.md) · [Beginner explanation](../explain/injection-size-watch.md).
+
+## P3独立検証の追記（2026-11-17）
+EVP/1 `20261117-022`: 新規cloneで全168/168件（既存116＋本係52）がPASSと報告された。合成アンカー249 B、上限100 Bちょうどで正常・101 Bで警告、原本SHA-256不変、部分失敗のtotal_bytes=null、設定不一致の明示的エラー、C-7説明再現PASS。週次増加率の**ちょうど10%**は実行環境から履歴整合性ハッシュの再現ができず**独立CLI実測としてUNVERIFIED**。Decimal比較は実装ソースで確認でき、制作側単体テストに含まれる。非root・他OS・大量ファイル・実運用、意味の保持は未実証。[独立検証概要](../verification/injection-size-watch-independent-2026-11-17.md)。
