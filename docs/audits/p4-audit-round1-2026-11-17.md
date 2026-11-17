@@ -1,0 +1,62 @@
+# Agent Ops Script Kit | P4最終監査・第1回（EVP/1 20261117-057）
+
+- **Date:** 2026-11-17 JST
+- **Review baseline:** `13847ed407cdfe51b2a227f3240b56349324546b`
+- **Audit verdict:** **REVISE**; P4 gate is **OPEN** and P5 is **BLOCKED**. This report is an audit finding, not a release approval.
+- **Review mode:** direct GitHub API reads of the public main branch and 25 public commit patches; independent source/header review; independent tester's previously reported P3 results. No live operation, deletion, forced push, history rewrite, login, or private repo access.
+- **Repository:** public, `main` only at baseline; GitHub reported 25 commits, 0 tags, 0 releases, 0 PRs; HEAD tree 167 entries comprising **139 file blobs and 28 tree objects** (total tracked file bytes: **815,586 B**). Git tree listing not truncated.
+- **Evidence limitations:** The private tester's complete 618-test logs were not re-executed in P4, and private personally identifying string dictionaries from the tester were not provided. Keyword/token scanning is not a mathematical guarantee of no sensitive content or no third-party copying.
+
+## Executive conclusion
+The public pilot code contains 11 separately described operators and scope-limited P3 VERIFIED reports, with previously reported whole-kit 618/618 PASS and 0 SKIP. The archive remains PREVIEW. I did **not** identify an unconditional real Gmail/Notion transmission path, SMTP send, shell command execution, built-in physical purge command, or unexpected third-party runtime dependency in the 12 current scripts. However, **P4 is not accepted** because public internal-AI names require a deliberate owner privacy decision, per-file license declarations are inconsistent, and a complete release-time SHA-256 manifest does not exist for a frozen candidate.
+
+## P4 gate criteria
+
+| ID | Area | Result | Evidence / boundary |
+| --- | --- | --- | --- |
+| S1 | 12 public scripts: outbound network and arbitrary process execution | **PASS within static-scan scope** | Directly reread 12 scripts and imports. No `requests`, SMTP/IMAP client, live Gmail/Notion provider, subprocess or `eval`/dynamic execution in runtime scripts. The only `urllib` use in the Notion parser is `urllib.parse` (local URL strings). Not a dynamic penetration test. |
+| S2 | Destructive defaults and bounded local writes | **PASS_WITH_LIMITATIONS** | File-mutating Retention Manager uses explicit `--apply` in a marked OS-temp synthetic demo; no `purge`. Other scripts write local state or draft data only as documented. Read-only is per operator, not an absolute no-write claim. Retention demo marker is not authenticated; OS-temp provenance can be influenced by environment, and symlink/race/power-loss recovery is not proven. Never call this a production security sandbox. |
+| P1 | Current and historical credential/contact/path pattern screening | **PASS_WITH_LIMITATIONS** | Examined **all 25 commit diffs including added lines**, with no missing text patch among returned changed files. No literal credential-token patterns, actual Gmail addresses, Tailscale 100.64/10–100.127/10 address or recognized real local-home path detected under the tested expressions. The apparent `/root/` path hit was a synthetic repository path segment, not a host path. Fictional `.invalid` examples were present. The tester separately reported 0 matches in its owner-specific dictionary; that separate result is not a substitute for this audit. |
+| P2 | Internal identity and publication metadata | **REVISE / HUMAN DECISION** | Some current and historical documents contain **the private AI agents' distinctive codenames** (e.g. `SPEC_P0.md`, `docs/plans/`, `docs/verification/`). No owner decision explicitly classifying those public aliases as permitted was presented with this P4 request. Git's public commit author metadata also inevitably exposes a GitHub account handle/noreply numeric identifier and an author alias. These are public publisher metadata, not hidden Gmail credentials. Decide what is permissible before claiming “no internal identifiers.” |
+| L1 | Core license | **PASS** | The tracked `LICENSE` Git blob is `f288702d2fa16d3cdf0035b15a9fcbc552cd88e7`, matching the standard 35,149-byte GNU GPL v3 text available on the auditing system; the matched reference SHA-256 is `3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986`. Project declarations consistently intend GPL-3.0-only. GitHub's deprecated `GPL-3.0` classifier denotes GPLv3-only; the current canonical SPDX identifier is `GPL-3.0-only`. References: https://spdx.org/licenses/GPL-3.0-only.html and https://www.gnu.org/licenses/gpl-howto.html |
+| L2 | File-local notices and third-party provenance | **REVISE** | **12 of the 24 tracked Python files lack a top-of-file SPDX tag** (3 scripts and 9 tests). A repo-level LICENSE exists, so absence alone is not a finding of GPL infringement, but it conflicts with the kit's rigorous standalone-file distribution goal. No bundled third-party executables/packages, external imports or obvious foreign copyright headers were found in the current source. Actual authorship, prior copying, snippet origins and copyright-holder consent **cannot be proved by a keyword scan**. |
+| G1 | Git history coverage and provenance | **PASS_WITH_LIMITATIONS** | 25 main-branch commit metadata records and their text diffs screened; all returned changed files had patch content. Single public branch, no tags, releases, or PRs at baseline. Every author field uses the same public author alias and GitHub noreply address; the initial GitHub committer is the hosting platform. Historic internal nicknames remain reachable even if current documents are subsequently edited. Other public forks or previously cloned objects cannot be erased by rewriting main. |
+| R1 | README/SECURITY/operator status fidelity | **PASS_WITH_LIMITATIONS** | Current catalog says 11 revision-scoped VERIFIED, all operator documents define limitations and the repository is PREVIEW, not RELEASED. The 618/618 suite and C-7 are **reported** by V.E.S.T.A.R.D., not rerun by this P4 pass. Known risks (Gmail internal important-mail false negative, staged restore power loss, non-root/other OS, real integration) remain open. |
+| R2 | P5 release payload full SHA-256 manifest | **REVISE** | Existing manifests are per-operator source snapshots; **no complete frozen-tree manifest** of all 139 baseline files exists. A P5 package should not be approved from per-operator partial manifests or the Git SHA alone. |
+
+## Concrete blockers / dispositions
+
+### P4-PRIV-01: internal names in already-public history (OWNER DECISION REQUIRED)
+Determine whether the distinct internal AI aliases in published documents and their historical commits are consciously allowed as public pseudonyms. If yes, document **which aliases** are allowed, without expanding the set to private code names, account identifiers, prompts, task logs or human identity. If no, create a separately approved redaction plan. Updating HEAD does **not** erase past public commits; **forced history rewriting is not authorized** and needs the owner's distinct explicit approval plus coordination and warning that earlier public clones may survive. GitHub publisher handle/noreply metadata cannot be treated as secret-free anonymity.
+
+### P4-LIC-01: normalize license notices (IMPLEMENTER)
+Add consistent source-file `Copyright (C) 2026 Contributors to Agent Ops Script Kit` and `SPDX-License-Identifier: GPL-3.0-only` to:
+- scripts: `deadline_reminder.py`, `ledger_check.py`, `untagged_to_intake.py`
+- tests: `test_capacity_watch.py`, `test_deadline_reminder.py`, `test_injection_size_watch.py`, `test_ledger_check.py`, `test_organizer.py`, `test_retention_manager.py`, `test_shared_intake.py`, `test_untagged_to_intake.py`, `test_untagged_watch.py`
+
+No logic changes are authorized as part of this cosmetic fix. Check that the new placement does not break shebang, encoding or `from __future__` import ordering. If any third-party code is discovered, confirm the actual holder and applicable license before altering attribution; do not silently claim others' code as original.
+
+### P4-REL-01: prepare and independently verify complete release manifest
+After code/docs correction and freeze, enumerate `git ls-files -z` (strictly tracked paths only) at exact candidate commit C. For every regular file record **path, byte size, SHA-256**, and optionally Git blob SHA-1. Reject symlinks, submodules, missing/unreadable content and unexpected binary files or record their handling explicitly. Manifest schema must state `source_commit_sha=C`, UTC generation time and file count. Do **not** hash the manifest against itself. Add the manifest in a subsequent commit M, verify all non-manifest tracked files at M match C, and give P5 both commit IDs, manifest path, manifest blob SHA, file count and independent hash checks. The final Git SHA alone is not the SHA-256 file manifest. At least three sampled file anchors must be rehashed by V.E.S.T.A.R.D.; ideally all files. If tracked files change, regenerate. **No release tag or P5 authorization now.**
+
+### P4-SEC-01: safety scope remains binding (LIMITATION, NOT AN IMMEDIATE NEW FEATURE)
+Retain the demo-only/non-production limitation for Retention Manager. Marked OS-temp directories and explicit `--apply` are accidental-damage guardrails, not a proof of security against deliberate marker cloning, manipulated `TMPDIR`, adversarial symlink swaps, concurrent modification or interruption between `prepared` and `staged`. No runtime path-expansion or full crash-recovery implementation is authorized by this audit. If those are later desired, treat as a new scoped change requiring security tests and independent review.
+
+### P4-PROV-01: authorship and third-party content (OWNER / AUDITOR)
+Retain the known standard-library-only source policy. Confirm author/rightsholder authorization for the GPLv3-only release and identify any copied external text/code or AI-generated work with unclear provenance. This static audit found no demonstrable incompatible bundled dependency, but does not certify authorship uniqueness or provide legal advice.
+
+## Required re-test / re-review workflow
+1. **E.L.I.S.** prepares an exact no-logic license-header patch after the privacy disposition and commits with checked author metadata. For approved current-doc redaction, separately list every file and diff before writing; **never change git history without explicit approval**.
+2. **V.E.S.T.A.R.D.** runs a new clean clone at the correction SHA, `python -m unittest discover -s tests -v` (currently expected **618 / 618**, with **0 SKIP**), `python -m compileall -q scripts tests`, demo `preview → stage → restore`, and independent source/header inspection. Any changed code or contract triggers affected C-7 checks; new full C-7 is advised before P5.
+3. **E.L.I.S.** rescreens the **entire then-current public history** plus HEAD, checks LICENSE and any added files, resolves or explicitly retains each open finding with an owner-approved disclosure policy. Produce an updated, auditable P4 verdict at a pinned commit.
+4. After a candidate freeze, generate the exact all-file SHA-256 release manifest. **V.E.S.T.A.R.D. independently rehashes** source in a clean clone, compares file count + byte sizes + hashes and three anchors against the manifest. Record errors without continuing to P5.
+5. Only if all P4 criteria are accepted and unresolved release blockers are NONE, create a narrowly scoped **P5 HUMAN REVIEW CARD**. Only the owner may approve a formal release/tag; no tag is created by P4.
+
+## Final EVP/1 state
+- **VERDICT:** REVISE (P4 is not yet ACCEPT)
+- **BASIS:** public P0 2026-11-17; code/doc HEAD `13847ed407cdfe51b2a227f3240b56349324546b`; 25 public commit patches; GNU GPLv3 and SPDX official materials
+- **SCOPE:** current source, static security/privacy/license checks, main public Git history, release readiness
+- **CONDITIONS:** address privacy aliases, source headers, complete manifest and provenance; revalidate after changes
+- **OUT_OF_SCOPE:** real Gmail/Notion, actual live cleanup, shell access to private user PC, complete third-party similarity analysis, non-root/Windows/NFS proof, formal release
+- **UNRESOLVED:** P4-PRIV-01, P4-LIC-01, P4-REL-01, P4-PROV-01; stated non-production security limitations
+- **RESPONSE_STATUS:** COMPLETE for this audit round; P4 gate remains BLOCKED and P5 PENDING

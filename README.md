@@ -2,7 +2,7 @@
 
 > **個人情報流入禁止！！ / NO PERSONAL INFORMATION.** Never commit personal data, credentials, private operational records, private prompts, private paths, real account IDs, or customer data. Use synthetic examples only.
 
-**Status: PREVIEW. Not a finished product.** A beginner-friendly collection of small, auditable script helpers. Scripts check repeatable facts, AI assistants explain the results, and humans approve consequential actions. Not affiliated with any AI company.
+**Status: PREVIEW. Not a finished product.** **P4 audit: REVISE, not passed. P5 formal release is blocked** pending [P4 findings](docs/audits/p4-audit-round1-2026-11-17.md), [remediation](docs/audits/p4-remediation-checklist-2026-11-17.md), and an independently verified full-tree SHA-256 manifest. A beginner-friendly collection of small, auditable script helpers. Scripts check repeatable facts, AI assistants explain the results, and humans approve consequential actions. Not affiliated with any AI company.
 
 ## Start here
 - [初心者向けスタート](START_HERE_JA.md)

@@ -1,6 +1,7 @@
 # P0 確定仕様書 | Agent Ops Script Kit
 Version: 2026-11-17 / EVP 20261117-012, SUP1, 013.
 Status: **design approved; all eleven operators VERIFIED within documented revision/environment scope; full release NOT approved (PREVIEW)**.
+**P4 audit round 1: REVISE (OPEN); P5 BLOCKED.** See [P4 findings](docs/audits/p4-audit-round1-2026-11-17.md) and [remediation checklist](docs/audits/p4-remediation-checklist-2026-11-17.md).
 
 ## Mission
 Publish an independently implemented, free GPL-3.0-only kit whose beginner users and initially uninformed AI assistants can (1) understand operators, (2) reproduce them where tools and permission allow, and (3) explain benefits, limitations, and risks in plain language.
