@@ -1,6 +1,6 @@
 # P1確定：保持タグ付け忘れ検出係
 
-**Status: P1 accepted / public PILOT implemented / independent verification PENDING.**
+**Status: P1 accepted / public implementation VERIFIED for commit dfb077b (non-root permission-denial UNVERIFIED).**
 **Basis:** V.E.S.T.A.R.D. generalized internal-spec report EVP/1 20261117-017. Private source, actual paths and operational data were not examined or copied.
 
 ## What this operator actually does

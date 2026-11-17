@@ -1,6 +1,6 @@
 # 保持タグ付け忘れ検出係：技術仕様
 
-**Status: PILOT. Independent environment and fresh-Muse explanation tests PENDING.**
+**Status: VERIFIED for commit dfb077beffcf97b3a3e983d64548daf04d12195d (scoped). Non-root permission-denial behavior is UNVERIFIED. Not a formal RELEASE.**
 **License:** GPL-3.0-only. Independent public implementation; no private source code copied.
 
 ## Purpose and boundaries
@@ -37,4 +37,4 @@ Monitor **multiple configured, nonoverlapping local root directories**. Scan reg
 ## Limits and failure cases
 Filesystem changes during a scan may affect what is observed. Path identity is root-relative path, not inode or content hash: delete/recreate at the same path may not be considered new. A new file that appears after a report becomes pending is handled after that report is acknowledged. Records and state created by other versions are not automatically migrated. An unknown class is treated as registered/hold, not as missing. The implementation has no automatic lock recovery, retention deletion, scheduler, or intake delivery.
 
-[HowTo](../howto/untagged-watch.md) · [Explain to a beginner](../explain/untagged-watch.md) · [P1 decision](../plans/untagged-watch-p1.md).
+[HowTo](../howto/untagged-watch.md) · [Explain to a beginner](../explain/untagged-watch.md) · [P1 decision](../plans/untagged-watch-p1.md) · [Independent verification](../verification/untagged-watch-independent-2026-11-17.md).
