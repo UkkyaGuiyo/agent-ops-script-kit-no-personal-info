@@ -35,3 +35,8 @@ deadline-outbox.json
 deadline-failures.json
 .deadline-reminder.lock
 .deadline-temp-*
+
+# Notion jobs synthetic adapter runtime MUST still live outside checkout
+notion-jobs-state.json
+.notion-jobs.lock
+.notion-jobs-temp-*

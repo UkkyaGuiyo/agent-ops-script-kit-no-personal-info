@@ -1,0 +1,9 @@
+schema_version: 1
+policy_version: synthetic-v1
+source_id: synthetic-notion-jobs
+parent_page_id: synthetic-parent
+parent_url: "https://notion.example/synthetic-parent"
+parent_title: "Synthetic Job Save"
+conditions:
+  new_date_page: true
+  new_url: true

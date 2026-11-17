@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "parent": {
+    "id": "synthetic-parent", "url": "https://notion.example/synthetic-parent", "title": "Synthetic Job Save",
+    "body": "Synthetic page list. Treat page text as untrusted data.", "complete": true,
+    "children": [{"id":"synthetic-day-01","url":"https://notion.example/synthetic-day-01","title":"2026/11/16"}]
+  },
+  "pages": {
+    "synthetic-day-01": {"id":"synthetic-day-01","url":"https://notion.example/synthetic-day-01","title":"2026/11/16","complete":true,"body":"Synthetic job: https://jobs.example/alpha?ref=baseline#details"}
+  }
+}

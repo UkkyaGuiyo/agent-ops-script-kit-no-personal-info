@@ -40,3 +40,6 @@ AIに毎回読み込ませる常駐資料の**ファイル容量をバイト単�
 
 ## 履歴掃除係（対象コミット限定VERIFIED）
 第4号・共通受け皿に溜まる**記録**の保存期限を調べる。ファイルやGit履歴は消さない。終端（reported/discarded）に到達してから既定90日以上のアイテムを`candidate`と示すが、**候補は削除の許可ではない**。公開v1には独立seen保存・prepare/completeの削除証拠が無いため`safe_to_delete_count=0`固定。未処理・auditedは除外、リマインダーの状態イベント・エラー行・重複排除記憶は保護する。公開実装は原本を全く変更しない。[HowTo](docs/howto/history-cleaner.md) / [初心者説明](docs/explain/history-cleaner.md)。新規cloneで全370/370件PASS（第4号統合試験を含みSKIPなし）とC-7合格が報告済み。[独立検証概要](docs/verification/history-cleaner-independent-2026-11-17.md)。非root・他OS・実削除は検証していない。
+
+## Notionジョブ収集係（PILOT、合成入力専用）
+本来の内部係ではNotionが**読み取り元**。公開版では、架空の親ページと日付子ページのJSONだけを読んで、新しい日付ページと追加URLを見つける。条件は版とハッシュをもつ簡易YAML。最初に一度だけbootstrapを完了させ、その後checkで差分を取る。失敗は新着0件ではない。第4号に適合する**ローカル投入案**を保持するが、**Notionに接続しない・実受け皿に送らない・応募しない・定期実行しない**。制作側は70件PASS／1件SKIP。独立検証・C-7はPENDING。[HowTo](docs/howto/notion-jobs-collector.md)／[初心者説明](docs/explain/notion-jobs-collector.md)。

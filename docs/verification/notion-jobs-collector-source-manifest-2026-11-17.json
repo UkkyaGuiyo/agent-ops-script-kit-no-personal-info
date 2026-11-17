@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-17",
+  "basis": "EVP-20261117-038",
+  "data_type": "wholly_synthetic_public_pilot",
+  "file_count": 10,
+  "files": [
+    {
+      "path": "scripts/notion_jobs_collector.py",
+      "size_bytes": 24842,
+      "sha256": "1f165680ccf11a84edf8724b0910d8d3172350141e068e6a9d4006187ec53c59"
+    },
+    {
+      "path": "tests/test_notion_jobs_collector.py",
+      "size_bytes": 24292,
+      "sha256": "36c6c08930126ea8af383873677a7286275c1fc466ada657147328251e099415"
+    },
+    {
+      "path": "config/examples/notion-jobs-policy.example.yaml",
+      "size_bytes": 252,
+      "sha256": "f17b85680eb57b1d91d6ba79611b0ed3eb9c92224409e73c6be699ed4e0baeca"
+    },
+    {
+      "path": "examples/notion-jobs/snapshot-baseline.json",
+      "size_bytes": 583,
+      "sha256": "decaaa5f2abd735229d4bf022ee2f5b9f3257db29e2892af6eec106e6d433bcf"
+    },
+    {
+      "path": "examples/notion-jobs/snapshot-updated.json",
+      "size_bytes": 973,
+      "sha256": "f5a93d7eb975d83365145f99f54f4395649cd0b9258cde78e501305ab4ab58c6"
+    },
+    {
+      "path": "docs/plans/notion-jobs-collector-p1.md",
+      "size_bytes": 6044,
+      "sha256": "15689c8c4cc880946d6756e3924b8ba9cba7845bb68aafb8d946594f50fccc5f"
+    },
+    {
+      "path": "docs/operators/notion-jobs-collector.md",
+      "size_bytes": 5754,
+      "sha256": "d166b31f79cb148e835240a637d5296b6932ff015c5ffb0e416d3c74dd51e75b"
+    },
+    {
+      "path": "docs/howto/notion-jobs-collector.md",
+      "size_bytes": 3568,
+      "sha256": "7f07997aa74d72ba4632560bdb71764ee09bf0842db6a511288b4a65cf7d22a5"
+    },
+    {
+      "path": "docs/explain/notion-jobs-collector.md",
+      "size_bytes": 2482,
+      "sha256": "7362b29149ca0f0a0c6044aa419fd6410b123fb6562e69f88c67e9d0b29842e9"
+    },
+    {
+      "path": "docs/verification/notion-jobs-collector-local-2026-11-17.md",
+      "size_bytes": 4648,
+      "sha256": "85a10d21616665de36be93a744941b7a5f0285aafe6db79f3156b5f38f665345"
+    }
+  ]
+}

@@ -1,33 +1,47 @@
-# 第9号 P1調査：Notion案件収集係 / Notion Jobs Collector
+# 第9号：Notionジョブ収集係 P1裁定（EVP/1 20261117-038）
 
-**Status: PLANNED.** This authorizes generalized **P1 source inventory only**, not implementation, account connection, web access, Notion changes, job ingestion, scheduling or formal release.  
-**Basis:** E.L.I.S. EVP/1 `20261117-037` selected the next P1 after eight scoped VERIFIED operators. The existing P0 catalog's only grounded public goal is **"Synthetic job intake examples"**. Do not assume live Notion connectivity or private implementation maturity from the name.
+**裁定：ACCEPT_WITH_CONDITIONS。公開版状態：PILOT。**
+**根拠：** V.E.S.T.A.R.D.による、非公開の実装と日次影運転の一般化報告。実ページ、実ID、実URL、私的コード、認証情報は受領しない。実Notionへの接続は行わない。
 
-## Why this next
-A synthetic normalization and local preview workflow can be investigated without granting external-account credentials or modifying records. This order does **not** grant permission to read, edit or create real Notion pages, tasks, diaries, project memories, or jobs. It is lower-risk than authorizing retention deletion; Gmail and the separate Retention manager remain future independent scopes.
+## 内部系の実態として報告された事項
 
-## V.E.S.T.A.R.D. P1 questions
+- Notionは**入力元**。親ページと日付子ページ群を読み取るだけ。新しい日付ページ、または既存日付ページ内に追加された新しいURLを検知し、第4号共通受け皿へ投入する。応募、評価、本人への案件報告、案件台帳への登録はしない。
+- 日付ページのタイトルは実在する`YYYY/MM/DD`。URLはクエリ・フラグメントを除いて比較。追加を伴わない本文変更やページ・URL消失は通知しない。
+- YAML条件を毎回読み直し、版とハッシュを稼働記録・投入アイテムに記録。条件欠落・不正・未知IDはFail Closed。親はID/URL/タイトル/本文型を検証、子の異常はpartialにして次回再試行。
+- 一回限りのbootstrap、未完からの復旧、専用seen、outbox相当の永続化、最終成功時刻の管理がある。内部は日次影運転中だが、本番切替は未実施。
+- ページ内の指示文を命令として処理しない。認証情報は係に保管せず、既存読取専用CLIから取得する。
 
-1. **Real identity and status:** What is the confirmed private purpose, actual source(s), authoritative internal design/version and evidence of implemented versus planned behavior? Does "Notion jobs collector" mean jobs **from Notion**, jobs **to Notion**, or a different internal workflow? Do not guess.
-2. **Collection scope:** Precisely which user-approved databases/pages or record categories are contemplated, and which are excluded? Explain only **generalized types**, not actual names, URLs, page IDs, content or private schema copies.
-3. **Access and trust:** How are permission scopes, auth, rate limits, access revocation, page properties, shared/private workspace boundaries and data provenance handled? Does the internal tool have read-only capabilities, writes, or none? Distinguish implemented and proposed.
-4. **Item identity and typing:** What minimal fields establish job/task identity and reproducible deduplication? Define fields (synthetic `source_id`, `source_event_id`, title alias, due timestamp/timezone if relevant, state and source revision) and mark actual/UNKNOWN; do not invent mandatory fields absent from the confirmed private design.
-5. **Selection and change detection:** How does it distinguish new/changed/removed entries and avoid false "no jobs" claims? Which timestamps, pagination cursors, database query filters, incremental checkpoints and stable identifiers are actually supported?
-6. **Output and local integration:** What data is prepared for Shared Intake v1 and with what privacy-minimizing transform? Does any confirmed workflow call Shared Intake or only produce a local JSON draft? No real inbox/outbox delivery is authorized for the first public pilot.
-7. **State, replay and acknowledgment:** Source fetch versus durable acceptance versus human action, duplicate/collision handling, failed ingestion retries, pending queues, ack and any separate ledger; state NONE if no implementation.
-8. **Failures and recovery:** Unauthorized account, revoked token, unavailable page/database, schema change, partial page results, invalid timestamps, malformed property, pagination failure, corrupted state, read limits. Such failures must be **ERROR/UNKNOWN**, not "0 jobs."
-9. **Privacy/retention authority:** Are real task names, client identifiers, attachments, URLs, dates and text necessary? What exact redaction, local retention and publication boundaries apply? Confirm there is **no public export of personal data**, no unsolicited change to existing Notion pages, AI board, task directions or diaries.
-10. **Synthetic tests and fresh-Muse C-7:** Empty complete source versus fetch error, duplicate job ID, missing required field, revision conflict, malformed timestamp, pagination truncation, stale snapshot, private field exclusion, retry without duplicate, stable mapping to Shared Intake v1 if approved. Explain source fact vs AI interpretation vs human approval, **"収集・候補化は応募・登録・完了ではない"**, and no live Notion account action.
+## 公開版U1〜U3決定
 
-## Requested P1 report
+| 論点 | 独立実装 | 実装しないもの |
+| --- | --- | --- |
+| **U1 入力方式** | **(b) 読取専用`PageProvider`インターフェース＋同梱の`FixtureProvider`だけ**。合成JSONスナップショットを事前に与える | Notion API/CLI、認証、トークン、ネットワーク、ブラウザ操作、実データ取得 |
+| **U2 条件と初期化** | 版・SHA-256をもつ**厳格な制限付きYAML**。`bootstrap`は1度だけ成功でき、試行開始/結果/回数を保存。途中失敗から再試行可能。通常`check`は完了前に拒否 | 汎用YAMLタグ/アンカー/マージ、誤った状態の自動初期化、ポリシー変更時の暗黙再baseline |
+| **U3 出力先** | **第4号公開v1に適合するローカル`item`形式のpending投入案**。正本とseenを一つの私的JSON状態に原子的保存し、`pending`で取得できる | 第4号への実`ingest`、Notion書込み、メール・通知・応募・スケジューラ、外部配送 |
 
-- Clearly separate **FACT (tested private behavior)**, **approved design**, **UNKNOWN**, **UNVERIFIED**, and proposed public choices.
-- Generalized input/output schemas and timestamps with units/timezones, stable IDs, state and error codes.
-- Minimal-access permission and authority matrix: inspection, transformation, local preview, private intake, Notion write, external outreach.
-- Identity/duplicate/retry contract; source completeness proof and Fail Closed contract.
-- Synthetic test matrix, C-7 criteria, and unresolved U1...Un.
-- If the internal tool is absent, explicitly report its absence and present only verified design/manual steps.
+## 公開版での意図的な限定
 
-## Boundaries
+- JSONスナップショットの`complete=true`は**フィクスチャの入力申告**であり、実Notionの全ページ・全ページネーション取得を証明しない。実プロバイダを将来開発する場合、独立監査が必要。
+- 公開版はURLを**日付ページIDと正規化URLの組**で既知管理する。実運用がページ横断のグローバル重複除去を要求するかは**UNKNOWN**。初版はページ別の新規追加という定義から選択した。
+- 制限付きYAMLはトップレベルの固定キーと2空白インデントの`conditions`マップだけを許可する。**一般的なYAML全体を解釈できるパーサーではない**。外部依存を増やさず、二重キーや未知IDを拒否するための公開版独自形式。
+- `bootstrap`は現在見える成功ページ・URLを既知として記録し、**過去分の発見通知を出さない**。子失敗があればbootstrapは未完に留まり、seenを確定しない。通常収集は開始しない。
+- 通常check中は成功したページだけをseenに記録し、そのページの投入案を**同じ状態JSONに同時保存**する。子失敗があれば`partial`（exit2）、成功時刻は更新しない。次回同じ子を再試行できる。親の失敗は全体エラー（exit1）。
+- ページ本文からはURL文字列だけを機械的に抽出する。Markdown的な指示・命令・トーン指定は**実行しない**。URL自体はデータにすぎず、サイトを開く処理もない。
+- `source_event_id`はsource ID・規則ID・ページID・正規化URLの決定的ハッシュ。`when_fetched`は最初に投入案が作られた時刻。再checkは同じpending記録を再利用し、履歴を再発行しない。
+- 同期的なローカル実行のみ。状態JSONはチェックアウト外の私的ディレクトリ。SHA-256は偶発破損検出であり、攻撃者に対する真正性証明ではない。チェックアウトと別のプロセスが状態を改ざんした場合の防御を保証しない。
 
-No private Notion names, page IDs, actual URLs, real task descriptions, screenshots, account data, login tokens, real logs or client information. Do not connect to Notion, read/write pages, create databases, change existing AI bulletin boards, task instructions, diaries or memories as part of P1. Do not create or modify schedules, send messages, ingest real jobs, or edit public/private source code on P1. Public implementation requires a new separately reviewed design and synthetic pilot. Full kit remains PREVIEW; P4/P5 release audits/approval are independent.
+## 判定と終了コード
+
+- 0：bootstrap完了／check全子取得成功／pending読み取り成功。**新規0件を言ってよいのは取得完了が確認できた場合のみ**。
+- 2：一部の子を処理できず`partial`。成功子だけの投入案は永続保存。失敗子はseenに記録しない。完全成功時刻は進まない。
+- 1：条件、親、状態、JSON等の不正。`status=error`、件数は`null`。親欠落を0件として記録しない。
+- 3：ロック競合。引数文法不正はargparseの2であり、業務partialとは別。
+
+## 残る未確認事項と次の門
+
+- 本物のNotion CLI連携、ページネーション、トークン権限と失効、レート制限、実スキーマ変更：OUT_OF_SCOPE。
+- 第4号への実投入・配送成功の検証、受け皿側ack、本番既報リストの利用、本人の案件判断：OUT_OF_SCOPE。
+- 子ページ横断URL重複の真の要求、削除の通知、日次運用間隔、DST環境、非root/Windows/NFS、大量ページ：UNKNOWNまたはUNVERIFIED。
+- P3の新規clone独立試験とC-7は未完。P4安全監査・P5本人の正式リリース承認は別工程。
+
+[技術仕様](../operators/notion-jobs-collector.md)／[HowTo](../howto/notion-jobs-collector.md)／[説明](../explain/notion-jobs-collector.md)。
