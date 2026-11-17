@@ -11,7 +11,7 @@
 - [AI向け導入](AI_SETUP_GUIDE.md) / [AI向け説明](AI_EXPLANATION_GUIDE.md)
 - [容量見張り係の説明](docs/explain/capacity-watch.md)
 
-## Current pilot: capacity watcher
+## Verified operator: capacity watcher
 Requires **Python 3.10+**; no account, network, scheduling, file deletion, or write access. It sums apparent sizes of ordinary files in configured folders; it does **not** measure disk free space or physical disk allocation.
 
 ```bash
@@ -21,7 +21,9 @@ python scripts/capacity_watch.py --config config/examples/capacity-watch.example
 
 The sample uses a synthetic directory. Keep any configuration with real paths **outside this repository**. Failed scans are errors, not zero-byte results. Independent verification was [reported and recorded](docs/verification/capacity-watch-2026-11-17.md) for commit e573312; the full kit remains PREVIEW, not RELEASED.
 
-Other operators are **PLANNED**, not included as functioning code. See [SPEC_P0.md](SPEC_P0.md).
+**Ledger checker:** a second, read-only **PILOT** for a single Markdown task ledger. It checks the document's form, not whether work really happened. See [台帳係の導入](docs/howto/ledger-check.md) and [初心者への説明](docs/explain/ledger-check.md).
+
+The remaining operators are **PLANNED**. See [SPEC_P0.md](SPEC_P0.md).
 
 **License:** GPL-3.0-only ([LICENSE](LICENSE)); license obligations apply when distributing covered modified versions. Private modifications alone do not have to be published.
 **Support:** no guaranteed ongoing personal assistance. See [SUPPORT.md](SUPPORT.md).

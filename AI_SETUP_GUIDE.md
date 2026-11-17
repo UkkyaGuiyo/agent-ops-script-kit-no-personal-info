@@ -11,3 +11,6 @@ This document describes instructions to understand the kit, **not** authorizatio
 7. If any scan fails, treat as ERROR/UNKNOWN; do not report “no files.”
 8. Never set up scheduling, external accounts, or mutating behavior without separate user authorization.
 9. Report exact tests, environment, known limits, and unknown results.
+
+## Ledger checker (PILOT)
+Read [ledger technical contract](docs/operators/ledger-check.md) and [ledger beginner explanation](docs/explain/ledger-check.md) before using. Run tests on synthetic inputs first. Never infer that a formatting check proves completion. Do not upload actual ledgers, paths, or local JSON output. The public checker is for a single Markdown file, not two-ledger comparison. Independent validation is pending.

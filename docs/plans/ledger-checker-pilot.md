@@ -1,22 +1,22 @@
-# Next pilot candidate: ledger checker / 台帳係
-**Status:** DESIGN ONLY, not implemented. Owner's existing private ledger schema has not been inspected here.
+# P1：台帳係の公開用仕様確認
+**STATUS: P1 accepted for public PILOT implementation; independent validation PENDING.**
+**SOURCE:** V.E.S.T.A.R.D. generalized internal-spec report EVP/1 20261117-015 (no private source files examined by E.L.I.S.).
 
-## Purpose and safety boundary
-Compare two **synthetic** ledgers and report missing entries, extra entries, and conflicting values without modifying either source. No accounts, network, uploads, deletion, automated correction, or scheduling. Failure to parse either ledger returns ERROR and produces no misleading complete comparison.
+## Correction of previous hypothesis
+The previously proposed **two-ledger comparator** was wrong. This public operator checks the **format of ONE Markdown task ledger**. It does not decide if a task is actually done, and never rewrites the ledger.
 
-## First design stage
-1. P1: have the environment owner document the **generalized** ledger fields, comparison rules, valid identifiers, duplicate handling, and known failure cases. Do not supply actual private rows or private code.
-2. E.L.I.S. will propose a minimal public JSON schema with explicitly typed fields and clear error handling. Verify it with the tester before implementation.
-3. Implement independent parser/comparator and synthetic fixtures only.
-4. Add technical specification, beginner explanation, HowTo, AI setup and explanation checks, unit/negative tests, and report format.
-5. Validate fresh clone, invariant source files, malformed/inconsistent/duplicate input, missing entries, and a clean-room explanation before considering VERIFIED.
+## U1–U4 decisions
+- **U1:** Fixed four Japanese states in this pilot: 未投入, 実行中, 完了, 本人保留. Exact match only; no user-defined state mapping in this revision.
+- **U2:** BOTH Markdown tables and top-level list items are supported.
+- **U3:** Completed entries remaining in the ledger are flagged by default. General-purpose users may opt out with **--allow-completed**. This changes only this one check.
+- **U4:** Permitted columns are exactly 作業, 状態, 承認・指示, 実体・根拠, 更新; required: 作業 and 状態. Other names or duplicates in an initial ledger-header candidate are errors.
 
-## Provisional acceptance scenarios
-- Equal ledgers → complete comparison with no discrepancies.
-- Missing/excess entry → report exact synthetic ID.
-- Same ID but different values → explicit conflict without silent correction.
-- Duplicate IDs, unexpected types, malformed file → fail closed, no successful result.
-- Verify results irrespective of row order; no hidden changes to source files.
-- Public docs must not show actual people, email addresses, account identifiers, or non-synthetic records.
+## Compatibility boundary
+- Later tables with a header different from the canonical header are ignored until a non-table line. Same-header unrelated tables cannot be distinguished from ledger tables.
+- Top-level dash/star/plus Markdown bullets outside fenced code are considered candidate task entries. Use indented lines for task details. Unrelated bullets may be flagged.
+- Absolute/home relative path checks are conservative, platform-dependent metadata checks. Unsupported path forms are ignored.
+- JSON reports may contain local task titles and paths: NEVER share them publicly.
+- Inaccessible input returns exit code 1; an examined ledger with findings returns exit code 2; clean result returns 0.
 
-**No code may be published as “verified” solely on this plan.**
+## Next gate
+V.E.S.T.A.R.D. performs a fresh-clone trial against the exact published commit, validates test counts and exit codes, checks file hashes before/after, and asks a fresh Muse to explain limits and risks to an inexperienced user. Only then is PILOT → VERIFIED eligible. The owner must separately approve formal RELEASED status.

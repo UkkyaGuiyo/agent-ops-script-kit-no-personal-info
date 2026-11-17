@@ -19,7 +19,7 @@ Publish an independently implemented, free GPL-3.0-only kit whose beginner users
 ## Operator catalog
 | Operator | Public target | Status |
 |---|---|---|
-| Ledger checker | Compare synthetic ledgers | PLANNED |
+| Ledger checker | Check one Markdown ledger's syntax without changing content | PILOT |
 | History cleaner | Show cleanup candidates with dry-run | PLANNED |
 | Organizer | Propose safe file categorization | PLANNED |
 | Untagged watcher | Flag missing retention labels | PLANNED |
@@ -44,6 +44,9 @@ E.L.I.S. designs, authors and reviews. V.E.S.T.A.R.D. checks independent environ
 
 ## Evidence and limitations
 The capacity watcher's independent validation summary is recorded in [docs/verification/capacity-watch-2026-11-17.md](docs/verification/capacity-watch-2026-11-17.md). This is a report of separate tester results, not the tester's raw logs. Status VERIFIED applies only to commit e573312a0a15ed359cc273d7001cf304c77e1bfc and its described runtime scope. Project remains PREVIEW and has no human-approved release.
+
+## Ledger pilot / EVP 20261117-015
+The ledger checker is a **single-file format verifier**, not a two-ledger comparator. Its preliminary public contract is in [docs/operators/ledger-check.md](docs/operators/ledger-check.md). Independent environment validation and clean-room AI explanation are pending. The project remains PREVIEW.
 
 ## Open
 Future operator dependencies; specific AI runtime and scheduling availability; exact release manifest and final approval.
