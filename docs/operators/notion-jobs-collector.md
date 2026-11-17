@@ -1,6 +1,6 @@
 # 第9号 Notionジョブ収集係：公開版技術仕様
 
-**Status: PILOT。** 公開版はオフライン合成入力のみ。Python 3.10+、標準ライブラリ、GPL-3.0-only。独立環境試験・C-7はPENDING。
+**Status: VERIFIED（対象コミット0eade24b0e174f67ee5c9859cc6a8621cf321721、Linux/rootのオフライン合成入力限定）。** 新規clone全441/441件PASS（第4号`validate_item`互換性試験を含む、SKIPなし）およびC-7説明再現PASSがV.E.S.T.A.R.D.から報告された。ページを跨ぐURL重複排除の要否はUNKNOWN、非root・他OS・実Notion接続はUNVERIFIED/OUT_OF_SCOPE。正式RELEASEDではない。Python 3.10+、標準ライブラリ、GPL-3.0-only。
 
 ## 仕事と責任境界
 
@@ -48,3 +48,5 @@
 - URL追加を日付ページ単位で検出。ページを跨いだ同一URLのグローバル排除は未実装。実スキーマとの同一性、非root・他OS・NFS・大規模ジョブ件数はUNVERIFIED。
 
 [P1裁定](../plans/notion-jobs-collector-p1.md)／[導入HowTo](../howto/notion-jobs-collector.md)／[初心者説明](../explain/notion-jobs-collector.md)／[制作側検証](../verification/notion-jobs-collector-local-2026-11-17.md)
+
+[独立検証概要](../verification/notion-jobs-collector-independent-2026-11-17.md)。
