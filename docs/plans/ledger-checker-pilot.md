@@ -1,5 +1,5 @@
 # P1：台帳係の公開用仕様確認
-**STATUS: P1 accepted for public PILOT implementation; independent validation PENDING.**
+**STATUS: P1 accepted; public implementation VERIFIED for commit 35f4d96 with non-root permission scenario unverified. See [verification summary](../verification/ledger-check-2026-11-17.md).**
 **SOURCE:** V.E.S.T.A.R.D. generalized internal-spec report EVP/1 20261117-015 (no private source files examined by E.L.I.S.).
 
 ## Correction of previous hypothesis
@@ -18,5 +18,5 @@ The previously proposed **two-ledger comparator** was wrong. This public operato
 - JSON reports may contain local task titles and paths: NEVER share them publicly.
 - Inaccessible input returns exit code 1; an examined ledger with findings returns exit code 2; clean result returns 0.
 
-## Next gate
-V.E.S.T.A.R.D. performs a fresh-clone trial against the exact published commit, validates test counts and exit codes, checks file hashes before/after, and asks a fresh Muse to explain limits and risks to an inexperienced user. Only then is PILOT → VERIFIED eligible. The owner must separately approve formal RELEASED status.
+## Verification disposition
+V.E.S.T.A.R.D. reported a fresh-clone test of commit 35f4d96, 34/34 tests PASS for the combined kit, clean synthetic ledger (4 entries, 0 issues), abnormal synthetic ledger (8 entries), expected exit codes and clean-room AI explanation. The live non-root reference_unverifiable path was not executed; a mocked PermissionError test did PASS. The status VERIFIED is scoped, not universal. The owner must still approve any formal RELEASED tag.

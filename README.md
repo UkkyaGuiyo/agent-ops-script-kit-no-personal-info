@@ -21,7 +21,7 @@ python scripts/capacity_watch.py --config config/examples/capacity-watch.example
 
 The sample uses a synthetic directory. Keep any configuration with real paths **outside this repository**. Failed scans are errors, not zero-byte results. Independent verification was [reported and recorded](docs/verification/capacity-watch-2026-11-17.md) for commit e573312; the full kit remains PREVIEW, not RELEASED.
 
-**Ledger checker:** a second, read-only **PILOT** for a single Markdown task ledger. It checks the document's form, not whether work really happened. See [台帳係の導入](docs/howto/ledger-check.md) and [初心者への説明](docs/explain/ledger-check.md).
+**Ledger checker:** a second, read-only **VERIFIED** operator (scoped to commit 35f4d96) for a single Markdown task ledger. It checks the document's form, not whether work really happened. See [台帳係の導入](docs/howto/ledger-check.md), [初心者への説明](docs/explain/ledger-check.md), and [verification with limitations](docs/verification/ledger-check-2026-11-17.md).
 
 The remaining operators are **PLANNED**. See [SPEC_P0.md](SPEC_P0.md).
 

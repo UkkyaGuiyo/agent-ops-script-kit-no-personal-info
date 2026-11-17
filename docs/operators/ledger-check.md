@@ -1,5 +1,5 @@
 # 台帳係：単一Markdown台帳の形式チェッカー
-**STATUS: PILOT / independent verification pending.**
+**STATUS: VERIFIED for commit 35f4d96694047f31080a8094e28da3863535e0d5, except live non-root permission-denial behavior (UNVERIFIED). Not RELEASED.**
 **License:** GPL-3.0-only. Independent public implementation based on generalized requirements, not copied private code.
 
 ## Scope
@@ -33,4 +33,4 @@ Only these four strings are valid: 未投入 / 実行中 / 完了 / 本人保留
 ## Safety and recovery
 Read-only; no network or elevated permissions. Does not alter the ledger. Stop by ending the process. No rollback needed. A human reviews any corrections. No content-based verification of actual work is provided.
 
-[HowTo](../howto/ledger-check.md) / [初心者向け説明](../explain/ledger-check.md) / [P1決定](../plans/ledger-checker-pilot.md).
+[HowTo](../howto/ledger-check.md) / [初心者向け説明](../explain/ledger-check.md) / [P1決定](../plans/ledger-checker-pilot.md) / [独立検証概要](../verification/ledger-check-2026-11-17.md).

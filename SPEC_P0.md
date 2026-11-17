@@ -19,7 +19,7 @@ Publish an independently implemented, free GPL-3.0-only kit whose beginner users
 ## Operator catalog
 | Operator | Public target | Status |
 |---|---|---|
-| Ledger checker | Check one Markdown ledger's syntax without changing content | PILOT |
+| Ledger checker | Check one Markdown ledger's syntax without changing content | VERIFIED (35f4d96; non-root permissions untested) |
 | History cleaner | Show cleanup candidates with dry-run | PLANNED |
 | Organizer | Propose safe file categorization | PLANNED |
 | Untagged watcher | Flag missing retention labels | PLANNED |
@@ -46,7 +46,7 @@ E.L.I.S. designs, authors and reviews. V.E.S.T.A.R.D. checks independent environ
 The capacity watcher's independent validation summary is recorded in [docs/verification/capacity-watch-2026-11-17.md](docs/verification/capacity-watch-2026-11-17.md). This is a report of separate tester results, not the tester's raw logs. Status VERIFIED applies only to commit e573312a0a15ed359cc273d7001cf304c77e1bfc and its described runtime scope. Project remains PREVIEW and has no human-approved release.
 
 ## Ledger pilot / EVP 20261117-015
-The ledger checker is a **single-file format verifier**, not a two-ledger comparator. Its preliminary public contract is in [docs/operators/ledger-check.md](docs/operators/ledger-check.md). Independent environment validation and clean-room AI explanation are pending. The project remains PREVIEW.
+The ledger checker is a **single-file format verifier**, not a two-ledger comparator. Its contract is in [docs/operators/ledger-check.md](docs/operators/ledger-check.md). Independent validation was reported for [commit 35f4d96](docs/verification/ledger-check-2026-11-17.md) and is scoped as VERIFIED. The live non-root permission-denial behavior is NOT VERIFIED. The project remains PREVIEW.
 
 ## Open
 Future operator dependencies; specific AI runtime and scheduling availability; exact release manifest and final approval.
