@@ -46,3 +46,6 @@ AIに毎回読み込ませる常駐資料の**ファイル容量をバイト単�
 
 ## Gmail収集係（対象コミット限定VERIFIED・合成入力のみ）
 内部版はGmailを**読み取り元**として、複数アカウントのメールを機械的に候補化する。ただし公開版は**架空のJSONメール**以外を読めない。条件の順序は対象外→宛先振分け→募集→重要（独立判定）→プラットフォーム。重要の語句は架空の例であり、実メールの重要度を保証しない。アカウントID＋メッセージIDで重複を管理し、第4号に合う**ローカル投入案**だけを保存する。**Gmail接続・送信・既読変更・ラベル更新・削除・受け皿への実投入・定期実行はできない**。制作側は98件中97件PASS・1件SKIP。新規cloneで全539/539件PASS・SKIPなし、C-7合格が報告済み。内部の重要メール取りこぼしは未解決、実分類精度・非root・他OSは未検証。[独立検証概要](docs/verification/gmail-collector-independent-2026-11-17.md)。[HowTo](docs/howto/gmail-collector.md) / [説明](docs/explain/gmail-collector.md)。
+
+## 保持管理係（第11号、PILOT・架空デモ専用）
+これは第6号の整理係が出した候補を、**一時領域で作った合成ファイルだけ**ゴミ箱へ移し、明示的に復元する体験版。作成者が作成時に`disposable`と付けたものを、最終更新時刻から14日（変更可能）以上経って初めて候補にする。`permanent`、未登録、不明タグは移動しない。`stage --apply`は**専用の空の一時領域を`demo-init`で初期化した場合に限る**。`restore --apply`でも戻す先が埋まっていたり壊れていたら停止する。**本番フォルダへの操作も物理削除（purge）もできない**。制作側79件中78件PASS・1件SKIP。独立検証とC-7はPENDING。[HowTo](docs/howto/retention-manager.md) / [説明](docs/explain/retention-manager.md)。

@@ -45,3 +45,9 @@ notion-jobs-state.json
 gmail-collector-state.json
 .gmail-collector.lock
 .gmail-collector-temp-*
+
+# Retention Manager: demo artifacts MUST be created outside checkout
+.retention_demo.json
+.retention_demo.lock
+.retention_records.json
+.trash/

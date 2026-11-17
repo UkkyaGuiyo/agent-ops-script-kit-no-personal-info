@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-11-17T00:00:00+00:00",
+  "source_event": "EVP/1 20261117-047",
+  "producer_test_defined": 79,
+  "producer_test_passed": 78,
+  "producer_test_skipped": 1,
+  "producer_test_failed": 0,
+  "full_kit_expected_test_count": 618,
+  "test_scope": "Linux/root synthetic demo staging only; real file operations and purge not supported",
+  "files": [
+    {
+      "path": "scripts/retention_manager.py",
+      "size_bytes": 21218,
+      "sha256": "86bf8392d05bf958bbd2ca0a2b87729e1c388b15871fb7053ca2f6565fe88625",
+      "git_blob_sha1": "1ba4a7a51a5fa8fe254530f565ff73130c49ccd7"
+    },
+    {
+      "path": "tests/test_retention_manager.py",
+      "size_bytes": 16913,
+      "sha256": "8ef183eb2d939cbfa09648d7bba163d67a9032ab80df1a6e1eea4522a08f6089",
+      "git_blob_sha1": "1ce2f1c29a21065e8b95d3419cd2a7440dd1de55"
+    },
+    {
+      "path": "docs/plans/retention-manager-p1.md",
+      "size_bytes": 5792,
+      "sha256": "9429c31eb1616fd83dd5bf25cc0fd34f01d0d697cdac5966774419e96ec7d69c",
+      "git_blob_sha1": "7df9a4fefbb6f8c15f1daa0dd67a7e710f1ac842"
+    },
+    {
+      "path": "docs/operators/retention-manager.md",
+      "size_bytes": 5261,
+      "sha256": "d24f50cb964323e1af0e8efd09a8d944fbf91e014669113dcadb081ad3fa8582",
+      "git_blob_sha1": "7a5e4a6cfa702a3473601c74931637ce28698dbf"
+    },
+    {
+      "path": "docs/howto/retention-manager.md",
+      "size_bytes": 2836,
+      "sha256": "df37df04d3ba4c189b60e42c7be8854fea3f5c115fd20cac4cc48c0fcbfd8e64",
+      "git_blob_sha1": "d5b62407df7fc47b51b6cc4efb43074ecc290973"
+    },
+    {
+      "path": "docs/explain/retention-manager.md",
+      "size_bytes": 3004,
+      "sha256": "5056894af2815cb5c60cb65ee7df2e0a40b4d1fd9be14ea4b39c149f0d85557c",
+      "git_blob_sha1": "8fa681f229b5be17d8143346d541b888f6ab051b"
+    },
+    {
+      "path": "docs/verification/retention-manager-local-2026-11-17.md",
+      "size_bytes": 3850,
+      "sha256": "21099be46903836f5b36df85610389e58b17a0009b883fe3028678a17d98d638",
+      "git_blob_sha1": "425b1c83c5724b2e098581202ba8d857a914e336"
+    }
+  ],
+  "self_excluded": true
+}

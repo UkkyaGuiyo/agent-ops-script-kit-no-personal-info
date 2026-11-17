@@ -1,29 +1,37 @@
-# 第11号 P1調査：保持管理係 / Retention Manager
+# 第11号 保持管理係：P1裁定（EVP/1 20261117-047）
 
-**Status:** PLANNED; P1 inventory only. **No implementation or cleanup authorized.**
-**Basis:** EVP/1 20261117-045, the final of the eleven P0 operators.
-**Only grounded P0 goal:** Recoverable staged cleanup. The actual private target and stages remain UNKNOWN pending source inspection by V.E.S.T.A.R.D.
+**裁定：ACCEPT_WITH_CONDITIONS。公開版：PILOT。** 2026-11-17 JST。
 
-## Distinction from existing operators
-Organizer previews declared file lifetime based on tag + mtime; no move/delete. History Cleaner previews terminal Shared Intake record age with safe_to_delete_count=0; no record deletion. Do not assume Retention Manager is either of these, or automatically borrow 14-day, one-month or 90-day thresholds. Establish its real authoritative contract first.
+## 報告された内部実装と本人承認の方針
 
-## P1 investigation questions
-1. **Actual scope and evidence:** exact source-of-truth specification/version, owner authorization, implementation status, real tests and production experience. What is managed: files, records, versions, snapshots, logs or other objects?
-2. **Deletion unit and exclusions:** define identity, scope roots, permitted types, protected permanent data, active records, private task documents, dependencies and prohibited paths; UNKNOWN if not specified.
-3. **Eligibility:** actual lifecycle metadata, tags, timestamps, retention units, expiry boundary, permanent and untagged treatment, and whose declaration is authoritative. Do not infer conditions from the name.
-4. **Actual stages:** distinguish preview, staging, quarantine, trash, irreversible purge, restore, recovery. Which stages truly exist and which are only designed? What does recoverable mean operationally?
-5. **Authority:** exact approvals and permissions per stage, manual apply flags if any, preconditions and independent human gates. Public P1 explicitly forbids performing any action.
-6. **Identity and integrity:** stable IDs, original and staged path mapping, SHA-256/size, manifests, hardlinks, symlinks, mount boundaries, path collisions, stale previews, changed files and concurrent processes.
-7. **Idempotency and interrupted runs:** implemented logs, state transitions, prepare/complete markers, checkpoints, replays, retry keys, rollback after partial failure and duplicate processing.
-8. **Failure and restoration:** permission denied, corrupt/missing manifests, disk full, invalid path, partial moves, broken backups, unavailable evidence, interrupted restoration. Fail Closed; distinguish restored bytes from semantically correct restoration.
-9. **Inter-operator responsibilities:** interaction with Organizer, Shared Intake, History Cleaner and other operators; retention intervals and timezones if actually present; actual automated scheduling and tested OS/filesystems.
-10. **Synthetic test design and C-7:** exact expiry boundary if any, permanent/unknown protection, preview input SHA-256/mtime unchanged, symlink and path race attacks, interruption/retry, and byte-exact recovery using synthetic artifacts only. Fresh AI explains proposed candidate vs authorization, staged vs purged, and recovery limitations.
+[FACT: VESTARD-REPORTED] 内部での正本は、複雑な正本照合モデルを本人が取り下げた後の**作成時タグ（disposable / permanent）＋ファイルのmtime＋経過時間**の簡素なモデル。各ファイルの作成者が保持区分を付ける。未登録ファイルは巡回しない。公開第6号 Organizer は候補判定、内部の保持管理はゴミ箱への移動（明示 `--apply`）と、後日の別操作による物理削除（別の `purge --apply`）を扱う。同じ系統の別段階。運用値は使い捨て14日、ゴミ箱は約1か月。実ファイルへのゴミ箱移動と物理削除まで運用実績があるとの報告。ただし**復元操作の定期的な実証はUNVERIFIED**。
 
-## Required generalized deliverables
-Provide FACT / INFERENCE / HYPOTHESIS / UNKNOWN / UNVERIFIED with source revision and observation scope; input/output and manifest fields only if source-backed; units, reason/status/exit codes, stage transitions and authority matrix; recovery and idempotency rules; synthetic test matrix and C-7 criteria; unresolved U1 onward. Do not invent private thresholds or states.
+[FACT: VESTARD-REPORTED] 永久区分、未知区分、欠落、危険なルート外パス、読めないmtimeは削除不可。seen、正本を要するデータは保持対象から除外。外部正本へ保存して読み戻したと確認された場合にのみ、別主体が permanent→disposable の再タグ付けを行う。保持管理係自身に**正本自動判定・タグ反転権限はない**。
 
-## Public first-pilot proposal (not yet authorized)
-Prefer read-only synthetic preview and a non-operational staging simulation until the exact private specification is audited. Whether a later public pilot will support reversible file moves is a **separate design and authorization decision**. No deletion, moving, copying, purge, restore against live data, backup modification, cron, Git rewriting or public release is permitted by this P1.
+## U1〜U3の確定
 
-## Privacy and non-action
-Send no private source, real filenames, paths, logs, manifests, credentials, customer data or personal details. Do not run or alter any private retention service, scheduled job, Git history, Notion page, AI board, task instruction or diary. P4 audit and P5 formal release approval are separate from P1.
+| 論点 | 公開第11号の選択 | 採らない範囲 |
+| --- | --- | --- |
+| **U1** | **(a) ゴミ箱への移動・明示復元まで**。ただし初版の実操作は、利用者自身が一時ディレクトリで `demo-init` した**合成サンドボックス内**だけ。既定はpreview（変更なし）。`stage --apply`と`restore --apply`のみ合成ファイルを移動できる | 本番フォルダの自動クリーンアップ、`purge`、削除、ゴミ箱保持期限を使った自動処理、タイマー、自動承認 |
+| **U2** | 候補の `age_days` は**既定14日、設定可能**。UTCのmtimeから24時間単位で境界 `>=`。ゴミ箱の「1か月」は内部の報告値として説明のみ | 1か月を無断で30日と解釈し、purge処理に組み込むこと |
+| **U3** | 第6号のOrganizerと**別CLI・別オペレーター**として管理。ただし同じ公開 `version:1` のルート直下 `.retention_records.json`（`entries[{path,class}]`）を参照し、候補は `mtime+age_days` に基づく。新規cloneで双方の互換性テストを実施する | 第6号のソースの書換え、既存運用権限の昇格、History Cleanerとの統合 |
+
+## 公開初版の実装契約
+
+- `demo-init` は**OSの一時領域にある空のディレクトリ**だけを初期化し、架空ファイル4件（登録3件）と合成デモマーカーを作る。既存の作業フォルダでは拒否。
+- `preview` は**記録済みファイルだけ**を走査。`disposable` かつmtimeから既定14日以上のものは候補。`permanent` は除外。未知・欠落・危険なパス・リンク類はhold。ドライランは状態やファイルを変更しない。
+- `stage` はデモマーカー必須、保持や同時実行の検査を通った候補だけを、`--apply`指定時に`.trash/<日時-乱数ID>/payload`へ**同じファイルシステム内で移動**。名前、サイズ、SHA-256、mtime、段階を`manifest.json`へ記録し、操作を`events.jsonl`へ追記。
+- `restore` は移動された合成ファイルのSHA-256と元のパスの不在を確認し、`--apply`時だけ元の場所へ戻す。ゴミ箱内のmanifestと履歴は保存する。`--apply`無しでは復元は行わない。
+- 途中の`prepared`、欠落manifest、破損したpayload、復元先の衝突、ロック競合はFail Closed。**途中停止後の自動復旧・耐電源断・TOCTOU完全防御は実装していない**。現物を確認せず自動的に再実行・強制上書きしない。
+- **物理削除は未実装**。`purge`サブコマンドは存在しない。ゴミ箱を何日保持するかによる削除は起こらない。完全復元保証もしていない。
+- 登録ファイルを書き換えたり、タグを自動付与／反転しない。未登録ファイルに走査・移動・削除をしない。実Notion、Git、バックアップ、既報リストや他オペレーターの実環境には接続しない。
+
+## 合成試験、判定と留保
+
+- 14日ちょうどと1ns手前、14日超、13日、永続・不明区分、欠落ファイル、絶対／親参照パス、symlink、hardlink、記録欠落／不正を確認。
+- `preview`でmtimeとSHA-256が一切変わらないこと、`stage`で1件だけ移動しpermanent・未登録が無変更、`restore`で元の合成バイト・mtimeに戻ること。
+- 衝突、改ざん、未完了manifest、trash汚染、同時実行ロック競合、purge拒否と実削除0件。
+- 第6号の**実コードとの候補判定互換試験**を同梱。制作側の単独ディレクトリではSKIPになる。新規cloneで実行必須。
+- C-7説明は「**作成時に消してよいとタグ付けしたものだけが候補**」「デモのゴミ箱移動は物理削除ではない」「物理削除だけが不可逆で、公開版には無い」「正本が必要なファイルを対象にしない」「実ユーザーデータにはapplyしない」を中核とする。
+
+**残る未解決:** 実環境での戻し作業、POSIX以外・非root・NFS・複数プロセスでの信頼性、障害直後の自己復旧、ディレクトリ・シンボリックリンクの交換競合、1か月の厳密定義、P4/P5。ローカル合成試験がPASSしても、完全可逆や本番操作の安全性は立証していない。
