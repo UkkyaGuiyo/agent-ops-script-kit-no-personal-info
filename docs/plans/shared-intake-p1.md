@@ -2,7 +2,7 @@
 
 **EVP/1:** 20261117-019 / 2026-11-17
 **Status:** P1 accepted, public implementation VERIFIED for commit d9b24aa (Linux/root tested scope; other environments UNVERIFIED).
-**Basis:** V.E.S.T.A.R.D. の一般化した内部仕様報告。非公開コード、実際のメール、仕事記録、顧客情報、ローカルパスは閲覧・複製していない。
+**Basis:** 内部仕様報告担当AI の一般化した内部仕様報告。非公開コード、実際のメール、仕事記録、顧客情報、ローカルパスは閲覧・複製していない。
 
 ## 確認済みの役割
 

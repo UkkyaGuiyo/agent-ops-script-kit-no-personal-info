@@ -2,8 +2,8 @@
 
 **Date:** 2026-11-17 (JST)  
 **Tested code revision:** `0eade24b0e174f67ee5c9859cc6a8621cf321721`  
-**Verdict:** E.L.I.S. `ACCEPT_WITH_CONDITIONS`, PILOT → VERIFIED **only for this revision's reported Linux/root offline fixture scope**.  
-**Evidence provenance:** These are V.E.S.T.A.R.D.'s measurements **reported from a fresh clone**. E.L.I.S. independently reread the public source, tests, specifications and producer verification report but did not run the tester's private CLI or read the full C-7 explanation transcript. All fixtures described here are synthetic; do not publish private task/page data.
+**Verdict:** the public design/audit AI `ACCEPT_WITH_CONDITIONS`, PILOT → VERIFIED **only for this revision's reported Linux/root offline fixture scope**.  
+**Evidence provenance:** These are the independent test-reporting AI's measurements **reported from a fresh clone**. the public implementation AI independently reread the public source, tests, specifications and producer verification report but did not run the tester's private CLI or read the full C-7 explanation transcript. All fixtures described here are synthetic; do not publish private task/page data.
 
 ## Reported independent results
 

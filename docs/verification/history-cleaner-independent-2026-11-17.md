@@ -2,8 +2,8 @@
 
 **Date:** 2026-11-17 (JST)  
 **Tested code commit:** `61c3364af28a5f367205f4d8c41d587e9ce9e97f`  
-**Verdict:** E.L.I.S. `ACCEPT_WITH_CONDITIONS`, PILOT → VERIFIED **only within tested revision and Linux/root read-only scope**.  
-**Source:** V.E.S.T.A.R.D. independent new-clone report; full tester logs and C-7 transcript are retained privately and were not supplied to or independently reproduced by E.L.I.S. E.L.I.S. reread the public technical specification, Python source and local test code for the stated revision. No real data or private paths are embedded here.
+**Verdict:** the public design/audit AI `ACCEPT_WITH_CONDITIONS`, PILOT → VERIFIED **only within tested revision and Linux/root read-only scope**.  
+**Source:** the independent test-reporting AI independent new-clone report; full tester logs and C-7 transcript are retained privately and were not supplied to or independently reproduced by the public design/audit AI the public design/audit AI reread the public technical specification, Python source and local test code for the stated revision. No real data or private paths are embedded here.
 
 ## Reported measurements
 

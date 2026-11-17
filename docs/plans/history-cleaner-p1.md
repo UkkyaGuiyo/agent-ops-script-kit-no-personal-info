@@ -1,7 +1,7 @@
 # 第8号：履歴掃除係 P1裁定（EVP/1 20261117-034）
 
 **Status:** `ACCEPT_WITH_CONDITIONS` → 公開版独立実装 `VERIFIED`（コード61c3364、Linux/rootの読取専用範囲）。  
-**Source:** V.E.S.T.A.R.D.の一般化した内部実装・運用報告。実データ、実コード、実パス、内部ログは転用していない。  
+**Source:** 内部仕様報告担当AIの一般化した内部実装・運用報告。実データ、実コード、実パス、内部ログは転用していない。  
 **Repository basis:** 第4号の公開版 `scripts/shared_intake.py` のJSONL v1、`docs/operators/shared-intake.md`。
 
 ## 対象の確定
@@ -49,5 +49,5 @@
 [技術仕様](../operators/history-cleaner.md)／[HowTo](../howto/history-cleaner.md)／[初心者説明](../explain/history-cleaner.md)
 
 ## P3独立検証（EVP/1 20261117-037）
-V.E.S.T.A.R.D.が新規cloneで全370/370件PASS（既存303＋履歴掃除67）、SKIPなしと報告した。制作側でSKIPされていた第4号の実CLI統合試験を含む。合成アンカー8イベント行、候補2件・除外2件・保留0件・安全削除可能0件・変更0件、90日ちょうどの境界、非終端保護、reminderイベント保護、不正JSONL時`INVALID_JSON`・exit1、原本SHA-256不変を再現。C-7説明も報告上PASS。[独立検証概要](../verification/history-cleaner-independent-2026-11-17.md)。
+別環境検証担当AIが新規cloneで全370/370件PASS（既存303＋履歴掃除67）、SKIPなしと報告した。制作側でSKIPされていた第4号の実CLI統合試験を含む。合成アンカー8イベント行、候補2件・除外2件・保留0件・安全削除可能0件・変更0件、90日ちょうどの境界、非終端保護、reminderイベント保護、不正JSONL時`INVALID_JSON`・exit1、原本SHA-256不変を再現。C-7説明も報告上PASS。[独立検証概要](../verification/history-cleaner-independent-2026-11-17.md)。
 この判定は**実削除機能の承認ではない**。公開v1のseen独立保存・prepare/complete正本設計は未完成。非root・他OS・大量記録・実環境削除は未検証。

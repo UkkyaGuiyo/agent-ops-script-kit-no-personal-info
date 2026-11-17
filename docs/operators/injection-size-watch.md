@@ -1,6 +1,6 @@
 # 投入量見張り係：技術仕様
 
-**Status: VERIFIED（対象コミット a60df96b17875e0c49f07b5beafa9fd04469b9ee、Linux/root実測範囲）.** 新規cloneで全168/168件のテストPASSとC-7説明再現PASSがヴェスから報告された。週次増加率10%ちょうどのCLI独立実測はUNVERIFIED（制作側単体試験PASS／Decimal実装確認）。非root・他OS・大量ファイル・実運用はUNVERIFIED。正式RELEASEDではない。GPL-3.0-only。Python 3.10+、標準ライブラリのみ。
+**Status: VERIFIED（対象コミット a60df96b17875e0c49f07b5beafa9fd04469b9ee、Linux/root実測範囲）.** 新規cloneで全168/168件のテストPASSとC-7説明再現PASSが検証担当から報告された。週次増加率10%ちょうどのCLI独立実測はUNVERIFIED（制作側単体試験PASS／Decimal実装確認）。非root・他OS・大量ファイル・実運用はUNVERIFIED。正式RELEASEDではない。GPL-3.0-only。Python 3.10+、標準ライブラリのみ。
 
 ## 役割
 AIの会話で繰り返し読み込まれる、**明示的に指定された常駐コンテキスト用ファイル**の容量（ファイルサイズ）を計測する。日次ログなど必要な時だけ検索する資料は、設定対象に入れない。計測は **bytes (B)** が正本。補助的にUTF-8デコード後のPython文字数（Unicodeコードポイント単位）と`splitlines()`に基づく行数を報告。**モデルtoken数は測らず、バイトから推定もしない。** ディスク使用容量ではなくファイルの論理長。

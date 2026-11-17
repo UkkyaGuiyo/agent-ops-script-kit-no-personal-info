@@ -3,7 +3,7 @@
 **Date:** 2026-11-17
 **Status:** PILOT / independent verification NOT YET PERFORMED
 **Local test interpreter:** Python 3.13.5
-**Source:** E.L.I.S. local synthetic fixture tests. This document is NOT an independent V.E.S.T.A.R.D. verification report.
+**Source:** local synthetic fixture tests by the public design/audit AI. This document is NOT an independent verification report from the independent test-reporting AI.
 
 ## Results
 - Tests in `tests/test_untagged_watch.py`: **33 / 33 PASS**, using `python -m unittest discover -s tests -q` on the isolated pilot directory.

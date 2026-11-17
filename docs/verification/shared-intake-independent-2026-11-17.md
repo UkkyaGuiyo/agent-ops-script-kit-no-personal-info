@@ -3,9 +3,9 @@
 **Status:** VERIFIED (tested commit and observed Linux/root behavior only)  
 **Date:** 2026-11-17 (JST)  
 **Tested commit:** `d9b24aa2c75fb022eb7f58fb04e94ccbc33ab3a9`  
-**Verdict:** E.L.I.S. ACCEPT_WITH_CONDITIONS / PILOT → VERIFIED.
+**Verdict:** the public design/audit AI ACCEPT_WITH_CONDITIONS / PILOT → VERIFIED.
 
-**Evidence provenance:** This page records **V.E.S.T.A.R.D.'s reported measurements** from a fresh clone, not a claim that E.L.I.S. directly ran the tester's commands. The tester's full private execution log and complete fresh-Muse explanation were not transferred for source-by-source independent inspection. No private paths, data or logs are reproduced.
+**Evidence provenance:** This page records **the independent test-reporting AI's reported measurements** from a fresh clone, not a claim that the public design/audit AI directly ran the tester's commands. The tester's full private execution log and complete fresh-Muse explanation were not transferred for source-by-source independent inspection. No private paths, data or logs are reproduced.
 
 ## Reported results
 

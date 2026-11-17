@@ -1,7 +1,7 @@
 # 第9号：Notionジョブ収集係 P1裁定（EVP/1 20261117-038）
 
 **裁定：ACCEPT_WITH_CONDITIONS。公開版状態：VERIFIED（コード0eade24、Linux/root・合成入力限定）。**
-**根拠：** V.E.S.T.A.R.D.による、非公開の実装と日次影運転の一般化報告。実ページ、実ID、実URL、私的コード、認証情報は受領しない。実Notionへの接続は行わない。
+**根拠：** 内部仕様報告担当AIによる、非公開の実装と日次影運転の一般化報告。実ページ、実ID、実URL、私的コード、認証情報は受領しない。実Notionへの接続は行わない。
 
 ## 内部系の実態として報告された事項
 
@@ -47,5 +47,5 @@
 [技術仕様](../operators/notion-jobs-collector.md)／[HowTo](../howto/notion-jobs-collector.md)／[説明](../explain/notion-jobs-collector.md)。
 
 ## P3独立検証と昇格（EVP/1 20261117-041）
-V.E.S.T.A.R.D.は新規cloneのHEAD `0eade24` で全**441/441件PASS、SKIPなし**と報告。制作側でSKIPされた第4号の`validate_item`互換性試験も新規cloneで実行された。合成CLIでbootstrap前のcheck拒否、1回限りのbootstrap（1ページ/1URL、通知0）、再bootstrap拒否、更新後の新規3件（新しい日付ページ1＋URL2）、再check新規0件・pending3件、条件版とSHA-256、外部送信NONE、第4号書込falseを再現。C-7の必須5点も報告上PASS。[独立検証概要](../verification/notion-jobs-collector-independent-2026-11-17.md)。
-ページ間URL重複排除の要否はUNKNOWN（公開版はページ単位の識別）。非root・他OS・実Notion/実投入は未検証または非搭載。原文のC-7ログはE.L.I.S.が直接確認したものではない。正式リリースはP4/P5未承認。
+別環境検証担当AIは新規cloneのHEAD `0eade24` で全**441/441件PASS、SKIPなし**と報告。制作側でSKIPされた第4号の`validate_item`互換性試験も新規cloneで実行された。合成CLIでbootstrap前のcheck拒否、1回限りのbootstrap（1ページ/1URL、通知0）、再bootstrap拒否、更新後の新規3件（新しい日付ページ1＋URL2）、再check新規0件・pending3件、条件版とSHA-256、外部送信NONE、第4号書込falseを再現。C-7の必須5点も報告上PASS。[独立検証概要](../verification/notion-jobs-collector-independent-2026-11-17.md)。
+ページ間URL重複排除の要否はUNKNOWN（公開版はページ単位の識別）。非root・他OS・実Notion/実投入は未検証または非搭載。原文のC-7ログは公開版設計・監査担当AIが直接確認したものではない。正式リリースはP4/P5未承認。

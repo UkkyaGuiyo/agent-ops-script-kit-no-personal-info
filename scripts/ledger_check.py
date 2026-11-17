@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (C) 2026 Contributors to Agent Ops Script Kit
+# SPDX-License-Identifier: GPL-3.0-only
 """Read-only Markdown task-ledger format checker. GPL-3.0-only."""
 from __future__ import annotations
 

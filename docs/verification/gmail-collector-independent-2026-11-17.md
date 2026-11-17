@@ -3,7 +3,7 @@
 **Date:** 2026-11-17 JST
 **Tested code commit:** cbfa915930096a535bb229188f54a830d9b208ba
 **Verdict:** ACCEPT_WITH_CONDITIONS: PILOT → VERIFIED only within Linux/root synthetic offline scope.
-**Provenance:** Independent measurements reported by V.E.S.T.A.R.D. after a fresh clone. E.L.I.S. reread public source/spec/tests; the private full test logs and C-7 explanation were not supplied or independently run by E.L.I.S.
+**Provenance:** Independent measurements reported by the independent test-reporting AI after a fresh clone. the public design/audit AI reread public source/spec/tests; the private full test logs and C-7 explanation were not supplied or independently run by the public design/audit AI
 
 | Criterion | Reported observation | Result |
 | --- | --- | --- |

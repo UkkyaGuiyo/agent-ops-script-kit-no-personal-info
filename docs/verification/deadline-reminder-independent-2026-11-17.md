@@ -2,8 +2,8 @@
 
 **Date:** 2026-11-17 (JST)  
 **Code commit:** `deae5969af6ab358e700b9e8e3b68f159bc032b2`  
-**Verdict:** E.L.I.S. `ACCEPT_WITH_CONDITIONS`; PILOT → VERIFIED, revision- and environment-scoped.  
-**Source:** V.E.S.T.A.R.D. fresh-clone independent test report. Full private logs and fresh-Muse text were not transmitted or inspected by E.L.I.S. E.L.I.S. separately checked the public source, tests and contract.
+**Verdict:** the public design/audit AI `ACCEPT_WITH_CONDITIONS`; PILOT → VERIFIED, revision- and environment-scoped.  
+**Source:** the independent test-reporting AI fresh-clone independent test report. Full private logs and fresh-Muse text were not transmitted or inspected by the public design/audit AI the public design/audit AI separately checked the public source, tests and contract.
 
 | Criterion | Reported observation | Assessment |
 |---|---|---|

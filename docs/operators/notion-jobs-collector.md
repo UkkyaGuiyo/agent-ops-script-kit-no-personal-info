@@ -1,6 +1,6 @@
 # 第9号 Notionジョブ収集係：公開版技術仕様
 
-**Status: VERIFIED（対象コミット0eade24b0e174f67ee5c9859cc6a8621cf321721、Linux/rootのオフライン合成入力限定）。** 新規clone全441/441件PASS（第4号`validate_item`互換性試験を含む、SKIPなし）およびC-7説明再現PASSがV.E.S.T.A.R.D.から報告された。ページを跨ぐURL重複排除の要否はUNKNOWN、非root・他OS・実Notion接続はUNVERIFIED/OUT_OF_SCOPE。正式RELEASEDではない。Python 3.10+、標準ライブラリ、GPL-3.0-only。
+**Status: VERIFIED（対象コミット0eade24b0e174f67ee5c9859cc6a8621cf321721、Linux/rootのオフライン合成入力限定）。** 新規clone全441/441件PASS（第4号`validate_item`互換性試験を含む、SKIPなし）およびC-7説明再現PASSが別環境検証担当AIから報告された。ページを跨ぐURL重複排除の要否はUNKNOWN、非root・他OS・実Notion接続はUNVERIFIED/OUT_OF_SCOPE。正式RELEASEDではない。Python 3.10+、標準ライブラリ、GPL-3.0-only。
 
 ## 仕事と責任境界
 

@@ -2,8 +2,8 @@
 
 **Date:** 2026-11-17 JST
 **Exact tested source commit:** `992e1e6430788514b5c9e19c66036a080bd592dd`
-**Verdict:** E.L.I.S. ACCEPT_WITH_CONDITIONS; PILOT → VERIFIED only for the tested Linux/root synthetic OS-temp demo scope.
-**Provenance:** V.E.S.T.A.R.D. reported independent new-clone tests, synthetic CLI anchors and C-7 explanation. Private full logs and C-7 transcript were retained by the tester and not inspected by E.L.I.S. E.L.I.S. separately reread the exact public source revision, test definitions, contract and producer evidence. This is not an independent re-execution of the tester's checks by E.L.I.S.
+**Verdict:** the public design/audit AI ACCEPT_WITH_CONDITIONS; PILOT → VERIFIED only for the tested Linux/root synthetic OS-temp demo scope.
+**Provenance:** the independent test-reporting AI reported independent new-clone tests, synthetic CLI anchors and C-7 explanation. Private full logs and C-7 transcript were retained by the tester and not inspected by the public implementation AI the public implementation AI separately reread the exact public source revision, test definitions, contract and producer evidence. This is not an independent re-execution of the tester's checks by the public implementation AI
 
 | Criterion | Reported observation | Assessment |
 | --- | --- | --- |

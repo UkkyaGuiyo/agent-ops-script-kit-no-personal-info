@@ -1,6 +1,6 @@
 # 保持管理係：デモ領域限定の段階式保持管理
 
-**Status: VERIFIED for code commit 992e1e6430788514b5c9e19c66036a080bd592dd within reported Linux/root synthetic demo scope.** V.E.S.T.A.R.D.報告：新規clone618/618件PASS、SKIPなし（第6号実統合含む）、合成stage/restoreのSHA-256一致、C-7合格。異常中断・非root・他OS・NFS・本番データはUNVERIFIED。正式RELEASEDではない。GPL-3.0-only、Python 3.10+標準ライブラリ。
+**Status: VERIFIED for code commit 992e1e6430788514b5c9e19c66036a080bd592dd within reported Linux/root synthetic demo scope.** 別環境検証担当AI報告：新規clone618/618件PASS、SKIPなし（第6号実統合含む）、合成stage/restoreのSHA-256一致、C-7合格。異常中断・非root・他OS・NFS・本番データはUNVERIFIED。正式RELEASEDではない。GPL-3.0-only、Python 3.10+標準ライブラリ。
 
 ## 役割と範囲
 

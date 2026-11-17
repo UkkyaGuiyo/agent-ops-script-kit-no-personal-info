@@ -1,3 +1,5 @@
+# Copyright (C) 2026 Contributors to Agent Ops Script Kit
+# SPDX-License-Identifier: GPL-3.0-only
 """Synthetic watcher pending report to local intake mapping tests."""
 from __future__ import annotations
 

@@ -4,7 +4,7 @@
 **Status:** P1 ACCEPT_WITH_CONDITIONS; public implementation VERIFIED for a60df96 (Linux/root test scope only). Weekly 10%-equality CLI independent check UNVERIFIED.
 
 ## Evidence boundary
-V.E.S.T.A.R.D. explicitly confirmed **NO completed private automated implementation** existed at the time of the report. Input was the owner's established design and a single manually completed procedure. Neither private files nor their contents, local paths, prompts or raw measurement logs were transferred or copied. The public code was independently authored and is not a port from private source.
+The private-spec reporting AI explicitly confirmed **NO completed private automated implementation** existed at the time of the report. Input was the owner's established design and a single manually completed procedure. Neither private files nor their contents, local paths, prompts or raw measurement logs were transferred or copied. The public code was independently authored and is not a port from private source.
 
 ## U1–U3
 - **U1 configuration:** JSON file list with per-file `limit_bytes` and a shared `weekly_growth_percent`. Suggested values: **60,000 bytes** (60 decimal kB, NOT 60 KiB) and **10.0%**. These are examples, not universally applicable maximums. A threshold is exceeded with `>` not `>=`.

@@ -1,7 +1,7 @@
 # 第7号 期限リマインダー係：P1裁定（EVP/1 20261117-030）
 
 **Status: P1 ACCEPT_WITH_CONDITIONS. Public independent implementation VERIFIED for code commit deae596, within reported Linux/root scope.**
-**Basis:** V.E.S.T.A.R.D.の一般化した内部実装・運用仕様の報告。私的コード・実予定・通知本文・内部ログ・個人情報は受領・流用していない。
+**Basis:** 内部仕様報告担当AIの一般化した内部実装・運用仕様の報告。私的コード・実予定・通知本文・内部ログ・個人情報は受領・流用していない。
 
 ## 内部仕様として報告された事項
 
@@ -39,4 +39,4 @@
 [技術仕様](../operators/deadline-reminder.md) / [HowTo](../howto/deadline-reminder.md) / [初心者への説明](../explain/deadline-reminder.md)。
 
 ## P3追記：20261117-031の独立検証
-対象コミットdeae596の新規cloneで全303/303件PASS（先行223＋本係80）とV.E.S.T.A.R.D.が報告。登録重複排除、期限境界1秒前0・ちょうど1・再check0、pending outbox維持、TIME_MISMATCH、取消、手動ackのconsumer_verified=false、repair-outboxで同一ID・正本不変、BAD_JOURNAL、BAD_TIMEを合成CLIで確認。C-7説明も報告上PASS。[概要](../verification/deadline-reminder-independent-2026-11-17.md)。相手の実配送・現存確認は未実装、他OS・非rootは未検証。正式公開リリースは未承認。
+対象コミットdeae596の新規cloneで全303/303件PASS（先行223＋本係80）と別環境検証担当AIが報告。登録重複排除、期限境界1秒前0・ちょうど1・再check0、pending outbox維持、TIME_MISMATCH、取消、手動ackのconsumer_verified=false、repair-outboxで同一ID・正本不変、BAD_JOURNAL、BAD_TIMEを合成CLIで確認。C-7説明も報告上PASS。[概要](../verification/deadline-reminder-independent-2026-11-17.md)。相手の実配送・現存確認は未実装、他OS・非rootは未検証。正式公開リリースは未承認。

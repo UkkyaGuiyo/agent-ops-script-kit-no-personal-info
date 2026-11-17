@@ -1,3 +1,5 @@
+# Copyright (C) 2026 Contributors to Agent Ops Script Kit
+# SPDX-License-Identifier: GPL-3.0-only
 """Synthetic-only public shared-intake tests. No accounts or real records."""
 from __future__ import annotations
 

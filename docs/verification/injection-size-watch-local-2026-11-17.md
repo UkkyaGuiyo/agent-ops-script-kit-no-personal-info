@@ -14,7 +14,7 @@
 ## Explicit limitations
 
 - **Non-root permission-denial behavior was not observed.** Access refusal was simulated by a mocked exception. Windows/macOS, alternate Python versions, large real datasets, and long-duration runs were not independently checked.
-- A fresh clone from the public GitHub target commit and complete historical project suite have not been tested by the producer. New code's status remains **PILOT** until V.E.S.T.A.R.D. separately checks the exact public commit and a context-free Muse can explain limitations.
+- A fresh clone from the public GitHub target commit and complete historical project suite have not been tested by the producer. New code's status remains **PILOT** until the independent test-reporting AI separately checks the exact public commit and a context-free Muse can explain limitations.
 - The source-side meaning reconstruction test is explicitly **NOT_ASSESSABLE**. A JSON whitespace-only proof or a verbatim text copy does **not** prove a useful human-readable compressed Markdown draft.
 - Neither private operational files, private implementation, nor human content was used in code, tests, or synthetic fixtures.
 

@@ -2,11 +2,11 @@
 
 **Date:** 2026-11-17 (JST)  
 **Tested commit:** `84ca9fe08fb21658fab05e99a5029f55ee2d56ab`  
-**Verdict:** E.L.I.S. `ACCEPT_WITH_CONDITIONS`, PILOT → VERIFIED for this code revision and measured runtime scope.  
-**Tester:** V.E.S.T.A.R.D. (Linux/root environment).
+**Verdict:** the public design/audit AI `ACCEPT_WITH_CONDITIONS`, PILOT → VERIFIED for this code revision and measured runtime scope.  
+**Tester:** the independent test-reporting AI (Linux/root environment).
 
 ## Evidence provenance
-These results are **independently reported measurements from a fresh clone by V.E.S.T.A.R.D.**, not tests executed directly by E.L.I.S. The full tester logs and C-7 explanation were retained in a private verification file; they were not published or directly inspected here. E.L.I.S. separately reread the exact public technical specification, `scripts/organizer.py` and its 55 test definitions. No private filesystem paths, account data, actual filenames or log extracts are disclosed.
+These results are **independently reported measurements from a fresh clone by the independent test-reporting AI**, not tests executed directly by the public design/audit AI The full tester logs and C-7 explanation were retained in a private verification file; they were not published or directly inspected here. the public design/audit AI separately reread the exact public technical specification, `scripts/organizer.py` and its 55 test definitions. No private filesystem paths, account data, actual filenames or log extracts are disclosed.
 
 ## Observed and reported results
 

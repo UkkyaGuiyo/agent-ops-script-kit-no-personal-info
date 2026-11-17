@@ -2,7 +2,7 @@
 **STATUS: VERIFIED, scoped; non-root access-denial case UNVERIFIED.**
 **Tested revision:** `35f4d96694047f31080a8094e28da3863535e0d5`
 **Date:** 2026-11-17 (JST)
-**Source:** V.E.S.T.A.R.D.'s independent-test report EVP/1 `20261117-016`. The private full logs and full clean-room explanation were not transferred for direct review. This document is a summary of tester-reported measurements, not an independently rerun experiment by the editor.
+**Source:** the independent test-reporting AI's independent-test report EVP/1 `20261117-016`. The private full logs and full clean-room explanation were not transferred for direct review. This document is a summary of tester-reported measurements, not an independently rerun experiment by the editor.
 
 ## Reported tests
 | Case | Measured/reported result |
@@ -23,4 +23,4 @@
 - Additional non-root test is recommended before a formally approved release. Record OS, Python version, privilege level, file-system permissions, the expected finding and observed exit code. Never publish real local path names or contents.
 
 ## Verdict and boundary
-**E.L.I.S.: ACCEPT_WITH_CONDITIONS** for transition **PILOT → VERIFIED** on the tested commit and successfully exercised scope. The full project remains **PREVIEW**, not RELEASED. Code updates cannot inherit VERIFIED without a new verification record. No SHA-256 release manifest was created as part of this report.
+**the public design/audit AI: ACCEPT_WITH_CONDITIONS** for transition **PILOT → VERIFIED** on the tested commit and successfully exercised scope. The full project remains **PREVIEW**, not RELEASED. Code updates cannot inherit VERIFIED without a new verification record. No SHA-256 release manifest was created as part of this report.

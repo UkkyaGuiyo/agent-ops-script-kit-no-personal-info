@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (C) 2026 Contributors to Agent Ops Script Kit
+# SPDX-License-Identifier: GPL-3.0-only
 """Local, non-network, append-only one-shot deadline/outbox pilot. GPL-3.0-only.
 
 Reading these public scripts does not authorize scheduling or external delivery.

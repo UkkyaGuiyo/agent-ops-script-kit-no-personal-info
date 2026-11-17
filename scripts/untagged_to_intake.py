@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (C) 2026 Contributors to Agent Ops Script Kit
+# SPDX-License-Identifier: GPL-3.0-only
 """Manual, offline adapter from untagged_watch pending JSON to shared-intake JSON.
 
 Does NOT ingest the item or acknowledge the source. GPL-3.0-only.

@@ -1,3 +1,5 @@
+# Copyright (C) 2026 Contributors to Agent Ops Script Kit
+# SPDX-License-Identifier: GPL-3.0-only
 """Synthetic only. Tests use disposable temporary roots and state."""
 from __future__ import annotations
 

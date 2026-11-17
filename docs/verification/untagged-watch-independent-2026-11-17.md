@@ -5,7 +5,7 @@
 **Verdict:** ACCEPT_WITH_CONDITIONS, transition PILOT → VERIFIED for the tested scope.
 **Exception:** live non-root filesystem permission-denial handling = **UNVERIFIED**.
 
-**Source:** V.E.S.T.A.R.D.'s independent verification report EVP/1 `20261117-018`. This page records the independent tester's reported results; it is NOT a direct re-execution by the editor. The tester's private full logs and full clean-room Muse explanation are not published here.
+**Source:** the independent test-reporting AI's independent verification report EVP/1 `20261117-018`. This page records the independent tester's reported results; it is NOT a direct re-execution by the editor. The tester's private full logs and full clean-room Muse explanation are not published here.
 
 ## Reported observations
 

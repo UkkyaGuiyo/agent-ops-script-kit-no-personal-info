@@ -1,3 +1,5 @@
+# Copyright (C) 2026 Contributors to Agent Ops Script Kit
+# SPDX-License-Identifier: GPL-3.0-only
 """Synthetic-only safety and contract tests for the one-shot reminder. GPL-3.0-only."""
 import contextlib
 import datetime as dt

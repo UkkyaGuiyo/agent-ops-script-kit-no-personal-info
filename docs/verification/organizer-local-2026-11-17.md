@@ -1,7 +1,7 @@
 # 第6号 整理係：制作側ローカル検証
 
 **Date:** 2026-11-17 (JST)  
-**Status:** PILOT / V.E.S.T.A.R.D.の独立新規clone・C-7説明試験はPENDING。  
+**Status:** PILOT / 別環境検証担当AIの独立新規clone・C-7説明試験はPENDING。  
 **Environment:** Linux container, Python 3.13.5. 合成一時ルートのみ使用。
 
 ## 実施事項

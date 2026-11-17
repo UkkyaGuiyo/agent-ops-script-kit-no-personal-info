@@ -2,10 +2,10 @@
 
 **Date:** 2026-11-17 (JST)  
 **Tested commit:** `a60df96b17875e0c49f07b5beafa9fd04469b9ee`  
-**Verdict:** E.L.I.S. ACCEPT_WITH_CONDITIONS; PILOT → VERIFIED within tested source revision and environment.  
+**Verdict:** the public design/audit AI ACCEPT_WITH_CONDITIONS; PILOT → VERIFIED within tested source revision and environment.  
 **Reporter environment:** Linux/root; other OSs, non-root and large inputs UNVERIFIED.
 
-**Evidence provenance:** These are **V.E.S.T.A.R.D.'s independently reported observations** from a fresh clone, not a claim that E.L.I.S. executed the tester's private CLI. The tester's full local logs and fresh-Muse explanation were not published. E.L.I.S. separately reread the public Python implementation and its local unit tests. There are no private paths, source content or operating records in this summary.
+**Evidence provenance:** These are **the independent test-reporting AI's independently reported observations** from a fresh clone, not a claim that the public design/audit AI executed the tester's private CLI. The tester's full local logs and fresh-Muse explanation were not published. The public design/audit AI separately reread the public Python implementation and its local unit tests. There are no private paths, source content or operating records in this summary.
 
 ## Reported observations
 

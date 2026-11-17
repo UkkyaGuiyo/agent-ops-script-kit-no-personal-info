@@ -3,7 +3,7 @@
 **Status:** VERIFIED (reported independent tests; scoped to tested revision)
 **Date:** 2026-11-17 (JST)
 **Tested commit:** `e573312a0a15ed359cc273d7001cf304c77e1bfc`
-**Source:** independent tester V.E.S.T.A.R.D., EVP/1 report `20261117-014`. This document records the reporter's results; raw execution logs and full AI explanations were not supplied for public review. This is **not** a claim of direct re-execution by the person recording this summary.
+**Source:** the independent test-reporting AI, EVP/1 report `20261117-014`. This document records the reporter's results; raw execution logs and full AI explanations were not supplied for public review. This is **not** a claim of direct re-execution by the person recording this summary.
 
 ## Reported measurements
 | Test | Reported result |

@@ -2,7 +2,7 @@
 
 **裁定：ACCEPT_WITH_CONDITIONS。公開版：VERIFIED（cbfa915、Linux/root合成入力限定）。** 2026-11-17 JST。
 
-## 報告に由来する内部系の実態（V.E.S.T.A.R.D.報告、非公開実装の独立再実行ではない）
+## 報告に由来する内部系の実態（内部仕様報告担当AI報告、非公開実装の独立再実行ではない）
 
 - **Gmailは入力元**。複数アカウントの読み取り専用検索結果から、版管理された条件の機械的な一致だけを検出し、内部の共通受け皿へ投入する。応募・採否・重要度の最終決定・対人報告は担当外。送信、既読化、ラベル変更、削除はしない。
 - 順序は**対象外 → 宛先ルール → 募集系 → 重要の独立判定 → プラットフォーム通知**。強い不利益の兆候は単独で重要候補、弱い兆候は不利益または複数の文脈グループを条件とする。宣伝の日付や単独の行動喚起では重要としない。
@@ -51,5 +51,5 @@
 [技術仕様](../operators/gmail-collector.md)／[HowTo](../howto/gmail-collector.md)／[初心者説明](../explain/gmail-collector.md)。
 
 ## P3独立検証（EVP/1 20261117-045）
-V.E.S.T.A.R.D.は公開コードcbfa915の新規cloneで全539/539件PASS、SKIPなしと報告（先行441＋Gmail98）。第4号validate_item互換性テストも実行された。合成CLI初回は候補8件、対象外1件、非該当2件、pending8件。再checkで新規0件、pending8件。正規空応答はexit0・新規0件。入力ハッシュ不変、実Gmail接続NONE、第4号書込false。C-7必須7項目も報告上PASS。[独立検証概要](../verification/gmail-collector-independent-2026-11-17.md)。
+別環境検証担当AIは公開コードcbfa915の新規cloneで全539/539件PASS、SKIPなしと報告（先行441＋Gmail98）。第4号validate_item互換性テストも実行された。合成CLI初回は候補8件、対象外1件、非該当2件、pending8件。再checkで新規0件、pending8件。正規空応答はexit0・新規0件。入力ハッシュ不変、実Gmail接続NONE、第4号書込false。C-7必須7項目も報告上PASS。[独立検証概要](../verification/gmail-collector-independent-2026-11-17.md)。
 この昇格は実メール精度の証明ではない。内部の重要メール1件の取りこぼしは未解決。P4/P5未承認。

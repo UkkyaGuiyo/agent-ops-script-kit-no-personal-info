@@ -1,7 +1,7 @@
 # 共通受け皿：制作側のローカル試験概要
 
 **Date:** 2026-11-17 JST
-**Status:** PILOT; V.E.S.T.A.R.D. の新規cloneでの実測・初心者Muse説明再現は **PENDING**。
+**Status:** PILOT; 別環境検証担当AI の新規cloneでの実測・初心者Muse説明再現は **PENDING**。
 **Test environment:** ローカルLinux系コンテナ、Python 3、合成用一時ディレクトリ。外部アカウント、実業務データ、実運用ログは使用していない。
 
 ## 実行結果

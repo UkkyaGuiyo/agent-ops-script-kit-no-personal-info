@@ -4,12 +4,12 @@
 
 | ID | Owner | Action | Required objective evidence | State |
 | --- | --- | --- | --- | --- |
-| PRIV-01 | Human via V.E.S.T.A.R.D. | Decide whether already-public internal AI aliases and GitHub publisher metadata are permitted disclosures; if not, separately approve a redaction plan without automatic history rewriting | Scope-specific approval/decision record and current/history re-scan | OPEN |
-| LIC-01 | E.L.I.S. | Normalize 12 missing per-file SPDX/copyright notices; no functional edit | File-level diff, 24/24 Python headers, clean clone 618/618 tests 0 SKIP, compileall | OPEN |
+| PRIV-01 | Human via 別環境検証担当AI | Owner chose **option A (HEAD-only redaction)**, with **explicit permission for old names to remain in historic commits**. Do not rewrite history or conceal GitHub publisher metadata | New [option-A implementation note](p4-privacy-a-implementation-2026-11-17.md), current-tree zero-residual scan, separate history exception, fresh-clone semantics review | APPLIED AT HEAD; INDEPENDENT RETEST PENDING |
+| LIC-01 | 公開版設計・監査担当AI | Add 12 missing source-file SPDX/copyright header pairs only, in the same non-force commit as redaction | 24/24 Python headers, unchanged executable source bodies, independent 618/618 tests with 0 SKIP and compileall | PATCH PREPARED; INDEPENDENT RETEST PENDING |
 | PROV-01 | Human/auditor | Confirm rights to release source/text under GPL-3.0-only and document external borrowings if present | Attestation and attribution/license file updates if needed | OPEN |
-| REL-01 | E.L.I.S. / V.E.S.T.A.R.D. | Generate a complete SHA-256 manifest after candidate freeze, independently rehash all files | Candidate commit + manifest commit, tracked file count/size/SHA-256, all pass + 3 anchors | OPEN |
-| SEC-LIMIT | E.L.I.S. / auditor | Keep synthetic-only/non-production scope and known race/crash limitations explicit | README, SECURITY, operator docs agree; no live-root `--apply` added | OPEN limitation, not a newly authorized feature |
-| P4-RECHECK | E.L.I.S. / V.E.S.T.A.R.D. | Recheck full public history including new commits; verify no tags/releases, run tests after edits, confirm disposition | New P4 report at final pinned SHA | PENDING |
+| REL-01 | 公開版設計・監査担当AI / 別環境検証担当AI | Generate a complete SHA-256 manifest after candidate freeze, independently rehash all files | Candidate commit + manifest commit, tracked file count/size/SHA-256, all pass + 3 anchors | OPEN |
+| SEC-LIMIT | 公開版設計・監査担当AI / auditor | Keep synthetic-only/non-production scope and known race/crash limitations explicit | README, SECURITY, operator docs agree; no live-root `--apply` added | OPEN limitation, not a newly authorized feature |
+| P4-RECHECK | 公開版設計・監査担当AI / 別環境検証担当AI | Recheck full public history including new commits; verify no tags/releases, run tests after edits, confirm disposition | New P4 report at final pinned SHA | PENDING |
 | P5 | Human | Review release subject only after P4 ACCEPT | Human review card with immutable manifest and risks | BLOCKED |
 
 ## Nonnegotiable release handoff

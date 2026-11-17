@@ -1,6 +1,6 @@
 # 第10号 Gmail収集係：公開版技術仕様
 
-**Status: VERIFIED（対象コードcbfa915930096a535bb229188f54a830d9b208ba、Linux/root・合成入力限定）。** 新規clone全539/539件PASS（SKIPなし、第4号validate_item互換性含む）とC-7説明合格がV.E.S.T.A.R.D.から報告された。非root・他OS・実Gmailと実際の重要メール判定精度は未検証。正式RELEASEDではない。Python 3.10+、標準ライブラリ、GPL-3.0-only。
+**Status: VERIFIED（対象コードcbfa915930096a535bb229188f54a830d9b208ba、Linux/root・合成入力限定）。** 新規clone全539/539件PASS（SKIPなし、第4号validate_item互換性含む）とC-7説明合格が別環境検証担当AIから報告された。非root・他OS・実Gmailと実際の重要メール判定精度は未検証。正式RELEASEDではない。Python 3.10+、標準ライブラリ、GPL-3.0-only。
 
 ## 仕事
 

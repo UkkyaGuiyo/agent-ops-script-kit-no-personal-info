@@ -1,6 +1,6 @@
 # P1：台帳係の公開用仕様確認
 **STATUS: P1 accepted; public implementation VERIFIED for commit 35f4d96 with non-root permission scenario unverified. See [verification summary](../verification/ledger-check-2026-11-17.md).**
-**SOURCE:** V.E.S.T.A.R.D. generalized internal-spec report EVP/1 20261117-015 (no private source files examined by E.L.I.S.).
+**SOURCE:** generalized internal-spec report from the private-spec reporting AI EVP/1 20261117-015 (no private source files examined by the public design/audit AI).
 
 ## Correction of previous hypothesis
 The previously proposed **two-ledger comparator** was wrong. This public operator checks the **format of ONE Markdown task ledger**. It does not decide if a task is actually done, and never rewrites the ledger.
@@ -19,4 +19,4 @@ The previously proposed **two-ledger comparator** was wrong. This public operato
 - Inaccessible input returns exit code 1; an examined ledger with findings returns exit code 2; clean result returns 0.
 
 ## Verification disposition
-V.E.S.T.A.R.D. reported a fresh-clone test of commit 35f4d96, 34/34 tests PASS for the combined kit, clean synthetic ledger (4 entries, 0 issues), abnormal synthetic ledger (8 entries), expected exit codes and clean-room AI explanation. The live non-root reference_unverifiable path was not executed; a mocked PermissionError test did PASS. The status VERIFIED is scoped, not universal. The owner must still approve any formal RELEASED tag.
+the independent test-reporting AI reported a fresh-clone test of commit 35f4d96, 34/34 tests PASS for the combined kit, clean synthetic ledger (4 entries, 0 issues), abnormal synthetic ledger (8 entries), expected exit codes and clean-room AI explanation. The live non-root reference_unverifiable path was not executed; a mocked PermissionError test did PASS. The status VERIFIED is scoped, not universal. The owner must still approve any formal RELEASED tag.
