@@ -1,6 +1,6 @@
 # P0 確定仕様書 | Agent Ops Script Kit
 Version: 2026-11-17 / EVP 20261117-012, SUP1, 013.
-Status: **design approved; capacity, ledger and untagged watcher VERIFIED (revision-scoped); full release NOT approved**.
+Status: **design approved; capacity, ledger, untagged watcher VERIFIED (revision-scoped); shared intake PILOT; full release NOT approved**.
 
 ## Mission
 Publish an independently implemented, free GPL-3.0-only kit whose beginner users and initially uninformed AI assistants can (1) understand operators, (2) reproduce them where tools and permission allow, and (3) explain benefits, limitations, and risks in plain language.
@@ -29,7 +29,7 @@ Publish an independently implemented, free GPL-3.0-only kit whose beginner users
 | Retention manager | Recoverable staged cleanup | PLANNED |
 | Injection-size watcher | Measure files and draft, never apply, reductions | PLANNED |
 | Deadline reminder | Deadline notification and retry state | PLANNED |
-| Shared intake | Preserve new, pending, failed, delivered | PLANNED |
+| Shared intake | Append-only local collector, transitions, derived flag, retry-safe IDs | PILOT |
 
 PLANNED = not implemented; PILOT = synthetic local tests, independent environment validation pending; VERIFIED = independent validation recorded; RELEASED = human-approved tagged release.
 
@@ -50,6 +50,9 @@ The ledger checker is a **single-file format verifier**, not a two-ledger compar
 
 ## Untagged watcher / EVP 20261117-017
 P1 documented; independent public implementation in [docs/operators/untagged-watch.md](docs/operators/untagged-watch.md). Decisions: retain hashed seen/pending, use manual local JSON output and explicit ack, publish a generalized root-local JSON retention-record format. No external intake, scheduler, automated tag assignment or deletion is included. Local synthetic tests passed; independently reported validation covers the state/pending/ack lifecycle and fresh-Muse explanation for [commit dfb077b](docs/verification/untagged-watch-independent-2026-11-17.md). Real non-root permission denial is UNVERIFIED. State hash is corruption detection, not cryptographic authentication. Formal release remains unapproved.
+
+## Shared intake / EVP 20261117-019
+The generalized P1 is accepted and independent public implementation is documented in [docs/operators/shared-intake.md](docs/operators/shared-intake.md). U1 daily append-only JSONL + derived flag/summary retained; U2 four fixed states; U3 90-day terminal-only **retention preview with no deletion**; U4 flag.json and status CLI, both derived from the journal. The manual [watcher adapter](scripts/untagged_to_intake.py) never auto-acks the producer. Local synthetic tests passed, but independent environment and fresh-AI explanation validation remain PENDING. Public source is PILOT and formal release is not approved.
 
 ## Open
 Future operator dependencies; specific AI runtime and scheduling availability; exact release manifest and final approval.

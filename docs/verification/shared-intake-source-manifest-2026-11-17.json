@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "scope": "pilot source and synthetic fixtures; not a formal release manifest",
+  "files": [
+    {
+      "path": "docs/explain/shared-intake.md",
+      "size_bytes": 2927,
+      "sha256": "1b27b3be4f33a1ad72adb28af7e9ac43041da245d618646ca0cca12cfccead54"
+    },
+    {
+      "path": "docs/howto/shared-intake.md",
+      "size_bytes": 4608,
+      "sha256": "10519d86f1f57f7b0a9b2585a94d4b4f0fd24ebfdcd84c42f6938d989e0ba5dc"
+    },
+    {
+      "path": "docs/operators/shared-intake.md",
+      "size_bytes": 7698,
+      "sha256": "56c45963c6349f80e3108ff66d9ee9a218a02dc4c62714bba6c224fd6d37ea77"
+    },
+    {
+      "path": "docs/plans/shared-intake-p1.md",
+      "size_bytes": 4329,
+      "sha256": "85e4b79ee4b9cce77ac8c5afe100f59642cf615c416e23d0f760c34412f7784b"
+    },
+    {
+      "path": "examples/intake/synthetic-item.json",
+      "size_bytes": 330,
+      "sha256": "9dd6cd377d6cb2512d047e2d531271b7de4c72ac1bc097d17107acb11af33380"
+    },
+    {
+      "path": "scripts/shared_intake.py",
+      "size_bytes": 28324,
+      "sha256": "a30dbc199906d26abdff31eae7c132ba6dfa81e4ee23bcb90fc2320f9b8913d2"
+    },
+    {
+      "path": "scripts/untagged_to_intake.py",
+      "size_bytes": 2410,
+      "sha256": "ed617569c1a189c191e0347cf3e9c4d06d1b0af771f4669caf607d229f0deb5b"
+    },
+    {
+      "path": "tests/test_shared_intake.py",
+      "size_bytes": 16206,
+      "sha256": "c2fd94799b469a7a6398660af2c724857e9bf17b1d2fdd1fdbdef15611fad5f8"
+    },
+    {
+      "path": "tests/test_untagged_to_intake.py",
+      "size_bytes": 2044,
+      "sha256": "ddbdf2d2cdc82672ac4c8e75af47786e38abe3029f1a269c1d9191e0d4c935f8"
+    }
+  ]
+}

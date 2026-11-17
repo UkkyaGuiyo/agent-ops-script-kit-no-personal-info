@@ -1,25 +1,40 @@
-# 第4号 P1調査指示：共通受け皿（Shared Intake）
+# 共通受け皿 P1確定・公開版実装判断
 
-**STATUS: PLANNED — P1 generalization requested. No implementation or schedule authorized yet.**
-**Basis:** E.L.I.S. next-production decision EVP/1 `20261117-018`.
+**EVP/1:** 20261117-019 / 2026-11-17
+**Status:** P1 accepted, public implementation is PILOT until independent verification.
+**Basis:** V.E.S.T.A.R.D. の一般化した内部仕様報告。非公開コード、実際のメール、仕事記録、顧客情報、ローカルパスは閲覧・複製していない。
 
-## Rationale
-The untagged watcher now provides a durable `pending` event but **no delivery service**. A receiver-side contract would support this pilot and future collectors, such as local Gmail/Notion examples, without assuming their credentials or real environments. Do not pretend the new receiver already exists.
+## 確認済みの役割
 
-## V.E.S.T.A.R.D. research questions (P1)
-1. **Boundary:** What is the existing receiver's actual role and supported producers? Does it store, route, summarize, or deliver to an AI? Separate tested behavior from desired behavior.
-2. **Envelope:** Document generalized field names/types for event ID, origin, time (time zone), event kind, payload, priority, source data, and optional evidence. Separate required and optional fields.
-3. **Acknowledgment:** What is a durable accept? What does an acknowledgment mean, who/what sends it, and what must producers do after it?
-4. **Idempotency:** Which identity key suppresses duplicates, for how long, and across restart/crash? What happens when the same ID has conflicting contents?
-5. **States:** Define statuses for pending, accepted, delivered, delivery-failed/retry and already-consumed, strictly distinguishing UNKNOWN, false and NONE.
-6. **Failure rules:** Storage write failure, malformed event, parse failure, absent input, receiver outage, partial batch, concurrency/locking, interrupted commit, stale lock and schema version mismatch. Retrieval failure ≠ zero events.
-7. **Privacy/security:** Allowed synthetic payloads; disallowed personal names, paths, account/customer info, auth and logs; location and permissions of a private runtime queue; symlink/path escape rules.
-8. **Retention/recovery:** Expected persistence, retry policy, deduplication, backup and safe recovery; distinguish recoverable staging from irreversible deletion. Never assume any existing cleanup agent may purge a pending report.
-9. **Manual pilot:** Can a public example be a local CLI without network, external accounts, cron or AI runtime? What explicit proof would support its producer-side ack?
-10. **Testing:** Synthetic accepted/rejected, replay/restart, duplicate and conflicting ID, crash at each state boundary, concurrent writers/readers, disk full, corruption, bounded memory and a new AI's beginner explanation.
+複数の送信元が一つの受け皿へ投入する。受け皿は**収集・永続保存・旗の更新・状態遷移の記録**を担当し、項目の意味は判断しない。判断は外部のAIまたは人間。正本は追記専用イベントログで、状態要約と旗は再計算可能。
 
-## Deliverable
-A **generalized** state-transition contract, typed JSON input/output schemas, error/exit codes, safe sample scenarios, actual-vs-unknown table, and unresolved design choices. Do not send private source, actual messages, credentials or local paths. No permission to change existing services, routes, or schedules. E.L.I.S. will review P1 before preparing independent public code.
+## U1〜U4の裁定
 
-## Preliminary safety rule
-For the public pilot, prefer explicit local CLI input and a synthetic durable queue. **At-least-once producer retries require receiver-side deduplication**; a source-side stdout event must not be acknowledged as delivered merely because it was printed. These are design requirements, not claims that the internal implementation uses this exact contract.
+| 番号 | 公開パイロットの選択 | 理由 |
+|---|---|---|
+| U1 | 日付別JSONL＋追記専用の投入・遷移・取得実行イベント＋派生した旗・状態要約を維持 | 途中失敗の追跡と再構築可能性を失わない |
+| U2 | `unprocessed`, `audited`, `reported`, `discarded` の4状態を固定 | 公開初版で遷移契約の揺らぎを防ぐ |
+| U3 | 90日を**削除候補表示だけ**の初期値とする | 本人が決めた内部運用値を一般利用者への自動削除ルールにはしない |
+| U4 | 単一 `flag.json` と `status` の両方を用意 | 説明しやすく、外部の監査者も読み取り可能。両方ともログから再計算 |
+
+## 初版の境界
+
+- 単体CLI。外部アカウント、API、ブラウザ、AI実行、定期実行は不要。
+- ローカルの一件JSONを `ingest` する。保存後、`item_id`と`added`を返す。元アイテム全体は機密のため返答で再掲しない。これは内部の「アイテムを返す」方式からの意図的な変更。
+- `when_fetched`と`where.source_id`は必須。`source_event_id`または`item_id`が必要。前者だけなら決定的なIDを生成。再送時は**同一の取得時刻と本文**を保持する。
+- `transition`は明示コマンド。受け皿は意味を判定しない。`unprocessed → audited → reported` または非終端から `discarded` のみ。
+- 送信元の実行は `RUNNING → COMPLETED(outcome=success|partial|error)` で別記録。`run-error`で機械可読なエラー種別を別イベントに残せる。`error`は取得0件と同義ではない。
+- 「保存成功」は追記ログを `fsync` し、旗と状態要約の原子的な書き戻しまで完了したときだけ。書き戻しが失敗すると成功を返さない。再試行時、正本にあれば再追記せず、旗を再構築する。
+- 追記専用ログの破損は自動修復しない。`rebuild`は**派生ファイルだけ**を再構築する。
+- 削除機能は搭載しない。`retention-preview`は終端状態と終端遷移時刻から候補を**表示するだけ**。削除正当化・orphan免除・物理削除は未実装。未処理・監査済みは常に候補外。
+- プロジェクトのチェックアウト以外に**ユーザーが作成した私的データフォルダ**が必要。データファイルと実アイテムの公開は禁止。
+- `untagged_watch`のpendingを実際に受け取れるようにするため、単体の手動変換スクリプトを付属。ただし出力の**保存確認前に送信元へackしない**。自動配送や自動ackは存在しない。
+
+## 失敗と未解決
+
+- JSONLへの追記と派生ファイルの置換は一つのファイルシステムトランザクションではない。失敗時に不一致が残る可能性を**再構築・同一ID再試行**で補う。正本の部分書き込みは要調査のエラーとなる。
+- ログ順序は連番・event_idで検証し、欠番、重複、不正遷移、未知イベントを拒否。
+- サンプルの `source_id`, 時刻、作業内容はすべて架空。OS、ファイルシステム、アクセス権、長期性能は独立検証待ち。
+- 約90日の運用をどう一般公開するかは、実際の削除機能を設計する段階で**別途審査**する。内部のログ掃除・削除根拠の詳細は、このコードに持ち込まない。
+
+[技術仕様](../operators/shared-intake.md) / [HowTo](../howto/shared-intake.md) / [説明用資料](../explain/shared-intake.md)

@@ -14,3 +14,10 @@ reports/
 untagged-watch-state.json
 .untagged-watch.lock
 .state-temp-*
+
+# Shared intake: runtime data still MUST be outside this repository
+.intake.lock
+.intake-temp-*
+flag.json
+state.json
+events/

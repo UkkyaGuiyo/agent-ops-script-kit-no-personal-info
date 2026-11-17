@@ -25,7 +25,9 @@ The sample uses a synthetic directory. Keep any configuration with real paths **
 
 **Verified with caveat: untagged watcher (commit dfb077b).** Read-only detection in monitored roots plus a writable, durable local state directory **outside this repository**. First run establishes a silent baseline. Later first-observed unregistered files become `pending` reports; `ack` is manual. **No external delivery, scheduler, tagging or deletion.** See [HowTo](docs/howto/untagged-watch.md), [beginner explanation](docs/explain/untagged-watch.md), and [technical limits](docs/operators/untagged-watch.md). Its [local test report](docs/verification/untagged-watch-local-2026-11-17.md) and [independent verification summary](docs/verification/untagged-watch-independent-2026-11-17.md) are published. Non-root permission-denial behavior is NOT independently verified. The full project remains PREVIEW.
 
-Other operators remain **PLANNED**. See [SPEC_P0.md](SPEC_P0.md).
+**New PILOT: Shared Intake / 共通受け皿.** A local collector that accepts JSON items from multiple producers, persists append-only daily JSONL event journals, maintains one derived unprocessed-count flag, and records state changes. It does **not** judge meaning, connect to services, auto-deliver, schedule work, or delete data. [Technical spec](docs/operators/shared-intake.md), [HowTo](docs/howto/shared-intake.md), [beginner explanation](docs/explain/shared-intake.md), [P1 decisions](docs/plans/shared-intake-p1.md), [local test report](docs/verification/shared-intake-local-2026-11-17.md).
+
+Only the remaining planned operators lack working code. See [SPEC_P0.md](SPEC_P0.md).
 
 **License:** GPL-3.0-only ([LICENSE](LICENSE)); license obligations apply when distributing covered modified versions. Private modifications alone do not have to be published.
 **Support:** no guaranteed ongoing personal assistance. See [SUPPORT.md](SUPPORT.md).

@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "when_fetched": "2026-11-17T00:00:00+00:00",
+  "where": {"source_id": "synthetic-source"},
+  "source_event_id": "synthetic-event-01",
+  "who": "synthetic producer",
+  "what": "synthetic task found",
+  "why": "demonstrate shared intake",
+  "how": "manual local example",
+  "payload": {"example": true}
+}

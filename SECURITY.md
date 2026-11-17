@@ -18,3 +18,6 @@
 If private information enters GitHub, immediately stop further publishing, assess exposure, rotate affected secrets, and plan proper history remediation. Deleting the current file does not erase history or external copies.
 
 For a sensitive vulnerability, do not include private details in a public Issue. Use GitHub private vulnerability reporting if enabled; no guaranteed response channel is promised.
+
+## Shared intake pilot
+The shared intake writes a daily JSONL event journal, derived flag.json/state.json, and a persistent lock in a caller-owned **private data directory outside this repository**. Never commit the journal, derived files, original input items, or status output: they may contain private names, paths, source identifiers, and messages. The journal is authoritative and append-only; corrupted or partial records fail closed. A derived flag mismatch can be rebuilt from a valid journal. This pilot does **not** purge items or records; the 90-day option is only a preview. State transitions must be authorized externally. The manual untagged-watcher adapter must never auto-ack the producer.
