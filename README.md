@@ -47,3 +47,12 @@ All **11 P0 operator categories have public source and scope-limited P3 VERIFIED
 **Support:** no guaranteed ongoing personal assistance. See [SUPPORT.md](SUPPORT.md).
 
 Every branch, PR, and commit in this repository is public. Nothing may be pushed until inspected for private information.
+
+## 開発記録に登場する名前について
+
+このプロジェクトの初期の開発・検証記録（過去のコミット）には、固有の呼称が残っています。
+
+- **E.L.I.S.（エリス）** ― ChatGPT のこと。名前は **E**ngineering（工学）・**L**ogic（論理）・**I**nsight（洞察）・**S**ynthesis（統合）の頭文字で、このプロジェクトでは設計と監査を担当しました。
+- **V.E.S.T.A.R.D.（ヴェスタード）** ― Muse のこと。名前は **V**igil（見守り）・**E**rrands（用事）・**S**cheduling（日程）・**T**racking（追跡）・**A**rchiving（記録）・**R**eminding（リマインド）・**D**ispatch（仲介）の頭文字で、実装の検証を担当しました。
+
+現在のファイルでは、両者とも役割ベースの表記（設計・制作担当AI／別環境検証担当AI）に統一しています。
