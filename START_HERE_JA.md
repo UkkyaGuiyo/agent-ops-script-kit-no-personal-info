@@ -38,5 +38,5 @@ AIに毎回読み込ませる常駐資料の**ファイル容量をバイト単�
 ## 期限リマインダー係（対象コミット限定VERIFIED）
 確定日時をUTC・IANA地方時・整数エポック秒で登録し、手動checkで期限が来た項目を**一度だけ発動**させる。出力はローカルoutboxにpendingとして残る。**外部配送、共通受け皿連携、cron、担当者への通知は一切実行しない。** `ack`も外部受領書の主張を記録するだけで、本人が読んだことや実配送は証明しない。新規clone全303/303件PASS・C-7合格が報告済み。他OS・非rootは未検証。実配送は未実装。[独立検証概要](docs/verification/deadline-reminder-independent-2026-11-17.md)。[使い方](docs/howto/deadline-reminder.md) / [説明](docs/explain/deadline-reminder.md)。
 
-## 履歴掃除係（PILOT）
-第4号・共通受け皿に溜まる**記録**の保存期限を調べる。ファイルやGit履歴は消さない。終端（reported/discarded）に到達してから既定90日以上のアイテムを`candidate`と示すが、**候補は削除の許可ではない**。公開v1には独立seen保存・prepare/completeの削除証拠が無いため`safe_to_delete_count=0`固定。未処理・auditedは除外、リマインダーの状態イベント・エラー行・重複排除記憶は保護する。公開実装は原本を全く変更しない。[HowTo](docs/howto/history-cleaner.md) / [初心者説明](docs/explain/history-cleaner.md)。独立検証・C-7はPENDING。
+## 履歴掃除係（対象コミット限定VERIFIED）
+第4号・共通受け皿に溜まる**記録**の保存期限を調べる。ファイルやGit履歴は消さない。終端（reported/discarded）に到達してから既定90日以上のアイテムを`candidate`と示すが、**候補は削除の許可ではない**。公開v1には独立seen保存・prepare/completeの削除証拠が無いため`safe_to_delete_count=0`固定。未処理・auditedは除外、リマインダーの状態イベント・エラー行・重複排除記憶は保護する。公開実装は原本を全く変更しない。[HowTo](docs/howto/history-cleaner.md) / [初心者説明](docs/explain/history-cleaner.md)。新規cloneで全370/370件PASS（第4号統合試験を含みSKIPなし）とC-7合格が報告済み。[独立検証概要](docs/verification/history-cleaner-independent-2026-11-17.md)。非root・他OS・実削除は検証していない。

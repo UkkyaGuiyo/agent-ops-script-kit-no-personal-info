@@ -1,6 +1,6 @@
 # 履歴掃除係：第4号共通受け皿の記録を調べる、提案専用オペレーター
 
-**Status: PILOT**（制作側66件合成テストPASS。独立clone・C-7説明再現PENDING）。GPL-3.0-only、Python 3.10+、標準ライブラリのみ。
+**Status: VERIFIED for commit 61c3364af28a5f367205f4d8c41d587e9ce9e97f within reported Linux/root read-only scope.** 新規clone全370/370件PASS（第4号実CLI統合試験を含む、SKIPなし）とC-7説明再現PASSがV.E.S.T.A.R.D.から報告された。非root・他OS・NFS・大量記録はUNVERIFIED。削除・seen独立保存は未実装、正式RELEASEDではない。GPL-3.0-only、Python 3.10+、標準ライブラリのみ。
 
 ## 役割と非目的
 
@@ -53,6 +53,8 @@ python scripts/history_cleaner.py --data-dir PRIVATE_INTAKE_DIR \
 - **1:** 土台の不正、読めない正本、不正policy、連番・状態遷移不整合。**0件と解釈しない**。
 - 引数不正は`argparse`のexit2。これは「検査してholdがあった」時の2と異なる。
 
-本ツールは正本と同じ既存`.intake.lock`を共有し、主な取り込み操作と衝突しないようにする。しかしロック非協調の外部プロセスや、読み取り後の変更は防げない。クロスファイルで原子的なスナップショットは保証しない。公開Kit v1との意味的互換は別AIによる独立検証待ち。Windows・非root・NFS・大量データはUNVERIFIED。削除・圧縮・チェックポイントの更新・Git履歴書換えは**未実装**。
+本ツールは正本と同じ既存`.intake.lock`を共有し、主な取り込み操作と衝突しないようにする。しかしロック非協調の外部プロセスや、読み取り後の変更は防げない。クロスファイルで原子的なスナップショットは保証しない。第4号公開Kit v1との合成CLI互換は独立検証報告でPASS（対象コミット限定）。Windows・非root・NFS・大量データはUNVERIFIED。削除・圧縮・チェックポイントの更新・Git履歴書換えは**未実装**。
 
 [P1裁定](../plans/history-cleaner-p1.md)／[HowTo](../howto/history-cleaner.md)／[説明](../explain/history-cleaner.md)／[制作側テスト](../verification/history-cleaner-local-2026-11-17.md)
+
+[独立検証概要](../verification/history-cleaner-independent-2026-11-17.md)。
