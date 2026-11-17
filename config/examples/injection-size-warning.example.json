@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "weekly_growth_percent": 10.0,
+  "targets": [
+    {
+      "name": "synthetic-persona",
+      "path": "../../examples/injection-size/synthetic-persona.json",
+      "limit_bytes": 1
+    }
+  ]
+}

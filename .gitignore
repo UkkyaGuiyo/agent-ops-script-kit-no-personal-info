@@ -21,3 +21,10 @@ untagged-watch-state.json
 flag.json
 state.json
 events/
+
+# Injection-size watcher runtime MUST live outside checkout (defense in depth)
+injection-measurements.json
+.injection-initialized.json
+.injection-size.lock
+.injection-temp-*
+package-*/

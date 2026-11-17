@@ -1,27 +1,26 @@
-# 第5号のP1調査：投入量見張り係 / Injection-size watcher
+# 投入量見張り係 P1確定・公開版判断
 
-**Status:** PLANNED / generalized P1 inventory requested. No implementation, scheduling, or file modification authorized yet.  
-**Basis:** E.L.I.S. next-production decision in EVP/1 `20261117-020`; catalog in `SPEC_P0.md` calls for measuring files and **drafting, never applying, reductions**.
+**EVP/1:** 20261117-021 / 2026-11-17  
+**Status:** P1 ACCEPT_WITH_CONDITIONS; independent public PILOT produced; independent environment review PENDING.
 
-## Why this operator next
+## Evidence boundary
+V.E.S.T.A.R.D. explicitly confirmed **NO completed private automated implementation** existed at the time of the report. Input was the owner's established design and a single manually completed procedure. Neither private files nor their contents, local paths, prompts or raw measurement logs were transferred or copied. The public code was independently authored and is not a port from private source.
 
-Choose a primarily **read-only** measuring tool before destructive history cleanup and connected-account collectors. This is a production-order decision, **not** a claim that the private script's real behavior has been examined. The name `injection-size` must not be interpreted as a prompt-injection/security scanner without evidence.
+## U1–U3
+- **U1 configuration:** JSON file list with per-file `limit_bytes` and a shared `weekly_growth_percent`. Suggested values: **60,000 bytes** (60 decimal kB, NOT 60 KiB) and **10.0%**. These are examples, not universally applicable maximums. A threshold is exceeded with `>` not `>=`.
+- **U2 complete staged pipeline:** Public CLI measures exact bytes, and **when triggered** creates a dated private backup, audit, conservative A–F classification candidates, safe drafts, an actual byte comparison, and mechanical self-test. It **never applies a draft** to any monitored input. This is not a promise of useful text compression.
+- **U3 public labels:** A=retain, B=JSON formatting-only candidate, C=condense after human review, D=move to on-demand after human review, E=remove after human approval, F=needs semantic review. **These are new, generalized public labels; the original private A–F definitions are UNKNOWN.** C/D/E are not automatically selected or applied. `.md`/`.txt` are copied unchanged and marked F by default to avoid unverifiable edits; parseable `.json` may be losslessly compacted and marked B.
 
-## P1 questions for V.E.S.T.A.R.D.
+## Source-derived rules vs public pilot decisions
+- Source-derived: always-loaded context **file list**, not on-demand logs; file bytes authoritative; auxiliary characters/lines, **tokens UNKNOWN**; file limits and weekly growth; quiet measurements without warnings; staged drafts, no apply; failure never silently omitted; history of timestamps and byte sizes.
+- Public design decision: only local `.md`, `.txt`, `.json` files up to 2,000,000 bytes each, strict UTF-8 and strict JSON where applicable; symlink path rejection; explicit private state directory outside the checkout; one-week comparison uses the most recent sample at least 7 days old. If no full week exists, `UNKNOWN` rather than an invented weekly estimate.
+- Weekly rate is **derived by linear time normalization** of two exact byte readings: `(new−old)/old × 100 × 7days/observed_duration`. This is a mathematically calculated rate, NOT an observed model token count or a forecast. A separate last-measurement delta is reported. Daily measurement therefore does not disable weekly detection.
+- Classification and mechanical self-tests do **not** prove semantic/key-point preservation. That output remains `NOT_ASSESSABLE` pending human/AI review. No self-assigned PASS may stand in for semantic review.
 
-1. **What is measured?** Are these text blocks supplied to an AI, attached documents, prompt templates, Notion pages, or another category? Identify exact general purpose and out-of-scope content.
-2. **Input scope:** Which file formats or source types are supported? Single files, directories, configurations, explicit allowlists? Are linked paths and inaccessible inputs rejected?
-3. **Units:** Distinguish UTF-8 **bytes**, Unicode code points/characters, lines, and **tokens** (model-/tokenizer-specific). Identify which quantities are exact, estimated, or UNKNOWN.
-4. **Thresholds and baseline:** Which limits are configured, what is compared, and when is an alert issued? Are there per-file, combined, or versioned thresholds?
-5. **Reduction proposal:** Is the result a summary, a suggested diff, proposed truncation, or candidate list? Does the original ever get modified? This public pilot must **never automatically apply changes**.
-6. **Sensitive content:** Can measurements be produced without storing or echoing actual text, private paths, credentials, client info or raw prompts? Specify sanitized output requirements and redaction policy.
-7. **State and duplicates:** Is there any persistent snapshot, event ID, delivery or acknowledgment? If absent, explicitly report NONE. Do not invent shared-intake coupling.
-8. **Failure handling:** Reading failures, encoding errors, unsupported formats, partial scans, very large files, memory/time limits, symlinks and filesystem changes. ERROR/UNKNOWN must not become zero length.
-9. **Environment:** Python/version/OS dependencies, whether it works entirely offline, model tokenization dependencies, and any known performance observations with **units**.
-10. **Tests and explanation:** Purely synthetic normal, threshold, multilingual/emoji, empty, malformed, inaccessible, huge and mixed-input cases. Fresh Muse must explain that an estimated token count is not an exact universal token count, and that no input is rewritten without explicit owner approval.
+## Out of scope
+No automatic editing/backup outside the user-designated private state directory, no scheduled runs, no external service/API, no AI content rewriting, no prompt injection detection, no sharing raw source text, no automatic state reset, no transfer of the private one-off result as a performance benchmark. The measurement mechanism uses only the standard library.
 
-## Deliverables / submission contract
+## Pilot test gate
+Synthetic exact byte/Unicode totals, strict threshold boundaries, seven-day growth and daily cadence, unreadable/invalid/oversized inputs, per-file and whole-scan errors, hash and history corruption, marker missing, lock conflict, draft backup integrity and true byte comparison, JSON parsed-value equivalence, verbatim Markdown/text drafts, source SHA-256 unchanged, no path/content echoed, and clean-room Muse explanation. Only after an independent fresh clone may this operator become VERIFIED (scope-limited).
 
-Provide a generalized P1 behavioral specification; input/output schemas with types and units; measurable vs estimated vs unknown distinctions; synthetic test matrix; authority boundary; failure cases; outstanding UNKNOWNs. Internal code, real user files and real paths, operational prompts, account/customer data and logs are **not** to be transferred.
-
-Once P1 is reconciled with the actual internal operator, E.L.I.S. may independently implement a public PILOT and V.E.S.T.A.R.D. may independently verify. Formal P5 RELEASED remains a separate owner decision.
+[Operator spec](../operators/injection-size-watch.md) · [HowTo](../howto/injection-size-watch.md) · [Beginner explanation](../explain/injection-size-watch.md).

@@ -20,9 +20,12 @@
 
 AIに手伝ってもらう場合は [AI_SETUP_GUIDE.md](AI_SETUP_GUIDE.md) と [AI_EXPLANATION_GUIDE.md](AI_EXPLANATION_GUIDE.md) を渡す。AIが実際にPC操作できるかどうかは別途確認する。
 
-## 次の試作品：付け忘れ検出係
-[初心者向け説明](docs/explain/untagged-watch.md) / [導入HowTo](docs/howto/untagged-watch.md)。最初の実行では既存ファイルを覚えるだけで通知しない。ファイル自体には書き込まないが、観測履歴用の状態JSONは**キット外の専用フォルダ**に保存する。報告の受領確認（ack）は人間の判断。定期実行・受け皿送信・自動タグ付け・削除は未搭載。独立環境での検証はまだ。
+## 付け忘れ検出係（対象コミット限定VERIFIED）
+[初心者向け説明](docs/explain/untagged-watch.md) / [導入HowTo](docs/howto/untagged-watch.md)。最初の実行では既存ファイルを覚えるだけで通知しない。ファイル自体には書き込まないが、観測履歴用の状態JSONは**キット外の専用フォルダ**に保存する。報告の受領確認（ack）は人間の判断。定期実行・受け皿送信・自動タグ付け・削除は未搭載。独立検証は報告済みだが、非root権限拒否の実測は未確認。
 
 ## 共通受け皿：新しい試作品
 複数の係からの報告を一つにまとめ、**未処理が何件あるか**を旗で知らせる。AIや人間による判断は受け皿の外で行う。追記専用の正本ログから旗を作り直せる。書き込み可能な**キット外の専用データフォルダ**が必要。実データの公開は禁止。自動配信・削除・定期実行は実装していない。
-[共通受け皿の初心者向け説明](docs/explain/shared-intake.md) / [導入手順](docs/howto/shared-intake.md)。現在はPILOTで独立検証待ち。
+[共通受け皿の初心者向け説明](docs/explain/shared-intake.md) / [導入手順](docs/howto/shared-intake.md)。対象コミット限定のVERIFIED。ただし他OS・非root動作は未検証。
+
+## 投入量見張り係（PILOT）
+AIに毎回読み込ませる常駐資料の**ファイル容量をバイト単位**で測る。大きさ・増加率が設定値を超えたときだけ、**キット外の私的フォルダ**へバックアップ・分類候補・下書き・比較レポート・機械的な自己テストを保存する。原本は自動変更しない。**意味や要点の保存は未審査**。トークン数の推定もしない。[HowTo](docs/howto/injection-size-watch.md) / [平易な説明](docs/explain/injection-size-watch.md)。

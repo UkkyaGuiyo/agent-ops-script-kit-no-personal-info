@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-17",
+  "scope": "source and documentation identities before public transfer",
+  "files": [
+    {
+      "path": "config/examples/injection-size-warning.example.json",
+      "bytes": 212,
+      "sha256": "d66028525a84db5c43facec90b2a8721e7f5ee202eadc31bb83436189f7e4bee"
+    },
+    {
+      "path": "config/examples/injection-size.example.json",
+      "bytes": 357,
+      "sha256": "b1f97918db16128487be45bf86bf3eea776c465f054b3644eefff207e5907492"
+    },
+    {
+      "path": "docs/explain/injection-size-watch.md",
+      "bytes": 2731,
+      "sha256": "ff3493ac5deeb6f32439dbbc684d63a96281083f666e813063ba1fc9a16db1e2"
+    },
+    {
+      "path": "docs/howto/injection-size-watch.md",
+      "bytes": 3399,
+      "sha256": "51e990d74d6b09153814b8a76ccb423102e29bb9c9cd8d6d8fdc69926bbb670a"
+    },
+    {
+      "path": "docs/operators/injection-size-watch.md",
+      "bytes": 6918,
+      "sha256": "4e96dee3216d43c87850d68858fa4dfefb5a449ca0910c06d46eebdbbf4d6f8b"
+    },
+    {
+      "path": "docs/plans/injection-size-watch-p1.md",
+      "bytes": 4113,
+      "sha256": "32da1d308c4ba614c5a40ae4ab7049e74ffa0c85f40e2798721bab670b920336"
+    },
+    {
+      "path": "docs/verification/injection-size-watch-local-2026-11-17.md",
+      "bytes": 2873,
+      "sha256": "d7778e70e8f5ca7725689003860afd029fa108e2e20770e1702d5ce303e97461"
+    },
+    {
+      "path": "examples/injection-size/synthetic-memory.md",
+      "bytes": 120,
+      "sha256": "213b1be0fdd5b90f7a1dea5185c24f626fcc4a5487e6cc895aae60fba191ef19"
+    },
+    {
+      "path": "examples/injection-size/synthetic-persona.json",
+      "bytes": 129,
+      "sha256": "5e282691be5eec9792bd103616d775e3e84cbee74849226f52be128a2174bdcc"
+    },
+    {
+      "path": "scripts/injection_size_watch.py",
+      "bytes": 25737,
+      "sha256": "a380be82778c0b71ca48eeba0cdd0b8e7f5b44159336118a526cd7f98e0d86b6"
+    },
+    {
+      "path": "tests/test_injection_size_watch.py",
+      "bytes": 20933,
+      "sha256": "a4898000d75e88423ce2b66105038cb8f410545fe77291056971ed19e0811ee6"
+    }
+  ],
+  "notes": [
+    "SHA-256 proves byte identity, not semantic correctness",
+    "This manifest excludes itself and __pycache__ files",
+    "Only synthetic data are in publicly proposed files"
+  ]
+}

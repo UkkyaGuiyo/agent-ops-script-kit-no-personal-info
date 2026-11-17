@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "weekly_growth_percent": 10.0,
+  "targets": [
+    {
+      "name": "synthetic-memory",
+      "path": "../../examples/injection-size/synthetic-memory.md",
+      "limit_bytes": 60000
+    },
+    {
+      "name": "synthetic-persona",
+      "path": "../../examples/injection-size/synthetic-persona.json",
+      "limit_bytes": 60000
+    }
+  ]
+}

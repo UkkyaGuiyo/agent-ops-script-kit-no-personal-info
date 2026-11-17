@@ -1,0 +1,7 @@
+{
+  "persona": "fictional assistant",
+  "requirements": [
+    "state unknowns",
+    "ask permission before applying edits"
+  ]
+}
