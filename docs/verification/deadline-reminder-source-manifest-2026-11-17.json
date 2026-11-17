@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-17",
+  "scope": "independent public source and synthetic documentation pre-upload identity",
+  "files": [
+    {
+      "path": "docs/explain/deadline-reminder.md",
+      "bytes": 2420,
+      "sha256": "14f354a9b2c40890f6977f1399a52520f0a687a601b22eafbf339ba374c3d1ca",
+      "git_blob_sha1": "3eaf797803c7144eaa450644eac97502eb45a24c"
+    },
+    {
+      "path": "docs/howto/deadline-reminder.md",
+      "bytes": 3274,
+      "sha256": "18da72031429fedf85cb3b7eabdfb87e8d3068d16918dc1e78d238d10ece02bf",
+      "git_blob_sha1": "9911f379bcddb85f50895ad177b2ab697f20f06b"
+    },
+    {
+      "path": "docs/operators/deadline-reminder.md",
+      "bytes": 6736,
+      "sha256": "1218a3dc7bf12be1651713841294889d824adf63cf323d2a8ef3f13b7cd3e7d4",
+      "git_blob_sha1": "8c421d30ee4dfaf80de0296352aec471c05c26aa"
+    },
+    {
+      "path": "docs/plans/deadline-reminder-p1.md",
+      "bytes": 5641,
+      "sha256": "d0569cd26fc03b4badcc8a39a4acde4852a4247e7d94edb54ec1689a5f49bad6",
+      "git_blob_sha1": "a2a5d8454698ca2cad1db4e599972930e6dd134a"
+    },
+    {
+      "path": "docs/verification/deadline-reminder-local-2026-11-17.md",
+      "bytes": 3599,
+      "sha256": "e270c236a389ef6bc6378f8e4ed93c2691b5a325aa641cdeddd525cadd62fb8c",
+      "git_blob_sha1": "ee53a1c30f35da107f1c1d43a7255429ae4346fe"
+    },
+    {
+      "path": "examples/reminder/synthetic-ack.json",
+      "bytes": 196,
+      "sha256": "2478bbc62ed295c657ebbab572bf474d8b3b5c37b9882a902f03dcac7f4772b0",
+      "git_blob_sha1": "f465097d4748fe8035b904fb1f234c931540b4e4"
+    },
+    {
+      "path": "examples/reminder/synthetic-item.json",
+      "bytes": 262,
+      "sha256": "d2ec0cd10315a94e45a3085fba6c69e35abee84d91503049a710103771e2e5a7",
+      "git_blob_sha1": "5bda856b7cfff8df1048c64c622d06719f0ec2e8"
+    },
+    {
+      "path": "examples/reminder/synthetic-reschedule-due.json",
+      "bytes": 140,
+      "sha256": "df4ed61ba3e4f5d1c39c5f777572bd1b56b0d2d07b550e1c40ba5c8f67a1a3c0",
+      "git_blob_sha1": "58d558ffffa5021602c2025b01b9da18afcb587c"
+    },
+    {
+      "path": "scripts/deadline_reminder.py",
+      "bytes": 27459,
+      "sha256": "f80934bbd0609c458b04ba0b23ee090c45927115ee2406286fe14a6f08bd3afb",
+      "git_blob_sha1": "4f29f0f35188cf4a08af3d40db672402a97cf902"
+    },
+    {
+      "path": "tests/test_deadline_reminder.py",
+      "bytes": 22836,
+      "sha256": "d752f32da1b11aaaface976959876a9be71849ac908510a03075f2f9e665f07f",
+      "git_blob_sha1": "e1f180b4865f40643e7aa914d9062188f8fa0513"
+    }
+  ],
+  "notes": [
+    "SHA-256 identifies bytes, not correctness, authenticity, or delivery",
+    "Data is synthetic. Runtime state, outbox, real records must remain outside GitHub",
+    "Manifest excludes itself; Git commit SHA identifies revision"
+  ]
+}

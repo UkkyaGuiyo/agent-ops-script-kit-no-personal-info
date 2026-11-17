@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "status": "accepted",
+  "outbox_id": "out-6add08f4456005fc777486fcf3d54374acab967b",
+  "consumer_id": "synthetic-offline-sink",
+  "receipt_id": "synthetic-receipt-01"
+}

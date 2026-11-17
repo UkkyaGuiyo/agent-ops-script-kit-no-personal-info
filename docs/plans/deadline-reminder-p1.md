@@ -1,29 +1,39 @@
-# 第7号 P1調査：期限リマインダー係 / Deadline Reminder
+# 第7号 期限リマインダー係：P1裁定（EVP/1 20261117-030）
 
-**Status: PLANNED; P1 inventory only.** No code, scheduling, alerts, sending, external-account action or formal release authorized.  
-**Basis:** E.L.I.S. production-order decision for EVP/1 `20261117-028`, after six scope-limited VERIFIED operators. P0 catalog target is "Deadline notification and retry state"; this alone **does not establish actual internal behavior**.
+**Status: P1 ACCEPT_WITH_CONDITIONS. Public independent implementation is PILOT.**
+**Basis:** V.E.S.T.A.R.D.の一般化した内部実装・運用仕様の報告。私的コード・実予定・通知本文・内部ログ・個人情報は受領・流用していない。
 
-## Why this operator next
-It builds on the kit's distinction between observation, state, pending delivery and acknowledgment, and is a safer next independent pilot than implementing automatic file deletion. However, **the actual private reminder may work differently**. Obtain its generalized source-of-truth contract before public design. The public first pilot should favor **local preview without external sending, cron or recurring actions** unless a later separately authorized design says otherwise.
+## 内部仕様として報告された事項
 
-## V.E.S.T.A.R.D. P1 questions
-1. **Purpose and observed maturity:** Does the private reminder actually run, or is it only a design? Which types of deadlines/reminders are in scope and which have measured evidence? Distinguish implemented, designed and UNKNOWN.
-2. **Input and authoritative source:** What is a reminder item? IDs, source, label, due timestamp, timezone, completion/cancellation status, recipient, priority, lead time, evidence and content. Which fields are mandatory? Never disclose real tasks/recipients.
-3. **Time semantics:** Exact deadline, local timezone and DST rules, early warning, grace window, on_time/overdue definitions, equality boundaries, clock drift and missed polls. State exact units (minutes, seconds, UTC timestamps).
-4. **Trigger and recurrence:** One-shot versus repeating deadlines; a fixed reminder schedule or event-based scan; state what actually exists. Do not infer existing cron from previous discussions.
-5. **State model:** Pending, eligible, fired, delivered, failed, acknowledged, canceled, completed as actually implemented (if any), with exact allowable transitions, terminal states and timestamp meaning.
-6. **Duplicate/replay:** How can the same reminder avoid duplicate triggering across restarts? What is the idempotency key, event_id, lifetime, and behavior after partial failure or re-delivery? Distinguish trigger count from delivery attempts.
-7. **Delivery boundary:** Does the private implementation write to a local inbox, call shared-intake, send notifications or use external providers? Exactly what constitutes durable acceptance and ack? What is the source of delivery truth? Report NONE/UNKNOWN where appropriate.
-8. **Error/recovery:** Failed read, corrupt state, missed time window, notification failure, lock contention, interrupted save, invalid time/offset, unavailable destination, untrusted input. Never equate an error with "no reminders".
-9. **Retention/security:** What historical records must remain, how long, and who can change deadlines or delete pending reminders? Protect recipient IDs, message text, schedule patterns, private account data and logs. Do not pass real examples.
-10. **Synthetic tests and C-7 explanation:** Before/at/after due, time-zone variation, grace boundaries, restart replay, duplicate IDs, failed delivery and retry, source missing, corrupt state, never sending a real message during tests. Explain distinction between **"期限を検出"**, **"通知を渡した"**, and **"相手が読んだ"**.
+- 内部係は**実装済みで運用中**。任務は確定した日時の登録・変更・取消・期限到来の発動だけ。発動後の意味判断は担当しない。
+- 登録の同一性は元項目ID＋条件ID＋確定日時のハッシュ。期限はUTC、IANA地域名付き地方時、エポック値を照合して保持。内部運用の基本タイムゾーンは`Asia/Tokyo`。
+- アイテムは`active → fired`または`active → cancelled`。発動と配送は別系統の状態。配送失敗後に発動を二度計上せず、pendingを再利用する。
+- 内部の共通受け皿への現存確認、outbox照合、見張りによる配送・再試行・障害通知、処理済み記録の保持期限との整合処理は、公開版への自動移植を承認する根拠ではない。
 
-## Deliverables
-- Generalized P1 factual/design/UNKNOWN matrix with exact provenance;
-- Typed input/output JSON schema, UTC/timezone and duration units;
-- State-transition table, idempotency and retry/delivery contract;
-- Authority matrix (read, preview, local queue, real send), explicit no-action boundary for the first public pilot;
-- Failure/repair rules, synthetic test matrix and unresolved points U1...Un;
-- Initial-Muse teaching criteria.
+## U1〜U3の裁定
 
-**Safety:** No private code, real reminders, exact addresses, actual paths, login IDs, logs, tokens or personal information. Do not change an existing private reminder, calendar, schedule, inbox, notification or GitHub repository during P1. No background automation or outbound delivery is authorized by this work order. Any public implementation must be independently designed, tested and audited after P1.
+| 論点 | 公開PILOT | 明示的な非搭載範囲 |
+| --- | --- | --- |
+| **U1 配送** | **(a) 発動とローカルoutboxまで**。outboxは正本イベントログから毎回再構成可能。`ack`は別の担当者が提示した`accepted`受領記録を**ローカルに証言として保存するだけ** | 第4号への実配送、受け皿の現存確認、外部送信、消費者認証、データ配送再試行の自動起動は**NONE**。手動ackは配送証明に十分ではない |
+| **U2 別経路の単発ジョブ** | 内部で本人承認を得て稼働した別方式として**参考のみ**。発火直前に条件を再確認する発想と日次突合の注意点を文書化 | cronへの登録・同期・削除、実案件との接続は含めない |
+| **U3 check間隔** | CLIは手動起動だけ。HowToには**5〜15分は説明用の仮想例**とし、最大検知遅れ・停止時の影響を説明 | 自動スケジューラ設定、特定の間隔の保証や義務化はしない |
+
+## P2公開版における独立実装の選択
+
+- **正本を追記専用`deadline-events.jsonl`とする**。登録、再予定、取消、発動、手動受領証言をイベントとして保存。`deadline-outbox.json`は再生可能な派生物。登録ファイルとoutboxを二重の正本にせず、保存途中で落ちたときにoutboxを復元する。
+- 先行する確定日時の型は公開版独自に**秒単位のUTC ISO文字列 (`+00:00`)、offset付き地方時ISO文字列、IANA地域名、整数epoch秒**に限定。2000-01-01〜2099-12-31の秒を受け付ける。`NaN`、無限大、bool、浮動小数点/文字列epoch、重複JSONキーを拒否。登録時と正本再生時に検査。
+- 公開サンプルのタイムゾーンは`Asia/Tokyo`だが、公開コードは環境にIANAデータがある地域名も受け付ける。夏時間の存在しない地方時や矛盾するoffsetを拒否。タイムゾーンデータベースの可用性は環境依存。
+- 変更時には旧`active`を履歴中で`cancelled`にし、新日時に基づく新IDを`active`として追記する。一イベントで両者の遷移を行う。`fired`の再予定は拒否。
+- 一度`fired`になれば再`check`で発動イベントは増えない。通知先へ**配送を試みず**、同じ決定的outbox IDを繰り返し表示する。配送操作の試行回数は0。
+- `ack --receipt-file`が扱う受領書は**任意の外部担当者の主張**。書式・ID整合性しか検証しない。`consumer_verified=false`と出力する。これを未認証の実配送確認として自動化してはならない。
+- `check`失敗時、独立した`deadline-failures.json`へ一般化エラーコードの発生を記録。障害が継続中は同一のopen episodeとして集約し、復旧後の再発は別エピソードとして区別する。失敗台帳も読めなければFAIL CLOSEDであり、記録成功は保証しない。
+- 全操作はローカル・手動のみ。実際の通知本文・受取先・認証情報はスキーマに含めない。ユーザーが作成した**公開キット外の私的状態ディレクトリ**にのみ正本、outbox、障害記録を置く。シンボリックリンクと正本破損は拒否。
+- 公開版では受け皿の**処理済み90日**を配送成功の証明例外として流用しない。受け皿現存確認・期限超過による不在許容を実装するには第4号との別の契約・監査が必要。
+
+## 未解決・権限境界
+
+- **UNVERIFIED:** 第4号との実配送、相手側の真正な保存確認、外部通知、受領者の閲覧、定期起動、非rootや他OS、IANA tzdb差、大量件数・長期性能。
+- 正本JSONLと派生outboxは一つのトランザクションではない。追記後に派生物更新が失敗した場合、次回`check`で復元する。途中で壊れた正本行は自動修復せず止まる。
+- 内部運用と公開版は同等ではない。実システムへの接続・自動通知・物理削除・正式リリースは本人の別承認を要する。SHA-256は同一性・偶発破損の検知であって真正性を保証しない。
+
+[技術仕様](../operators/deadline-reminder.md) / [HowTo](../howto/deadline-reminder.md) / [初心者への説明](../explain/deadline-reminder.md)。

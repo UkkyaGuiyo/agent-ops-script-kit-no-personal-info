@@ -34,3 +34,6 @@ AIに毎回読み込ませる常駐資料の**ファイル容量をバイト単�
 
 ## 整理係（対象コミット限定VERIFIED、提案だけ）
 フォルダ間の振り分けではなく、登録時の `disposable` / `permanent` の所属情報とファイル更新時刻だけを見て、期限が来た**候補を表示**する。14日は変更可能なサンプル基準。ファイルの中身は読まない。未タグファイルも勝手に触らない。**ゴミ箱への移動・物理削除・自動タグ付けはできない**。[初心者向け説明](docs/explain/organizer.md) / [導入手順](docs/howto/organizer.md)。新規cloneの全223件PASSと説明再現PASSが報告済み。非root・他OSは未検証。[独立検証概要](docs/verification/organizer-independent-2026-11-17.md)。
+
+## 期限リマインダー係（PILOT）
+確定日時をUTC・IANA地方時・整数エポック秒で登録し、手動checkで期限が来た項目を**一度だけ発動**させる。出力はローカルoutboxにpendingとして残る。**外部配送、共通受け皿連携、cron、担当者への通知は一切実行しない。** `ack`も外部受領書の主張を記録するだけで、本人が読んだことや実配送は証明しない。合成試験80件PASS、独立検証待ち。[使い方](docs/howto/deadline-reminder.md) / [説明](docs/explain/deadline-reminder.md)。

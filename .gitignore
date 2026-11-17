@@ -28,3 +28,10 @@ injection-measurements.json
 .injection-size.lock
 .injection-temp-*
 package-*/
+
+# Deadline reminder runtime MUST live outside checkout (defense in depth)
+deadline-events.jsonl
+deadline-outbox.json
+deadline-failures.json
+.deadline-reminder.lock
+.deadline-temp-*
