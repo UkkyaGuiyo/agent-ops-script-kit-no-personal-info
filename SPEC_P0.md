@@ -1,6 +1,6 @@
 # P0 確定仕様書 | Agent Ops Script Kit
 Version: 2026-11-17 / EVP 20261117-012, SUP1, 013.
-Status: **design approved; pilot in preview; full release NOT approved**.
+Status: **design approved; capacity watcher VERIFIED for commit e573312; full release NOT approved**.
 
 ## Mission
 Publish an independently implemented, free GPL-3.0-only kit whose beginner users and initially uninformed AI assistants can (1) understand operators, (2) reproduce them where tools and permission allow, and (3) explain benefits, limitations, and risks in plain language.
@@ -23,7 +23,7 @@ Publish an independently implemented, free GPL-3.0-only kit whose beginner users
 | History cleaner | Show cleanup candidates with dry-run | PLANNED |
 | Organizer | Propose safe file categorization | PLANNED |
 | Untagged watcher | Flag missing retention labels | PLANNED |
-| Capacity watcher | Read-only local size scan with threshold | PILOT |
+| Capacity watcher | Read-only local size scan with threshold | VERIFIED (e573312) |
 | Gmail collector | Authorized minimal-scope collector | PLANNED |
 | Notion jobs collector | Synthetic job intake examples | PLANNED |
 | Retention manager | Recoverable staged cleanup | PLANNED |
@@ -42,5 +42,8 @@ P0 public documentation → read-only capacity pilot → P1 per-operator private
 ## Roles
 E.L.I.S. designs, authors and reviews. V.E.S.T.A.R.D. checks independent environment behavior and reports measured results. Owner controls priorities, license and formal release. Neither documentation nor a relay grants permissions.
 
+## Evidence and limitations
+The capacity watcher's independent validation summary is recorded in [docs/verification/capacity-watch-2026-11-17.md](docs/verification/capacity-watch-2026-11-17.md). This is a report of separate tester results, not the tester's raw logs. Status VERIFIED applies only to commit e573312a0a15ed359cc273d7001cf304c77e1bfc and its described runtime scope. Project remains PREVIEW and has no human-approved release.
+
 ## Open
-Pilot independent environment check; future operator dependencies; specific AI runtime and scheduling availability; exact release manifest and final approval.
+Future operator dependencies; specific AI runtime and scheduling availability; exact release manifest and final approval.

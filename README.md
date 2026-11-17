@@ -19,7 +19,7 @@ python -m unittest discover -s tests -v
 python scripts/capacity_watch.py --config config/examples/capacity-watch.example.json
 ```
 
-The sample uses a synthetic directory. Keep any configuration with real paths **outside this repository**. Failed scans are errors, not zero-byte results.
+The sample uses a synthetic directory. Keep any configuration with real paths **outside this repository**. Failed scans are errors, not zero-byte results. Independent verification was [reported and recorded](docs/verification/capacity-watch-2026-11-17.md) for commit e573312; the full kit remains PREVIEW, not RELEASED.
 
 Other operators are **PLANNED**, not included as functioning code. See [SPEC_P0.md](SPEC_P0.md).
 
