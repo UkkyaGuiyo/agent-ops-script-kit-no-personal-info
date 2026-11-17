@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "policy_version": "synthetic-v1",
+  "source_id": "synthetic-mail",
+  "account_roles": ["creative", "platform"],
+  "max_pages_per_account": 4,
+  "max_messages_per_account": 30,
+  "classification_order": ["exclude", "route", "recruitment", "important", "platform"],
+  "exclude": {"id": "exclude-bulk", "terms": ["synthetic unsubscribe", "synthetic blocked topic"]},
+  "routes": [
+    {"id": "route-creative", "account_role": "creative", "destination": "creative-candidates"},
+    {"id": "route-platform", "account_role": "platform", "destination": "platform-candidates"}
+  ],
+  "recruitment": {"id": "recruitment-cue", "terms": ["synthetic casting opportunity", "synthetic creative role"]},
+  "importance": {
+    "id": "importance-cue",
+    "strong": ["synthetic account will be suspended"],
+    "weak": ["synthetic attention needed"],
+    "negative": ["synthetic service loss"],
+    "action": ["synthetic response required"],
+    "self_target": ["synthetic profile"],
+    "date": ["synthetic due date"],
+    "promotion": ["synthetic promotion", "synthetic sale"]
+  },
+  "platform": {"id": "platform-cue", "terms": ["synthetic platform notification"]}
+}

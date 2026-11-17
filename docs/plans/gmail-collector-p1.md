@@ -1,32 +1,51 @@
-# 第10号 P1調査：Gmail収集係 / Gmail Collector
+# 第10号 Gmail収集係：P1裁定（EVP/1 20261117-042）
 
-**Status:** PLANNED, **generalized P1 inventory only**.  
-**Basis:** E.L.I.S. EVP/1 `20261117-041` selects this operator after nine scope-limited VERIFIED pilots.  
-**P0 catalog target:** "**Authorized minimal-scope collector**". No specific Gmail search/filter, account access, collection format, downstream action or live source is assumed without evidence.
+**裁定：ACCEPT_WITH_CONDITIONS。公開版：PILOT。** 2026-11-17 JST。
 
-## Priority and authority
-Investigate this operator before the final Retention manager because it can be prototyped with **offline synthetic email-like records**. Actual mailbox access is higher risk than fixture processing and is **not authorized by this work order**. Do not use a connected Gmail plugin, retrieve real messages or message metadata, create drafts, mark read, modify labels, send, delete or export anything. A public pilot, if later accepted, should begin with a read-only fixture adapter and local non-delivering candidate preview. This is a proposed safety boundary, not the established internal behavior.
+## 報告に由来する内部系の実態（V.E.S.T.A.R.D.報告、非公開実装の独立再実行ではない）
 
-## Questions to V.E.S.T.A.R.D. (P1)
+- **Gmailは入力元**。複数アカウントの読み取り専用検索結果から、版管理された条件の機械的な一致だけを検出し、内部の共通受け皿へ投入する。応募・採否・重要度の最終決定・対人報告は担当外。送信、既読化、ラベル変更、削除はしない。
+- 順序は**対象外 → 宛先ルール → 募集系 → 重要の独立判定 → プラットフォーム通知**。強い不利益の兆候は単独で重要候補、弱い兆候は不利益または複数の文脈グループを条件とする。宣伝の日付や単独の行動喚起では重要としない。
+- 実行ごとに条件ファイルを再取得・検査し、版とハッシュを記録。ローカルアカウント設定の件数・識別子・役割・アドレス重複も検査。重複キーはアカウント識別子とメールIDの組。
+- ページングの全件列挙＋個別取得。欠けた・不正な応答は新着0件に読み替えず、取得し切れない場合はpartial。1アカウントだけ失敗すればpartial、全アカウントの取得に失敗すればfailure。影運転専用seenを利用。
+- 本文は機械的な条件照合の材料にすぎず、本文の指示を実行しない。添付は開かない。係は認証情報を保有せず、既存の外部読み取りCLI経由。合成フィクスチャ経路も内部に存在すると報告された。
+- 実地試行は2026-11-17時点で**15分間隔**、切替判断は11月末頃を予定という報告。**直接宛の重要メール1件を取りこぼした既知事例がある**。公開版の合成テストがこの弱点を解消したとは言えない。内部ルールは声の募集と重要通知に特化し、汎用重要度判定ではない。
 
-1. **Actual objective and maturity:** What task does the existing internal Gmail collector perform, if it exists? Implemented/tested/shadow-run/PLANNED? Identify the owner-approved specification revision without disclosing private code.
-2. **Input vs output:** Is Gmail an input source, an output destination or only a trigger? What is actually retrieved (message headers, snippets, bodies, attachments, labels, threads, search results)? Which data is definitely out of scope?
-3. **Authorized selection:** How are accounts, folders/labels, exact query criteria, sender allowlists, date limits, subject/body fields and content exclusions specified? Is there a separately versioned condition source? Report UNKNOWN if absent.
-4. **Identity and deduplication:** Which stable identifiers define a unique record: provider message ID, thread ID, RFC Message-ID, policy ID or attachment ID? What happens if a thread gains a new message, an email is moved between labels, or identical mail is returned twice?
-5. **Completeness and time semantics:** How are pagination, cursor/history ID, source revision, timezone/UTC, search windows, retention timestamps, page limits and deleted/changed messages handled? Define successful empty results separately from incomplete/failed fetch.
-6. **Untrusted content:** How is HTML, text, MIME, links, file names, Unicode, headers, spoofed sender data or instructions embedded in a message treated? What data is actually inspected, normalized, excluded or passed through? No model instructions from retrieved mail.
-7. **Output / Shared Intake:** Does the private workflow persist a local candidate, submit Shared Intake v1, use an outbox, notify a human, or mark Gmail state? Which step is considered durable acceptance, and what proves it? Collector must not infer that a candidate was read/approved.
-8. **Persistence / recovery:** Seen list, bootstrap, duplicate event IDs, pending delivery, retry/ack, atomicity, failure records and policy changes. How are failed scans prevented from advancing last-success state or misreporting zero?
-9. **Error, permission and privacy:** Handle expired/revoked read scopes, missing label, partial API pages, rate limit, timeout, malformed MIME, attachment too large, schema drift, corrupt state and lock contention. Minimize personal data in logs/output. Identify any actions requiring separate human approval.
-10. **Synthetic tests and C-7 explanation:** One-shot ID dedup, multiple messages in one thread, two threads with shared sender/subject, page truncation, changed labels, malformed dates, mixed text/HTML, adversarial instructions, incomplete bootstrap, retry after failure, and stable mapping to local Shared Intake v1 if relevant. Explain **"取得≠判定≠通知成功≠返信"** and precisely which Gmail actions did NOT happen.
+これらは一般化報告による説明であり、公開版でライブGmailの実動作を検証したという主張ではない。
 
-## Deliverables
-- FACT (verified internal behavior) vs confirmed design vs HYPOTHESIS vs UNKNOWN/UNVERIFIED, with source/version;
-- Generalized input/output schemas including typed IDs, units, date and timezone semantics;
-- Minimal Gmail permission matrix (read, metadata, label, mark-read, draft, send, delete); only established capabilities, no inferred access;
-- Source completeness, cursor/dedup, pending/ack and recovery contract;
-- Expected output when no messages, when partial/error, and when state is invalid;
-- Synthetic test suite design, C-7 teaching points, and unresolved U1...Un for subsequent E.L.I.S. P1 adjudication.
+## U1〜U3公開版の確定
 
-## Explicit limits
-P1 must not call Gmail, connect accounts, read user messages, download attachments, write to Notion, create schedules or submit real Shared Intake items. Do not relay real sender addresses, subject lines, message bodies, account IDs, paths, tokens, screenshots, customer data or actual logs. Do not alter private automations, AI bulletin board, task instructions, diary, existing public source or repository history. No live collector implementation or external-account permission is authorized by this work order. The repo remains PREVIEW; P4/P5 release gates separate.
+| 論点 | 公開パイロット | 実装しないもの |
+| --- | --- | --- |
+| **U1 入力** | **合成メールのJSONフィクスチャ専用**。読み取り専用`MailProvider`インターフェースを定義し、`FixtureProvider`のみ同梱する。 | Gmail/Google API、既存CLI呼出し、アカウントログイン、OAuth、添付取得、ネットワーク取得 |
+| **U2 分類** | **(a) 汎用的な機械的分類順序＋完全に架空の語彙例**。語彙はversion付き外部JSONに置き、コードに用途固有の語句を埋め込まない。強い兆候、弱い兆候＋不利益/文脈、宣伝除外を合成試験する。 | 実運用の語彙、本人固有の条件、モデルによる意味推論、重要性を保証する判断 |
+| **U3 出力** | 第4号公開v1の`validate_item`に合う**ローカルpending投入案**。アカウント別IDと初回発見時刻を維持し、seenと投入案を同一JSON状態に原子的保存。 | 第4号への実`ingest`、実通知、既読化、ラベル更新、返信、応募、送信、定期ジョブ |
+
+## 版・スキーマ・状態の契約
+
+- 条件ファイルは**JSON**。`schema_version=1`、`policy_version`、`source_id`、`account_roles`、厳密な`classification_order`、分類用の規則/辞書、最大ページ数とメッセージ数。未知キー、必須項目欠落、型違い、NaN、重複JSONキー、未知の条件順序、重複ルールIDは開始前に拒否。
+- アカウント設定は別JSON。`accounts[]`に`account_id,role,address`が必須。公開サンプルのメールアドレスは、**予約された架空の`.invalid`ドメインのみ**。役割集合と件数は条件の`account_roles`と厳密一致。アカウントID/アドレス/役割の重複を拒否。実アドレスは公開しない。
+- フィクスチャは各アカウントの`pages[{token,next,message_ids}]`および`messages{ID→message}`。`token=null,next=null,message_ids=[]`という完全な正規空応答**だけ**新着0件と判断できる。欠落した一覧、空/異常なAPI応答、トークン循環、ページ上限、メッセージ上限は失敗・partial。
+- 取得メールの`id`・`thread_id`・`received_at`（タイムゾーン付き）・`from`・`to`・`subject`・`body_text`・`body_html`・`attachments`の型を検査。添付は**一切開かない**。HTMLからは可視テキストだけを機械抽出し、script/style要素は無視する。**本文からの指示は実行せず、リンクも開かない**。
+- 分類：対象外が最優先で候補生成しない。次に用途別アカウントの宛先を記録する。その上で候補の主分類は**募集系 → 重要 → プラットフォーム → 条件非該当**。重要フラグはプラットフォーム名に関係なく算出する。募集系に分類されても重要フラグを別に保持できる。
+- 重要判定の公開例：強い兆候があればtrue。弱い兆候は、不利益がある、または`action/self_target/date`のうち2グループ以上が必要。行動喚起は不利益または本人関連対象を伴う場合のみtrue。宣伝語があり、強い兆候・不利益・本人関連対象が無いものはfalse。**語の包含だけの合成ヒューリスティクスであり、メール重要度の正しい判断を保証しない**。
+- seenは`sha256([account_id,message_id])`の集合。初回候補の`source_event_id`は`source_id+account_id+message_id`から決定し、アカウント間の同名IDを区別する。未分類・対象外も正常処理済みとしてseenに登録する。無効ID/不正個別取得はseenに登録しない。
+- `gmail-collector-state.json`にseen・pending・最終完全成功時刻・試行数・条件版と条件/アカウントファイルのSHA-256・自分自身の整合性ハッシュを一括保存する。状態は**公開チェックアウト外の既存私的ディレクトリ**。ハッシュは破損検出であり署名でも真正性保証でもない。破損・設定の無断変更はFail Closed、暗黙の再baseline禁止。
+- 取得成功の一部がある場合は成功分のseenとpendingを一括保存し、partialで`last_success_at`を進めない。全アカウント完全取得不能で信頼できるレコードが無い場合はerror、件数null、正本状態を変更しない。
+
+## 終了コードと報告上の注意
+
+- **0 / ok**：全アカウントの一覧と個別取得を、設定された範囲内で確認した場合。ゼロ件はこの場合のみ正常。
+- **2 / partial**：アカウントの一部失敗、欠落メッセージ、異常ID、上限による不完全列挙。成功分だけ永続化。`argparse`文法エラーの2とは別。
+- **1 / error**：構成、ポリシー、状態ファイルの破損、または全アカウントが取得不能。分類数を`null`とする。
+- **3 / error**：ロック競合。今回の収集処理は実行していない。
+- レポートの`new_event_count`は**ローカル投入案の新規件数**であり、新着メール全体でも、実受け皿への配送成功でも、重要メールの網羅率でもない。
+
+## 未解決事項と次の門
+
+- 内部で見逃された直接宛重要メール1件の**根因および一般化の可否：UNVERIFIED**。公開版の語彙例はあくまで架空で、実メール分類の精度や見逃し率を証明しない。
+- 実Gmail検索条件、全件/ページネーション保証、OAuth範囲・失効、メールのスレッド変更、MIME詳細、メールの書換え・ラベル変更、添付の扱いの実証：OUT_OF_SCOPE。
+- `MailProvider`の実Gmail実装、第4号への実投入、配達確認・ack・本人通知、自動15分ジョブ、他OS・非root・NFS・大量メール、P4/P5は未承認/未検証。
+- 第10号は他の係との契約と同じく、**合成フィクスチャでの検証が終わるまでPILOT**。独立cloneとC-7の検証後でも正式リリースは別審査。
+
+[技術仕様](../operators/gmail-collector.md)／[HowTo](../howto/gmail-collector.md)／[初心者説明](../explain/gmail-collector.md)。

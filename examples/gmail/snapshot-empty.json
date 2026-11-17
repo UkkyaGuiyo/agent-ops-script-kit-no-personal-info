@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "accounts": {
+    "synthetic-box-one": {
+      "pages": [
+        {
+          "token": null,
+          "next": null,
+          "message_ids": []
+        }
+      ],
+      "messages": {}
+    },
+    "synthetic-box-two": {
+      "pages": [
+        {
+          "token": null,
+          "next": null,
+          "message_ids": []
+        }
+      ],
+      "messages": {}
+    }
+  }
+}

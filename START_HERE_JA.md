@@ -43,3 +43,6 @@ AIに毎回読み込ませる常駐資料の**ファイル容量をバイト単�
 
 ## Notionジョブ収集係（対象コミット限定VERIFIED、合成入力専用）
 本来の内部係ではNotionが**読み取り元**。公開版では、架空の親ページと日付子ページのJSONだけを読んで、新しい日付ページと追加URLを見つける。条件は版とハッシュをもつ簡易YAML。最初に一度だけbootstrapを完了させ、その後checkで差分を取る。失敗は新着0件ではない。第4号に適合する**ローカル投入案**を保持するが、**Notionに接続しない・実受け皿に送らない・応募しない・定期実行しない**。制作側は70件PASS／1件SKIP。新規cloneで全441/441件PASS（SKIPなし）とC-7合格が報告済み。ページ間URL重複排除は未実装・要否未確定。非root・他OS・実接続は未検証。[独立検証概要](docs/verification/notion-jobs-collector-independent-2026-11-17.md)。[HowTo](docs/howto/notion-jobs-collector.md)／[初心者説明](docs/explain/notion-jobs-collector.md)。
+
+## Gmail収集係（PILOT・合成入力のみ）
+内部版はGmailを**読み取り元**として、複数アカウントのメールを機械的に候補化する。ただし公開版は**架空のJSONメール**以外を読めない。条件の順序は対象外→宛先振分け→募集→重要（独立判定）→プラットフォーム。重要の語句は架空の例であり、実メールの重要度を保証しない。アカウントID＋メッセージIDで重複を管理し、第4号に合う**ローカル投入案**だけを保存する。**Gmail接続・送信・既読変更・ラベル更新・削除・受け皿への実投入・定期実行はできない**。制作側は98件中97件PASS・1件SKIP。独立検証とC-7はPENDING。[HowTo](docs/howto/gmail-collector.md) / [説明](docs/explain/gmail-collector.md)。

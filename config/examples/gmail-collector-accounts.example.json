@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "accounts": [
+    {"account_id": "synthetic-box-one", "role": "creative", "address": "creative@example.invalid"},
+    {"account_id": "synthetic-box-two", "role": "platform", "address": "platform@example.invalid"}
+  ]
+}

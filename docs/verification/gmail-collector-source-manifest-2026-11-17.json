@@ -1,0 +1,100 @@
+{
+  "manifest_schema_version": 1,
+  "code_status": "PILOT",
+  "basis": "EVP/1 20261117-042",
+  "created_on": "2026-11-17",
+  "hash_provenance": "producer local files, pre-publication; manifest excludes itself",
+  "test_environment": {
+    "python": "3.13.5",
+    "os": "Linux container",
+    "user_privilege": "root"
+  },
+  "new_test_definitions": 98,
+  "local_passed": 97,
+  "local_skipped": 1,
+  "local_failed": 0,
+  "whole_kit_expected_test_count": 539,
+  "whole_kit_independent_passed": "UNVERIFIED",
+  "anchor_counts": {
+    "synthetic_accounts": 2,
+    "synthetic_messages": 11,
+    "first_new_candidates": 8,
+    "recheck_new_candidates": 0,
+    "pending_candidates": 8,
+    "excluded": 1,
+    "unmatched": 2,
+    "new_category_recruitment": 1,
+    "new_category_important": 5,
+    "new_category_platform": 2,
+    "gmail_connections": 0,
+    "external_deliveries": 0
+  },
+  "files": [
+    {
+      "path": "scripts/gmail_collector.py",
+      "size_bytes": 30549,
+      "sha256": "612ee7dcd6294ae904a74cd2c76340b73e3864c144a0d4b7616337e81c4a416e",
+      "git_blob_sha1": "d19b37e7526575386a87a0eb8c7e66ee6f2877bb"
+    },
+    {
+      "path": "tests/test_gmail_collector.py",
+      "size_bytes": 25133,
+      "sha256": "9c6d0f4b25a2e6c83c82063b7ac37817fc74cac38875176c187aae4f9a25430e",
+      "git_blob_sha1": "eb20bab8971dcf224569826db64ac201807e55d3"
+    },
+    {
+      "path": "config/examples/gmail-collector-policy.example.json",
+      "size_bytes": 1179,
+      "sha256": "e7d22144039cf022531453b571a11b43cc6fe8dd4892c10d79997b6874b21a35",
+      "git_blob_sha1": "eda2103a978bcb50b4235a61656ea8bae1929804"
+    },
+    {
+      "path": "config/examples/gmail-collector-accounts.example.json",
+      "size_bytes": 246,
+      "sha256": "371e43ad8a11a33ceb5f450ac4b4a024b02b018033b6e05aa61d05d10ffb801e",
+      "git_blob_sha1": "46002bf955f7a62d78c905f779fe7a18567e147a"
+    },
+    {
+      "path": "examples/gmail/snapshot-synthetic.json",
+      "size_bytes": 5106,
+      "sha256": "240f0912ad21d0bbe9376c26b3cecbcfd3a4e6ccfb8ab374bb16390abee51ab2",
+      "git_blob_sha1": "aedaa6e79684d45e167dc6e4f5627314ee946f4f"
+    },
+    {
+      "path": "examples/gmail/snapshot-empty.json",
+      "size_bytes": 402,
+      "sha256": "c552a0587dfc09e7f66ec7de9fe2614353ff7ad39f37acb3cbb7e3e4d94e7908",
+      "git_blob_sha1": "766977b18e1b04276c3318ffb2375f3a6b49da2b"
+    },
+    {
+      "path": "docs/plans/gmail-collector-p1.md",
+      "size_bytes": 8503,
+      "sha256": "5c2b183db9cf83e7d8c56e4a8de071f6e7461cdf303bead311adf9f973aee216",
+      "git_blob_sha1": "14ec30eee9e97b294fe3c68819a59b645f8eb694"
+    },
+    {
+      "path": "docs/operators/gmail-collector.md",
+      "size_bytes": 8885,
+      "sha256": "b3fed4ab384e3a42df4e0f8a1425901bbb8fe8b3ef2749375fb39d403d543e1e",
+      "git_blob_sha1": "fcb9a4a27e269209ae856d0d828ba3f415902d4a"
+    },
+    {
+      "path": "docs/howto/gmail-collector.md",
+      "size_bytes": 4204,
+      "sha256": "16c7e0095c92a738863482576173901adad7c4047cb381be9d8af31a03e23d24",
+      "git_blob_sha1": "586592640dab4b320d8ce8567d1d3c4f8c939389"
+    },
+    {
+      "path": "docs/explain/gmail-collector.md",
+      "size_bytes": 3580,
+      "sha256": "a7a59a03f359225dced26a62dd68c89ed2a00eaeef57ae838fe4176f81a78213",
+      "git_blob_sha1": "e7a9b51dc25fbc58283e49d15fa5d726312c78f2"
+    },
+    {
+      "path": "docs/verification/gmail-collector-local-2026-11-17.md",
+      "size_bytes": 6142,
+      "sha256": "cab81c14e08979f43a7fea36203babf45365c1b6395a842b499373f3a04a86ab",
+      "git_blob_sha1": "e577fa01af565545a625a6d1861c9f25ee730e4f"
+    }
+  ]
+}

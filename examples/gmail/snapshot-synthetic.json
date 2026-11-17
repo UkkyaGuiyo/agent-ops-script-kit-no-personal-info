@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "accounts": {
+    "synthetic-box-one": {
+      "pages": [
+        {
+          "token": null,
+          "next": "page-b",
+          "message_ids": [
+            "w1",
+            "w2",
+            "w3"
+          ]
+        },
+        {
+          "token": "page-b",
+          "next": null,
+          "message_ids": [
+            "w4",
+            "w5",
+            "w6",
+            "w7"
+          ]
+        }
+      ],
+      "messages": {
+        "w1": {
+          "id": "w1",
+          "thread_id": "thread-c1",
+          "received_at": "2026-11-17T09:00:00+09:00",
+          "from": "fictional.sender@example.invalid",
+          "to": "creative@example.invalid",
+          "subject": "synthetic casting opportunity",
+          "body_text": "",
+          "body_html": "",
+          "attachments": []
+        },
+        "w2": {
+          "id": "w2",
+          "thread_id": "thread-c2",
+          "received_at": "2026-11-17T09:00:00+09:00",
+          "from": "fictional.sender@example.invalid",
+          "to": "creative@example.invalid",
+          "subject": "synthetic account will be suspended",
+          "body_text": "",
+          "body_html": "",
+          "attachments": []
+        },
+        "w3": {
+          "id": "w3",
+          "thread_id": "thread-c3",
+          "received_at": "2026-11-17T09:00:00+09:00",
+          "from": "fictional.sender@example.invalid",
+          "to": "creative@example.invalid",
+          "subject": "synthetic promotion: synthetic attention needed, synthetic due date",
+          "body_text": "",
+          "body_html": "",
+          "attachments": []
+        },
+        "w4": {
+          "id": "w4",
+          "thread_id": "thread-c4",
+          "received_at": "2026-11-17T09:00:00+09:00",
+          "from": "fictional.sender@example.invalid",
+          "to": "creative@example.invalid",
+          "subject": "synthetic unsubscribe with synthetic casting opportunity",
+          "body_text": "",
+          "body_html": "",
+          "attachments": []
+        },
+        "w5": {
+          "id": "w5",
+          "thread_id": "thread-c4",
+          "received_at": "2026-11-17T09:00:00+09:00",
+          "from": "fictional.sender@example.invalid",
+          "to": "creative@example.invalid",
+          "subject": "plain routine update",
+          "body_text": "",
+          "body_html": "",
+          "attachments": []
+        },
+        "w6": {
+          "id": "w6",
+          "thread_id": "thread-c5",
+          "received_at": "2026-11-17T09:00:00+09:00",
+          "from": "fictional.sender@example.invalid",
+          "to": "creative@example.invalid",
+          "subject": "synthetic attention needed",
+          "body_text": "synthetic service loss",
+          "body_html": "",
+          "attachments": []
+        },
+        "w7": {
+          "id": "w7",
+          "thread_id": "thread-c6",
+          "received_at": "2026-11-17T09:00:00+09:00",
+          "from": "fictional.sender@example.invalid",
+          "to": "creative@example.invalid",
+          "subject": "regular notice",
+          "body_text": "",
+          "body_html": "<p>synthetic platform notification</p><script>synthetic account will be suspended</script>",
+          "attachments": []
+        }
+      }
+    },
+    "synthetic-box-two": {
+      "pages": [
+        {
+          "token": null,
+          "next": null,
+          "message_ids": [
+            "w1",
+            "p2",
+            "p3",
+            "p4"
+          ]
+        }
+      ],
+      "messages": {
+        "w1": {
+          "id": "w1",
+          "thread_id": "thread-p1",
+          "received_at": "2026-11-17T09:00:00+09:00",
+          "from": "fictional.sender@example.invalid",
+          "to": "platform@example.invalid",
+          "subject": "synthetic platform notification",
+          "body_text": "",
+          "body_html": "",
+          "attachments": []
+        },
+        "p2": {
+          "id": "p2",
+          "thread_id": "thread-p2",
+          "received_at": "2026-11-17T09:00:00+09:00",
+          "from": "fictional.sender@example.invalid",
+          "to": "platform@example.invalid",
+          "subject": "synthetic platform notification",
+          "body_text": "synthetic account will be suspended",
+          "body_html": "",
+          "attachments": []
+        },
+        "p3": {
+          "id": "p3",
+          "thread_id": "thread-p3",
+          "received_at": "2026-11-17T09:00:00+09:00",
+          "from": "fictional.sender@example.invalid",
+          "to": "platform@example.invalid",
+          "subject": "synthetic response required synthetic due date synthetic attention needed",
+          "body_text": "",
+          "body_html": "",
+          "attachments": []
+        },
+        "p4": {
+          "id": "p4",
+          "thread_id": "thread-p4",
+          "received_at": "2026-11-17T09:00:00+09:00",
+          "from": "fictional.sender@example.invalid",
+          "to": "platform@example.invalid",
+          "subject": "synthetic response required synthetic profile",
+          "body_text": "",
+          "body_html": "",
+          "attachments": []
+        }
+      }
+    }
+  }
+}

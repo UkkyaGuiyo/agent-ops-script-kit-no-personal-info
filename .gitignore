@@ -40,3 +40,8 @@ deadline-failures.json
 notion-jobs-state.json
 .notion-jobs.lock
 .notion-jobs-temp-*
+
+# Offline Gmail collector state MUST remain outside the public checkout
+gmail-collector-state.json
+.gmail-collector.lock
+.gmail-collector-temp-*
