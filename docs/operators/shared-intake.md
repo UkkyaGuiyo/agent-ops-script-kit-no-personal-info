@@ -1,6 +1,6 @@
 # 共通受け皿（Shared Intake）：技術仕様
 
-**Status: PILOT.** 個別の新規clone・独立環境試験、初期状態Museの説明再現試験は未完了。
+**Status: VERIFIED for commit d9b24aa2c75fb022eb7f58fb04e94ccbc33ab3a9 (reported independent test on Linux/root).** 非root・Windows・NFS・長時間運用・負荷条件はUNVERIFIED。正式RELEASEDではない。
 **License: GPL-3.0-only.** Python 3.10以降。追加パッケージ不要。ローカル動作のみ。
 
 ## 目的
@@ -82,4 +82,4 @@
 
 同一ローカルファイルシステム内での単一プロセス追記・ロックを想定。JSONLへの追記と旗の更新は2ファイル以上に及ぶため原子的な単一トランザクションではない。再送・再構築で対処する設計。大量イベント時の再生性能、Windows、NFS/ネットワークファイルシステムは独立検証未実施。SHA-256はファイル同一性・整合性確認に使い、外部に対する真正性や内容の正確性を証明しない。
 
-[HowTo](../howto/shared-intake.md) / [初心者への説明](../explain/shared-intake.md) / [P1裁定](../plans/shared-intake-p1.md)
+[HowTo](../howto/shared-intake.md) / [初心者への説明](../explain/shared-intake.md) / [P1裁定](../plans/shared-intake-p1.md) / [独立検証概要](../verification/shared-intake-independent-2026-11-17.md)

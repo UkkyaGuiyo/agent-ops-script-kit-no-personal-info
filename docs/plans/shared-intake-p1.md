@@ -1,7 +1,7 @@
 # 共通受け皿 P1確定・公開版実装判断
 
 **EVP/1:** 20261117-019 / 2026-11-17
-**Status:** P1 accepted, public implementation is PILOT until independent verification.
+**Status:** P1 accepted, public implementation VERIFIED for commit d9b24aa (Linux/root tested scope; other environments UNVERIFIED).
 **Basis:** V.E.S.T.A.R.D. の一般化した内部仕様報告。非公開コード、実際のメール、仕事記録、顧客情報、ローカルパスは閲覧・複製していない。
 
 ## 確認済みの役割
@@ -38,3 +38,6 @@
 - 約90日の運用をどう一般公開するかは、実際の削除機能を設計する段階で**別途審査**する。内部のログ掃除・削除根拠の詳細は、このコードに持ち込まない。
 
 [技術仕様](../operators/shared-intake.md) / [HowTo](../howto/shared-intake.md) / [説明用資料](../explain/shared-intake.md)
+
+## P3独立検証結果（2026-11-17）
+EVP/1 `20261117-020`による新規cloneの独立実測で、キット全体116/116試験がPASSと報告された。共通受け皿49試験を含む。重複投入、不正な遷移、旗の再構築、正本破損による失敗、取得失敗の記録、保持候補と手動アダプターも実測。初期状態Museの説明再現も報告上PASS。検証範囲と非root・他OSの留保は[検証記録](../verification/shared-intake-independent-2026-11-17.md)を参照。
