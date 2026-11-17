@@ -1,6 +1,6 @@
 # 第6号 整理係：P1確定裁定（EVP/1 20261117-023）
 
-**Status:** P1 ACCEPT_WITH_CONDITIONS / public independent PILOT. Independent fresh-clone verification pending.  
+**Status:** P1 ACCEPT_WITH_CONDITIONS / public independent implementation VERIFIED for commit 84ca9fe within reported Linux/root scope; other environments UNVERIFIED.  
 **Basis:** V.E.S.T.A.R.D. の一般化した内部仕様報告。内部コード、実ファイル、正確なパス、運用ログは取得・複製していない。
 
 ## 名称と根拠の訂正
@@ -37,3 +37,6 @@
 ## 独立検証ゲート
 
 合成タグ/mtime、14日のちょうどの境界、永久タグ、未登録、未知タグの保留、記録欠落、相対パス逸脱、シンボリックリンク、複数ルート、オプション不正、原本のSHA-256・mtime不変、READMEからの初心者再現（C-7）。本番操作は一切しない。正式リリースはP4監査とP5本人承認を別途要する。
+
+## P3独立検証報告（EVP/1 20261117-028）
+新規clone HEAD一致、既存168件＋整理係55件で全223/223 PASSとV.E.S.T.A.R.D.が報告。合成ルートで14日境界、未到来、permanent、未知区分、欠落・不安全パスのhold、未登録の非走査、保留時partial/exit1、原本SHA-256不変、提案専用の権限境界を確認した。初期状態Museの説明再現も報告上PASS。非root・他OS・ネットワークFS・大規模レコード・実運用は未検証。[独立検証概要](../verification/organizer-independent-2026-11-17.md)を参照。

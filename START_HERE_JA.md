@@ -32,5 +32,5 @@ AIに毎回読み込ませる常駐資料の**ファイル容量をバイト単�
 
 独立環境で全168/168件の試験PASSが報告済み。ただし週次増加率ちょうど10%のCLI実測は未完、非root・他OSの動作も未検証。[独立検証概要](docs/verification/injection-size-watch-independent-2026-11-17.md)。
 
-## 整理係（PILOT、提案だけ）
-フォルダ間の振り分けではなく、登録時の `disposable` / `permanent` の所属情報とファイル更新時刻だけを見て、期限が来た**候補を表示**する。14日は変更可能なサンプル基準。ファイルの中身は読まない。未タグファイルも勝手に触らない。**ゴミ箱への移動・物理削除・自動タグ付けはできない**。[初心者向け説明](docs/explain/organizer.md) / [導入手順](docs/howto/organizer.md)。現在は独立環境検証待ち。
+## 整理係（対象コミット限定VERIFIED、提案だけ）
+フォルダ間の振り分けではなく、登録時の `disposable` / `permanent` の所属情報とファイル更新時刻だけを見て、期限が来た**候補を表示**する。14日は変更可能なサンプル基準。ファイルの中身は読まない。未タグファイルも勝手に触らない。**ゴミ箱への移動・物理削除・自動タグ付けはできない**。[初心者向け説明](docs/explain/organizer.md) / [導入手順](docs/howto/organizer.md)。新規cloneの全223件PASSと説明再現PASSが報告済み。非root・他OSは未検証。[独立検証概要](docs/verification/organizer-independent-2026-11-17.md)。

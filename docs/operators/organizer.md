@@ -1,6 +1,6 @@
 # 整理係：保持タグ寿命の**提案のみ**を行う技術仕様
 
-**Status: PILOT.** Source revision will be recorded on publication; independent fresh-clone test and fresh-Muse explanation PENDING. GPL-3.0-only. Python 3.10+; standard library only.
+**Status: VERIFIED for commit 84ca9fe08fb21658fab05e99a5029f55ee2d56ab (reported fresh clone on Linux/root).** Full-kit 223/223 tests and initial-Muse C-7 explanation PASS reported. Non-root access denial, other OS, network filesystems and large datasets UNVERIFIED. No formal RELEASED tag. GPL-3.0-only; Python 3.10+ standard library.
 
 ## 役割
 
@@ -64,4 +64,4 @@
 
 走査中の外部変更やTOCTOUは防げない。ドライランの表示を移動の承認に流用してはならない。物理削除の「1か月」や受け皿の「90日」は別機能の仕様で、公開版では期間設定も実行も不採用。非root/Windows/NFS・巨大な所属記録は未検証。
 
-[P1裁定](../plans/organizer-p1.md) / [HowTo](../howto/organizer.md) / [初心者説明](../explain/organizer.md) / [制作側試験](../verification/organizer-local-2026-11-17.md)。
+[P1裁定](../plans/organizer-p1.md) / [HowTo](../howto/organizer.md) / [初心者説明](../explain/organizer.md) / [制作側試験](../verification/organizer-local-2026-11-17.md) / [独立検証概要](../verification/organizer-independent-2026-11-17.md)。
