@@ -1,0 +1,1 @@
+Synthetic example only. No real user information is stored here.
