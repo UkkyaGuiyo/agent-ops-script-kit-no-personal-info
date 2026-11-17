@@ -1,0 +1,7 @@
+{
+  "source_roles": {
+    "synthetic-reminder": "reminder",
+    "synthetic-source": "general"
+  },
+  "version": 1
+}

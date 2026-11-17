@@ -1,6 +1,6 @@
 # P0 確定仕様書 | Agent Ops Script Kit
 Version: 2026-11-17 / EVP 20261117-012, SUP1, 013.
-Status: **design approved; seven operators VERIFIED (revision-scoped); full release NOT approved**.
+Status: **design approved; seven operators VERIFIED (revision-scoped); history cleaner PILOT; full release NOT approved**.
 
 ## Mission
 Publish an independently implemented, free GPL-3.0-only kit whose beginner users and initially uninformed AI assistants can (1) understand operators, (2) reproduce them where tools and permission allow, and (3) explain benefits, limitations, and risks in plain language.
@@ -20,7 +20,7 @@ Publish an independently implemented, free GPL-3.0-only kit whose beginner users
 | Operator | Public target | Status |
 |---|---|---|
 | Ledger checker | Check one Markdown ledger's syntax without changing content | VERIFIED (35f4d96; non-root permissions untested) |
-| History cleaner | Show cleanup candidates with dry-run | PLANNED |
+| History cleaner | Read-only Shared Intake v1 record-age candidates, never remove events/seen; no apply | PILOT |
 | Organizer | Preview tag-based file lifetime: disposable + mtime >= configured days, no move or purge | VERIFIED (84ca9fe; Linux/root scope) |
 | Untagged watcher | First-observed unregistered regular files with durable local pending/ack | VERIFIED (dfb077b; non-root permissions untested) |
 | Capacity watcher | Read-only local size scan with threshold | VERIFIED (e573312) |
@@ -63,8 +63,8 @@ P1 established that the internal "Organizer" is a **retention lifetime manager**
 ## Deadline reminder / EVP 20261117-030
 The internal deadline reminder was reported as implemented and in operation; its one-shot deadline state and delivery/outbox are distinct. The [P1 decision](docs/plans/deadline-reminder-p1.md) selects **U1(a): local trigger and outbox only**, with a limited, **externally asserted and unverified** receipt-attestation CLI; U2: separate one-shot cron approach is **reference only**; U3: 5–15 minutes is an illustrative external scheduling interval, not code behavior. Public [pilot source](scripts/deadline_reminder.py) never sends, schedules, reads actual external inboxes or infers message reading. Its append-only event journal is authoritative; an outbox can be replayed after a crash; error episodes have a separate local record. UTC/local IANA/epoch seconds are verified as the same instant; one-time events never refire. **80 local synthetic tests PASS**, with [source and manifest evidence](docs/verification/deadline-reminder-local-2026-11-17.md). [Fresh-clone independent verification](docs/verification/deadline-reminder-independent-2026-11-17.md) was reported as **303/303 PASS** with synthetic CLI boundaries and C-7 explanation PASS at deae596. Real Shared Intake/consumer delivery is OUT OF SCOPE. Non-root, other OS, tzdb differences and prolonged operation remain UNVERIFIED. [Tech contract](docs/operators/deadline-reminder.md), [HowTo](docs/howto/deadline-reminder.md), [explanation](docs/explain/deadline-reminder.md). Entire kit is PREVIEW; owner-approved formal release remains unapproved.
 
-## Next P1 / History cleaner
-The next candidate is the [History cleaner generalized P1 work order](docs/plans/history-cleaner-p1.md). Its P0 goal is dry-run cleanup candidate reporting only. Its actual internal target and authority are UNKNOWN until inventory; no delete, truncate, compaction or Git history rewriting is authorized.
+## History cleaner / EVP 20261117-034
+P1 established that the private History Cleaner is a **record-lifetime component of Shared Intake**, not a generic file cleanup or Git-history eraser. The independent [public source](scripts/history_cleaner.py) targets **Shared Intake public JSONL v1** and does **read-only** terminal-age preview, with default **90 days** from the final terminal transition. It never deletes rows, rewrites seq, creates prune evidence, copies private records or schedules work. An explicitly user-declared source-role map marks general versus reminder-derived items but is **not independently authenticated**; unknown origins are held. Reminder state events, error rows and deduplication memory are not deleted. Public v1 lacks independent `seen` retention and `prepare/complete` prune evidence; a `candidate` satisfies only the age criterion and **safe_to_delete_count is always 0**. Completed runs are held because their age rule is unknown. See [P1 decisions](docs/plans/history-cleaner-p1.md), [technical contract](docs/operators/history-cleaner.md), [HowTo](docs/howto/history-cleaner.md), [explanation](docs/explain/history-cleaner.md), [producer local evidence](docs/verification/history-cleaner-local-2026-11-17.md). Local testing had **66 PASS / 1 SKIP** (67 tests defined; skipped real intake integration absent from standalone build). **Combined full-suite count 370 expected, independent testing PENDING.** Formal release still not authorized.
 
 ## Open
 Future operator dependencies; specific AI runtime and scheduling availability; exact release manifest and final approval.

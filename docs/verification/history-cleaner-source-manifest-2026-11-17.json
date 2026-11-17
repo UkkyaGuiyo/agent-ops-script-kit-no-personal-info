@@ -1,0 +1,87 @@
+{
+  "basis": "EVP/1 20261117-034",
+  "date": "2026-11-17",
+  "files": [
+    {
+      "bytes": 116,
+      "path": "config/examples/history-cleaner-source-roles.example.json",
+      "sha256": "ca3ad43b39b5133f06d28a2d545b070f7b5e7123bb2a3bbac78508d2d3a5b3c9"
+    },
+    {
+      "bytes": 3021,
+      "path": "docs/explain/history-cleaner.md",
+      "sha256": "6ad2f73d1f344e9e659fead862a270f4d9ed552f62d9e6af484f0642b128ebfa"
+    },
+    {
+      "bytes": 2682,
+      "path": "docs/howto/history-cleaner.md",
+      "sha256": "6de86eba48abcc85f00f58aa3f9848bf284ad623a35d9b30900a569fec5af473"
+    },
+    {
+      "bytes": 6163,
+      "path": "docs/operators/history-cleaner.md",
+      "sha256": "be0621db3b655e56d30f0d3172d91de64dba9c83c7e704a99b5584fd8b32ee64"
+    },
+    {
+      "bytes": 5502,
+      "path": "docs/plans/history-cleaner-p1.md",
+      "sha256": "6bc4c482ac497a18b8adc2b93a10e5edb967ced136d9a807684b2e4d68fc065e"
+    },
+    {
+      "bytes": 3665,
+      "path": "docs/verification/history-cleaner-local-2026-11-17.md",
+      "sha256": "e378b1ff487c45d86873e7c739d33d5b78c0316e4ebc73f93dbc18a5e6df3f13"
+    },
+    {
+      "bytes": 406,
+      "path": "examples/history-cleaner/intake/events/2026-08-01.jsonl",
+      "sha256": "52746fee6a4424a334578584b7fe3b5143897752576d2a5384fbe3a784757f75"
+    },
+    {
+      "bytes": 409,
+      "path": "examples/history-cleaner/intake/events/2026-08-02.jsonl",
+      "sha256": "d55133ab89aa5e96146b5c29e0f471f72982a0b623ca97f3d062827b66503276"
+    },
+    {
+      "bytes": 405,
+      "path": "examples/history-cleaner/intake/events/2026-08-03.jsonl",
+      "sha256": "05bfcf561da23e8a3f4cf4a6b587241008706d39bb520cab77db119edca1ece4"
+    },
+    {
+      "bytes": 408,
+      "path": "examples/history-cleaner/intake/events/2026-08-04.jsonl",
+      "sha256": "229cbf22f047e17539e9200a942a86ee4748d3b035db3285693f5d72f8fdbf15"
+    },
+    {
+      "bytes": 202,
+      "path": "examples/history-cleaner/intake/events/2026-08-05.jsonl",
+      "sha256": "58e3e65020b8ed0600f00f5f46f4f01860c74a25a6819531cb0a800d1a7bf141"
+    },
+    {
+      "bytes": 201,
+      "path": "examples/history-cleaner/intake/events/2026-08-06.jsonl",
+      "sha256": "73dcf79e4f6c57f2b45acec52dff93409653f30199dd5e80272e9f4a0478232b"
+    },
+    {
+      "bytes": 403,
+      "path": "examples/history-cleaner/intake/events/2026-08-19.jsonl",
+      "sha256": "39dc813d7c4d7a06b7045ad9ec97fc5630ebc6516b342bd8e959d4fcffb5f831"
+    },
+    {
+      "bytes": 16907,
+      "path": "scripts/history_cleaner.py",
+      "sha256": "db14ed30e222c0d88c1a45d6194d467504f8226181eecab9b82e9f1ee7bd0f5d"
+    },
+    {
+      "bytes": 20108,
+      "path": "tests/test_history_cleaner.py",
+      "sha256": "6a3d8932ba0faf119a9bcaa6a8c77977268002a1655b7a050cb8a7c5993137f6"
+    }
+  ],
+  "operator": "history-cleaner",
+  "project": "Agent Ops Script Kit",
+  "schema_version": 1,
+  "source_repo_commit": "fa334694cfc1783efbd2e979234b9e3797e0b9a7",
+  "source_verification": "local synthetic 66 PASS / 1 SKIP; full integration UNVERIFIED",
+  "status": "PILOT"
+}
