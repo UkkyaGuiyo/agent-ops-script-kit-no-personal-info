@@ -1,6 +1,6 @@
 # 第7号：期限リマインダー係の公開パイロット技術仕様
 
-**Status: PILOT.** 独立環境・初期状態Muse検証はPENDING。Python 3.10+、標準ライブラリのみ（IANA tzdbを提供する実行環境）。GPL-3.0-only。
+**Status: VERIFIED for deae5969af6ab358e700b9e8e3b68f159bc032b2 within reported Linux/root local scope.** V.E.S.T.A.R.D.から新規clone全303/303件PASS、初期状態Muse説明再現PASSが報告された。外部配送・第4号接続はOUT_OF_SCOPE。非root・他OS・長期運用はUNVERIFIED。正式RELEASEDではない。Python 3.10+、標準ライブラリ（IANA tzdb必要）。GPL-3.0-only。
 
 ## 目的と非目的
 
@@ -68,3 +68,5 @@ python scripts/deadline_reminder.py --state-dir PRIVATE_DIR ack --outbox-id ID -
 - 非root、他OS、tzdb差異、長期間、大量レコード、同一state dirのネットワークFS、クロック逆行、攻撃者による正本再編集に対する強度は独立検証していない。
 
 [P1裁定](../plans/deadline-reminder-p1.md) / [HowTo](../howto/deadline-reminder.md) / [初心者への説明](../explain/deadline-reminder.md) / [制作側テスト](../verification/deadline-reminder-local-2026-11-17.md)
+
+[独立検証概要](../verification/deadline-reminder-independent-2026-11-17.md)。
