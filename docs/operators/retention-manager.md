@@ -1,6 +1,6 @@
 # 保持管理係：デモ領域限定の段階式保持管理
 
-**Status: PILOT。** 独立cloneとC-7説明はPENDING。GPL-3.0-only、Python 3.10+標準ライブラリ。**Linux/同一ホストPOSIXデモ用途以外は未検証。**
+**Status: VERIFIED for code commit 992e1e6430788514b5c9e19c66036a080bd592dd within reported Linux/root synthetic demo scope.** V.E.S.T.A.R.D.報告：新規clone618/618件PASS、SKIPなし（第6号実統合含む）、合成stage/restoreのSHA-256一致、C-7合格。異常中断・非root・他OS・NFS・本番データはUNVERIFIED。正式RELEASEDではない。GPL-3.0-only、Python 3.10+標準ライブラリ。
 
 ## 役割と範囲
 
@@ -38,6 +38,8 @@
 
 ## 制限
 
-内部版が本番で削除済みという報告は公開版の保証ではない。**復元の定期検証は内部でもUNVERIFIED**。このPILOTが実証したのは合成POSIX領域の限定的復元であり、停電、プロセス中断、ファイル変更競合、他OS、実運用データの保存は未検証。利用者の実作業フォルダに対する移動／削除実行は公開初版の認可範囲外。結果の例やパスを公開Issueへ貼らない。
+内部版が本番で削除済みという報告は公開版の保証ではない。**復元の定期検証は内部でもUNVERIFIED**。この対象限定のVERIFIEDが実証したのは合成POSIX領域の限定的復元であり、停電、プロセス中断、ファイル変更競合、他OS、実運用データの保存は未検証。利用者の実作業フォルダに対する移動／削除実行は公開初版の認可範囲外。結果の例やパスを公開Issueへ貼らない。
 
 [P1裁定](../plans/retention-manager-p1.md) / [HowTo](../howto/retention-manager.md) / [説明](../explain/retention-manager.md) / [ローカル試験](../verification/retention-manager-local-2026-11-17.md)
+
+[独立検証概要](../verification/retention-manager-independent-2026-11-17.md)。
