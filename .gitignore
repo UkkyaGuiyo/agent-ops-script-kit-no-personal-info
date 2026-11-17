@@ -9,3 +9,8 @@ venv/
 *.secrets.json
 config/private/
 reports/
+
+# Defense in depth; watcher state must still live outside this repository
+untagged-watch-state.json
+.untagged-watch.lock
+.state-temp-*

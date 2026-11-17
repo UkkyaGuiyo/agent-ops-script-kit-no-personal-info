@@ -23,7 +23,9 @@ The sample uses a synthetic directory. Keep any configuration with real paths **
 
 **Ledger checker:** a second, read-only **VERIFIED** operator (scoped to commit 35f4d96) for a single Markdown task ledger. It checks the document's form, not whether work really happened. See [台帳係の導入](docs/howto/ledger-check.md), [初心者への説明](docs/explain/ledger-check.md), and [verification with limitations](docs/verification/ledger-check-2026-11-17.md).
 
-The remaining operators are **PLANNED**. See [SPEC_P0.md](SPEC_P0.md).
+**New pilot: untagged watcher.** Read-only detection in monitored roots plus a writable, durable local state directory **outside this repository**. First run establishes a silent baseline. Later first-observed unregistered files become `pending` reports; `ack` is manual. **No external delivery, scheduler, tagging or deletion.** See [HowTo](docs/howto/untagged-watch.md), [beginner explanation](docs/explain/untagged-watch.md), and [technical limits](docs/operators/untagged-watch.md). Its local 33-test report is [here](docs/verification/untagged-watch-local-2026-11-17.md). Independent verification is PENDING.
+
+Other operators remain **PLANNED**. See [SPEC_P0.md](SPEC_P0.md).
 
 **License:** GPL-3.0-only ([LICENSE](LICENSE)); license obligations apply when distributing covered modified versions. Private modifications alone do not have to be published.
 **Support:** no guaranteed ongoing personal assistance. See [SUPPORT.md](SUPPORT.md).

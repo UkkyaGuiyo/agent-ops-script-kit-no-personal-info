@@ -9,8 +9,8 @@
 - Public branches and PRs are PUBLIC. “Delete later” is not protection from history or clones.
 
 ## Runtime boundaries
-- Current pilot reads local file metadata only. It does not follow symlinks, modify files, run schedules, or use the network.
-- Missing paths, invalid configs, and incomplete scans are errors. Never report partial data as complete.
+- The capacity watcher and ledger checker inspect local inputs without changing them. The untagged watcher reads watched-root file metadata and root-local JSON records, **but writes a state JSON and lock into a separate user-provided directory outside the checkout and monitored roots**. No script follows symlinks, schedules work, or sends network data.
+- Missing paths, invalid configs, interrupted state commits, malformed records and incomplete scans are errors. Never report partial data as complete. A pending report is not automatically delivered; manual ack is required after reliable acceptance. Runtime output and local state can reveal relative filenames and must not be posted publicly.
 - Do not run with elevated privileges as a workaround.
 - Future potentially destructive tools require explicit allowlists, dry-run, independent approval, safe staging, and recovery directions.
 

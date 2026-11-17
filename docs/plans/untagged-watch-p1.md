@@ -1,20 +1,24 @@
-# P1調査依頼：保持タグの付け忘れ検出係
-**STATUS: PLANNED. No implementation or scheduling authorized in this document.**
-**Purpose:** Build a generic read-only checker that identifies items lacking a retention label. Start with an isolated synthetic dataset; do not copy any private script, manifest, or record.
+# P1確定：保持タグ付け忘れ検出係
 
-## Why next
-This operator is closer to the existing read-only pilots than cleanup, physical deletion, Gmail, or external-service intake. Its accurate behavior still depends on obtaining the original *generalized* retention tag contract. Do not assume the answer from its name.
+**Status: P1 accepted / public PILOT implemented / independent verification PENDING.**
+**Basis:** V.E.S.T.A.R.D. generalized internal-spec report EVP/1 20261117-017. Private source, actual paths and operational data were not examined or copied.
 
-## V.E.S.T.A.R.D. P1 questions
-1. **Scope:** which roots and file types are considered, and which are excluded? What is the behavior for directories, symlinks, file removals during scan, and inaccessible paths?
-2. **Source of truth:** where is the tag recorded (sidecar, ledger/manifest, file metadata, etc.) and how is that record correlated to each file? Do not supply private filenames or implementation.
-3. **Vocabulary:** confirm whether allowed tags are `disposable` and `permanent` only; identify any metadata required in addition to the tag, e.g. timestamps, and malformed tag handling.
-4. **Definitions:** what precisely counts as untagged vs unknown/unverifiable vs intentionally excluded? Does `false` mean absent, and how is failure represented?
-5. **Inputs/outputs:** propose a sanitized schema with types, units, source of timestamp and explicit error statuses.
-6. **Scheduling:** record the reported six-hour cadence as **context only**. Public v1 should remain manual by default; no cron/task changes without separate approval.
-7. **Recovery:** show how a human can triage a false positive; this checker must not assign tags, move or delete files, modify metadata or send externally.
-8. **Tests:** synthetic normal/untagged/malformed records, absent source, permission errors, duplicate entries, partial scan, symlinks, and failure not misreported as zero findings.
-9. **Boundaries:** what behavior requires an AI or the owner? Never infer permission to delete from the existence of a tag.
+## What this operator actually does
+It checks newly observed **regular files** within configured local roots against a root-local JSON list of path-to-class records and a persisted `seen` snapshot. First scan establishes a silent baseline. Only a first-observed file absent from the record is eligible for a new report. It never assigns a tag, reads file bodies, moves files or deletes anything.
 
-## Next deliverable
-Generalized, non-sensitive P1 report only. Mark unknown facts UNKNOWN. No private source, local paths, actual data, logs, personal information or credentials. E.L.I.S. will judge the specification before independently implementing a public PILOT.
+## U1–U3 decision (E.L.I.S.)
+- **U1:** Retain durable `seen` + SHA-256 integrity envelope + `pending`. Use **one atomic state file**, not separate baseline and seen files. Abandoned write temporary files cause an error and require human inspection; no silent rebaseline.
+- **U2:** Public pilot offers **CLI JSON stdout and an explicit `ack` step**. It has **no Gmail/Notion/intake integration, no scheduler, and no automatic outbound delivery**. stdout does not prove receipt. Pending replays keep the same event ID. A consumer must deduplicate by event ID; exactly-once external delivery is **not guaranteed**.
+- **U3:** Public format uses one root-local `.retention_records.json` with an `entries` array of `path` (root-relative POSIX-style) and `class`. A record with either `disposable` or `permanent` means “tagged.” A nonempty unknown class is also **treated as registered/hold**, not deletion permission. Malformed entries, duplicate/escaping paths and unsupported schema versions fail closed.
+
+## Explicitly different from private environment
+Internal six-hour cadence is documentary context only. Public version is **manual**. Public `pending` is a local durable queue with manual acknowledgment, **not** an already implemented shared intake. Do not claim compatibility with the private state layout or delivery contract.
+
+## Required safety
+- State directory is writable but **outside monitored roots and this public checkout**. Watched roots stay read-only.
+- No following symlinks. Exclude known artifact/build directories and user-listed relative subtrees.
+- I/O, record parsing, state integrity and configuration drift errors stop without reporting “no new files.”
+- Lock contention exits 3. Stale locks are a manual inspection task, not auto-removed.
+- All files and generated JSON are potentially sensitive; only synthetic fixtures are publishable.
+
+[Technical contract](../operators/untagged-watch.md) · [HowTo](../howto/untagged-watch.md) · [Beginner explanation](../explain/untagged-watch.md).

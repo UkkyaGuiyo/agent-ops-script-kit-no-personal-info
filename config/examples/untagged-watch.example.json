@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "roots": [
+    {
+      "name": "synthetic-root",
+      "path": "../../examples/untagged-watch/root",
+      "exclude_subtrees": []
+    }
+  ]
+}

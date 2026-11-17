@@ -1,6 +1,6 @@
 # P0 確定仕様書 | Agent Ops Script Kit
 Version: 2026-11-17 / EVP 20261117-012, SUP1, 013.
-Status: **design approved; capacity watcher VERIFIED for commit e573312; full release NOT approved**.
+Status: **design approved; capacity and ledger VERIFIED (scope-limited); untagged watcher PILOT; full release NOT approved**.
 
 ## Mission
 Publish an independently implemented, free GPL-3.0-only kit whose beginner users and initially uninformed AI assistants can (1) understand operators, (2) reproduce them where tools and permission allow, and (3) explain benefits, limitations, and risks in plain language.
@@ -22,7 +22,7 @@ Publish an independently implemented, free GPL-3.0-only kit whose beginner users
 | Ledger checker | Check one Markdown ledger's syntax without changing content | VERIFIED (35f4d96; non-root permissions untested) |
 | History cleaner | Show cleanup candidates with dry-run | PLANNED |
 | Organizer | Propose safe file categorization | PLANNED |
-| Untagged watcher | Flag missing retention labels | PLANNED |
+| Untagged watcher | First-observed unregistered regular files with durable local pending/ack | PILOT |
 | Capacity watcher | Read-only local size scan with threshold | VERIFIED (e573312) |
 | Gmail collector | Authorized minimal-scope collector | PLANNED |
 | Notion jobs collector | Synthetic job intake examples | PLANNED |
@@ -47,6 +47,9 @@ The capacity watcher's independent validation summary is recorded in [docs/verif
 
 ## Ledger pilot / EVP 20261117-015
 The ledger checker is a **single-file format verifier**, not a two-ledger comparator. Its contract is in [docs/operators/ledger-check.md](docs/operators/ledger-check.md). Independent validation was reported for [commit 35f4d96](docs/verification/ledger-check-2026-11-17.md) and is scoped as VERIFIED. The live non-root permission-denial behavior is NOT VERIFIED. The project remains PREVIEW.
+
+## Untagged watcher / EVP 20261117-017
+P1 documented; independent public implementation in [docs/operators/untagged-watch.md](docs/operators/untagged-watch.md). Decisions: retain hashed seen/pending, use manual local JSON output and explicit ack, publish a generalized root-local JSON retention-record format. No external intake, scheduler, automated tag assignment or deletion is included. Local synthetic tests passed; independent validation and fresh-Muse explanation remain pending. State hash is corruption detection, not cryptographic authentication. Formal release remains unapproved.
 
 ## Open
 Future operator dependencies; specific AI runtime and scheduling availability; exact release manifest and final approval.
