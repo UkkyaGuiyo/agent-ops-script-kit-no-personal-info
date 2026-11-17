@@ -1,6 +1,6 @@
 # 第10号 Gmail収集係：公開版技術仕様
 
-**Status: PILOT。** Python 3.10+、標準ライブラリ、GPL-3.0-only。公開版は**オフラインの架空メールJSONだけ**を入力にする。実Gmailアクセス・第4号への実投入・外部送信は**NONE**。独立cloneとC-7はPENDING。
+**Status: VERIFIED（対象コードcbfa915930096a535bb229188f54a830d9b208ba、Linux/root・合成入力限定）。** 新規clone全539/539件PASS（SKIPなし、第4号validate_item互換性含む）とC-7説明合格がV.E.S.T.A.R.D.から報告された。非root・他OS・実Gmailと実際の重要メール判定精度は未検証。正式RELEASEDではない。Python 3.10+、標準ライブラリ、GPL-3.0-only。
 
 ## 仕事
 
@@ -68,6 +68,6 @@
 - 実Gmailの権限失効、レート制限、MIME、APIページネーション、スレッド変更、永続カーソルや既読状態との連携は対象外。
 - 内部の重要メール取りこぼし1件の根因・修正効果は未検証。公開版での分類は語句一致の**候補化**であり、重要度・案件適合度の保証ではない。
 - 非root、Windows/macOS、NFS、実メール大量データ、日次・15分定時運転は未検証。
-- 公開版のP3独立clone検証、C-7説明試験、P4セキュリティ/履歴/ライセンス監査、P5本人の公開リリース承認は別工程。
+- P3独立clone・C-7説明試験は対象コード限定で報告上PASS。[独立検証概要](../verification/gmail-collector-independent-2026-11-17.md)。P4セキュリティ/履歴/ライセンス監査、P5本人の正式リリース承認は別工程。
 
 [P1裁定](../plans/gmail-collector-p1.md)／[HowTo](../howto/gmail-collector.md)／[説明](../explain/gmail-collector.md)／[制作側テスト](../verification/gmail-collector-local-2026-11-17.md)

@@ -1,6 +1,6 @@
 # 第10号 Gmail収集係：P1裁定（EVP/1 20261117-042）
 
-**裁定：ACCEPT_WITH_CONDITIONS。公開版：PILOT。** 2026-11-17 JST。
+**裁定：ACCEPT_WITH_CONDITIONS。公開版：VERIFIED（cbfa915、Linux/root合成入力限定）。** 2026-11-17 JST。
 
 ## 報告に由来する内部系の実態（V.E.S.T.A.R.D.報告、非公開実装の独立再実行ではない）
 
@@ -49,3 +49,7 @@
 - 第10号は他の係との契約と同じく、**合成フィクスチャでの検証が終わるまでPILOT**。独立cloneとC-7の検証後でも正式リリースは別審査。
 
 [技術仕様](../operators/gmail-collector.md)／[HowTo](../howto/gmail-collector.md)／[初心者説明](../explain/gmail-collector.md)。
+
+## P3独立検証（EVP/1 20261117-045）
+V.E.S.T.A.R.D.は公開コードcbfa915の新規cloneで全539/539件PASS、SKIPなしと報告（先行441＋Gmail98）。第4号validate_item互換性テストも実行された。合成CLI初回は候補8件、対象外1件、非該当2件、pending8件。再checkで新規0件、pending8件。正規空応答はexit0・新規0件。入力ハッシュ不変、実Gmail接続NONE、第4号書込false。C-7必須7項目も報告上PASS。[独立検証概要](../verification/gmail-collector-independent-2026-11-17.md)。
+この昇格は実メール精度の証明ではない。内部の重要メール1件の取りこぼしは未解決。P4/P5未承認。
